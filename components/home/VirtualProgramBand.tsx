@@ -7,7 +7,7 @@ import Reveal from "@/components/Reveal";
 
 export default function VirtualProgramBand() {
   return (
-    <section className="relative overflow-hidden bg-ink-2 text-paper">
+    <section className="relative overflow-hidden bg-gradient-to-br from-ink via-ink-2 to-ink text-paper">
       <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute inset-y-0 -right-1/4 w-2/3 opacity-30"
@@ -21,16 +21,16 @@ export default function VirtualProgramBand() {
 
       <div className="relative mx-auto grid max-w-7xl gap-14 px-6 py-24 lg:grid-cols-12 lg:gap-16 lg:px-10 lg:py-32">
         <Reveal className="lg:col-span-7" offset={30}>
-          <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b">
+          <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
             The Future of the Practice
           </p>
           <h2 className="mt-4 font-serif text-4xl leading-[1.1] tracking-tight text-paper sm:text-5xl">
-            The same 30-year method — now from anywhere in the country.
+            The same 30-year method, now from anywhere in the country.
           </h2>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-paper/75">
             Our Virtual Program brings the neurometabolic investigation home.
             You start with a remote QEEG brain-training unit, neurotransmitter
-            testing, and a guided video series — with Dr. Santucci reviewing
+            testing, and a guided video series, with Dr. Santucci reviewing
             your data and adjusting your protocol on a call every two weeks.
             It&apos;s how we&apos;re extending this work beyond Los Gatos: the
             same root-cause approach, delivered remotely, wherever you are.

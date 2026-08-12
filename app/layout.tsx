@@ -32,7 +32,7 @@ const SITE_TITLE = "NeuroIntegrative Care of Los Gatos";
 const SITE_TAGLINE =
   "Functional Medicine & Root-Cause Investigation in Los Gatos, CA";
 const SITE_DESCRIPTION =
-  "Dr. Santucci's 30-year root-cause investigation of brain, metabolism, and nervous system — for people whose labs read \u201Cnormal\u201D but who don't feel right.";
+  "Dr. Santucci's 30-year root-cause investigation of brain, metabolism, and nervous system, for people whose labs read \u201Cnormal\u201D but who don't feel right.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -8,7 +8,7 @@ const STEPS = [
   {
     number: "01",
     title: "IDENTIFY",
-    body: "We go beyond standard bloodwork. Advanced lab panels and a computerized neurological exam — balance, eye movement, reaction time, brain mapping — establish an objective picture of where your system actually broke down.",
+    body: "We go beyond standard bloodwork. Advanced lab panels and a computerized neurological exam (balance, eye movement, reaction time, brain mapping) establish an objective picture of where your system actually broke down.",
   },
   {
     number: "02",
@@ -18,7 +18,7 @@ const STEPS = [
   {
     number: "03",
     title: "SUSTAIN",
-    body: "We re-measure the same markers to confirm your nervous system is actually changing — not just that symptoms went quiet — then protect the gains with a personalized longevity and lifestyle plan.",
+    body: "We re-measure the same markers to confirm your nervous system is actually changing, not just that symptoms went quiet, then protect the gains with a personalized longevity and lifestyle plan.",
   },
 ] as const;
 
@@ -30,20 +30,20 @@ export default function HowItWorks() {
   });
 
   return (
-    <section id="how-it-works" className="bg-ink py-24 text-paper lg:py-32">
+    <section id="how-it-works" className="bg-paper py-24 text-ink lg:py-32">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         <Reveal className="max-w-3xl">
-          <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b">
+          <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
             The Investigation
           </p>
-          <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-paper sm:text-5xl">
-            A different kind of workup — built to find the driver, not label the symptom.
+          <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+            A different kind of workup, built to find the driver, not label the symptom.
           </h2>
         </Reveal>
 
         <div ref={containerRef} className="relative mt-20 lg:mt-24">
           <div
-            className="absolute left-6 top-6 bottom-6 w-px bg-rule-d lg:left-7 lg:top-7 lg:bottom-7"
+            className="absolute left-6 top-6 bottom-6 w-px bg-rule lg:left-7 lg:top-7 lg:bottom-7"
             aria-hidden="true"
           />
           <motion.div
@@ -62,15 +62,15 @@ export default function HowItWorks() {
                 className="flex gap-6 lg:gap-10"
               >
                 <div className="shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-amber bg-ink font-mono text-xs text-amber lg:h-14 lg:w-14 lg:text-sm">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-amber bg-paper font-mono text-xs text-amber lg:h-14 lg:w-14 lg:text-sm">
                     {step.number}
                   </div>
                 </div>
                 <div className="pt-2 lg:pt-3">
-                  <h3 className="font-mono text-xs font-medium uppercase tracking-[0.32em] text-amber-b">
+                  <h3 className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-amber">
                     {step.title}
                   </h3>
-                  <p className="mt-5 max-w-2xl text-lg leading-relaxed text-paper/80">
+                  <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
                     {step.body}
                   </p>
                 </div>

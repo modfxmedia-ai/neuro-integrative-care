@@ -117,7 +117,7 @@ export default function StartHerePage() {
             as="p"
             delay={50}
             offset={12}
-            className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b"
+            className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b"
           >
             Start Here
           </Reveal>
@@ -134,7 +134,7 @@ export default function StartHerePage() {
               href={BOOKING_PLACEHOLDER_HREF}
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-8 py-4 text-base font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book my New-Patient Investigation — $300
+              Book my New-Patient Investigation ($300)
             </Link>
             <a
               href={PHONE_HREF}
@@ -148,7 +148,7 @@ export default function StartHerePage() {
             as="p"
             delay={640}
             offset={8}
-            className="mt-6 font-mono text-[10px] uppercase tracking-[0.28em] text-paper/45"
+            className="mt-6 font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-paper/70"
           >
             Booking system TBD · Email or call to reserve
           </Reveal>
@@ -161,14 +161,14 @@ export default function StartHerePage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-4">
               <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-amber">
+                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                   What You Get For $300
                 </h2>
               </div>
               <p className="mt-8 font-serif text-[2rem] leading-tight text-ink lg:text-[2.5rem]">
                 A full consultation with Dr. Santucci.
               </p>
-              <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.32em] text-ink">
+              <p className="mt-6 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
                 Not a sales call
               </p>
             </Reveal>
@@ -191,21 +191,21 @@ export default function StartHerePage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-4">
               <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-amber">
+                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                   What To Expect Next
                 </h2>
               </div>
               <p className="mt-8 font-serif text-[2rem] leading-tight text-ink lg:text-[2.5rem]">
                 From investigation to program.
               </p>
-              <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.32em] text-ink">
+              <p className="mt-6 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
                 Priced after the investigation
               </p>
             </Reveal>
             <Reveal delay={120} offset={24} className="lg:col-span-8">
               <p className="text-lg leading-relaxed text-ink">
-                If it&apos;s a fit, your investigation moves into testing — brain
-                mapping, lab and toxin panels — to confirm the path. Programs
+                If it&apos;s a fit, your investigation moves into testing, brain
+                mapping, lab and toxin panels, to confirm the path. Programs
                 are built around what we find, and{" "}
                 <span className="font-medium">
                   typically begin at $3,500 in-clinic
@@ -250,7 +250,7 @@ export default function StartHerePage() {
       <section className="bg-ink py-24 text-paper lg:py-32">
         <div className="mx-auto max-w-4xl px-6 lg:px-10">
           <Reveal>
-            <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-amber-b">
+            <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber-b">
               An Honest Fit Note
             </h2>
           </Reveal>
@@ -258,7 +258,7 @@ export default function StartHerePage() {
             <div className="rounded-2xl border border-rule-d bg-ink-2 p-8 lg:p-12">
               <p className="font-serif text-[1.4rem] leading-[1.4] text-paper sm:text-[1.65rem] lg:text-[1.85rem]">
                 We don&apos;t take insurance, and we don&apos;t offer one-off
-                chiropractic visits — we work in programs, because{" "}
+                chiropractic visits, we work in programs, because{" "}
                 <span className="italic text-amber-b">
                   complex problems aren&apos;t solved in a single appointment.
                 </span>{" "}
@@ -274,7 +274,7 @@ export default function StartHerePage() {
       <section id="book" className="relative overflow-hidden bg-paper-2 py-24 lg:py-32">
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
           <Reveal>
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               Ready
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-[1.1] tracking-tight text-ink sm:text-5xl">
@@ -293,13 +293,13 @@ export default function StartHerePage() {
                 href={BOOKING_PLACEHOLDER_HREF}
                 className="group flex flex-col items-center justify-center rounded-2xl border border-amber/40 bg-gradient-to-br from-amber-soft/60 to-amber-soft/20 p-8 transition-all hover:border-amber/70 hover:shadow-[0_20px_60px_-30px_rgba(232,160,32,0.4)]"
               >
-                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                   Email to Reserve
                 </p>
                 <p className="mt-4 font-serif text-[1.35rem] leading-tight text-ink">
                   Book my New-Patient Investigation
                 </p>
-                <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.28em] text-ink">
+                <p className="mt-3 font-mono font-medium text-[13px] uppercase tracking-[0.16em] text-ink">
                   $300
                 </p>
                 <span
@@ -313,13 +313,13 @@ export default function StartHerePage() {
                 href={PHONE_HREF}
                 className="group flex flex-col items-center justify-center rounded-2xl border border-rule/70 bg-paper p-8 transition-all hover:border-ink/30 hover:shadow-[0_20px_60px_-30px_rgba(11,18,32,0.3)]"
               >
-                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                   Or Call
                 </p>
                 <p className="mt-4 font-serif text-[1.35rem] leading-tight text-ink">
                   {PHONE_DISPLAY}
                 </p>
-                <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
+                <p className="mt-3 font-mono font-medium text-[13px] uppercase tracking-[0.16em] text-muted">
                   Tue &amp; Thu · 9:30–3:00
                 </p>
                 <span
@@ -336,9 +336,9 @@ export default function StartHerePage() {
             as="p"
             delay={280}
             offset={8}
-            className="mt-10 font-mono text-[10px] uppercase tracking-[0.28em] text-muted"
+            className="mt-10 font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-muted"
           >
-            Online booking system pending — check back soon
+            Online booking system pending, check back soon
           </Reveal>
         </div>
       </section>

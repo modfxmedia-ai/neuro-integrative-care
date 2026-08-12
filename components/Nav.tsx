@@ -10,7 +10,8 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { conditions } from "@/content/conditions";
 
 const NAV_ITEMS = [
   { label: "Conditions", href: "/conditions" },
@@ -136,7 +137,7 @@ export default function Nav() {
               <span className="whitespace-nowrap font-serif text-[12px] tracking-[0.02em] text-paper sm:text-[13px] xl:text-[15px]">
                 NEUROINTEGRATIVE CARE
               </span>
-              <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.28em] text-amber-b sm:text-[10px] sm:tracking-[0.32em]">
+              <span className="mt-1 font-mono font-medium text-[11px] uppercase tracking-[0.16em] text-amber-b sm:text-[12px] sm:tracking-[0.18em]">
                 Los Gatos
               </span>
             </span>
@@ -145,6 +146,15 @@ export default function Nav() {
           <ul className="hidden lg:flex items-center gap-0 xl:gap-1">
             {NAV_ITEMS.map((item) => {
               const active = isActive(item.href);
+              if (item.label === "Conditions") {
+                return (
+                  <ConditionsNavItem
+                    key={item.href}
+                    href={item.href}
+                    active={active}
+                  />
+                );
+              }
               return (
                 <li key={item.href} className="relative">
                   <Link
@@ -215,12 +225,23 @@ export default function Nav() {
               transition={{ type: "spring", stiffness: 320, damping: 34 }}
               className="fixed right-0 top-0 z-50 flex h-full w-[86vw] max-w-sm flex-col bg-ink px-8 pb-10 pt-24 text-paper shadow-2xl lg:hidden"
             >
-              <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.32em] text-amber-b">
+              <p className="mb-6 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
                 Menu
               </p>
               <ul className="flex flex-col">
                 {NAV_ITEMS.map((item, i) => {
                   const active = isActive(item.href);
+                  if (item.label === "Conditions") {
+                    return (
+                      <ConditionsAccordionItem
+                        key={item.href}
+                        href={item.href}
+                        active={active}
+                        index={i}
+                        onNavigate={() => setMobileOpen(false)}
+                      />
+                    );
+                  }
                   return (
                     <motion.li
                       key={item.href}
@@ -271,5 +292,249 @@ function BookButton() {
         <span className="relative z-10">Book a Consult</span>
       </Link>
     </motion.div>
+  );
+}
+
+interface ConditionsNavItemProps {
+  href: string;
+  active: boolean;
+}
+
+// Desktop dropdown: hover OR click reveals the panel; clicking the label
+// itself still navigates to /conditions (additive, not a replacement).
+// hoverOpen and clickOpen are tracked independently — a real mouse click is
+// always preceded by a mouseenter, so a single toggle flag would make the
+// click immediately re-close what hover just opened.
+function ConditionsNavItem({ href, active }: ConditionsNavItemProps) {
+  const [hoverOpen, setHoverOpen] = useState(false);
+  const [clickOpen, setClickOpen] = useState(false);
+  const open = hoverOpen || clickOpen;
+  const itemRef = useRef<HTMLLIElement | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => {
+      setHoverOpen(false);
+      setClickOpen(false);
+    }, 120);
+  };
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setHoverOpen(false);
+        setClickOpen(false);
+      }
+    };
+    const onClickAway = (e: MouseEvent) => {
+      if (itemRef.current && !itemRef.current.contains(e.target as Node)) {
+        setHoverOpen(false);
+        setClickOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", onClickAway);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("mousedown", onClickAway);
+    };
+  }, [open]);
+
+  useEffect(() => () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  }, []);
+
+  return (
+    <li
+      ref={itemRef}
+      className="relative"
+      onMouseEnter={() => {
+        cancelClose();
+        setHoverOpen(true);
+      }}
+      onMouseLeave={scheduleClose}
+    >
+      <span className="relative inline-flex items-center">
+        <Link
+          href={href}
+          aria-current={active ? "page" : undefined}
+          className={`relative inline-block whitespace-nowrap py-2 pl-2 pr-1 text-[13px] transition-colors xl:pl-3 xl:text-sm ${
+            active ? "text-paper" : "text-paper/75 hover:text-paper"
+          }`}
+        >
+          Conditions
+          {active && (
+            <motion.span
+              layoutId="nav-active-underline"
+              className="absolute inset-x-2 -bottom-0.5 h-[2px] rounded-full bg-amber-b xl:inset-x-3"
+              transition={{ type: "spring", stiffness: 380, damping: 32 }}
+            />
+          )}
+        </Link>
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls="conditions-nav-panel"
+          aria-label="Toggle conditions menu"
+          onClick={() => setClickOpen((v) => !v)}
+          className={`flex items-center px-1 py-2 pr-2 transition-colors xl:pr-3 ${
+            active ? "text-paper" : "text-paper/75 hover:text-paper"
+          }`}
+        >
+          <ChevronDown
+            size={14}
+            aria-hidden="true"
+            className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          />
+        </button>
+      </span>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="conditions-nav-panel"
+            role="menu"
+            initial={{ opacity: 0, y: -6, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.98 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute left-0 top-full z-10 mt-2 w-[19rem] rounded-2xl border border-rule bg-paper p-3 shadow-[0_24px_60px_-24px_rgba(11,18,32,0.35)]"
+          >
+            <ul>
+              {conditions.map((sector) => (
+                <li key={sector.slug}>
+                  <Link
+                    href={`/conditions/${sector.slug}`}
+                    role="menuitem"
+                    className="block rounded-lg px-3 py-2 font-serif text-[15px] text-ink transition-colors hover:bg-amber-soft/50 hover:text-amber"
+                  >
+                    {sector.name}
+                  </Link>
+                  {sector.subConditions && sector.subConditions.length > 0 && (
+                    <ul>
+                      {sector.subConditions.map((sub) => (
+                        <li key={sub.slug}>
+                          <Link
+                            href={`/conditions/${sector.slug}/${sub.slug}`}
+                            role="menuitem"
+                            className="block rounded-lg py-1.5 pl-7 pr-3 text-[13px] text-muted transition-colors hover:bg-amber-soft/40 hover:text-amber"
+                          >
+                            {sub.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </li>
+  );
+}
+
+interface ConditionsAccordionItemProps {
+  href: string;
+  active: boolean;
+  index: number;
+  onNavigate: () => void;
+}
+
+// Mobile drawer accordion: expands in place rather than a hover dropdown.
+function ConditionsAccordionItem({
+  href,
+  active,
+  index,
+  onNavigate,
+}: ConditionsAccordionItemProps) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <motion.li
+      initial={{ opacity: 0, x: 18 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{
+        delay: 0.08 + index * 0.035,
+        duration: 0.35,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="border-b border-rule-d"
+    >
+      <div className="flex items-center justify-between py-4">
+        <Link
+          href={href}
+          aria-current={active ? "page" : undefined}
+          onClick={onNavigate}
+          className={`font-serif text-2xl transition-colors ${
+            active ? "text-amber-b" : "text-paper hover:text-amber-b"
+          }`}
+        >
+          Conditions
+        </Link>
+        <button
+          type="button"
+          aria-expanded={expanded}
+          aria-controls="conditions-accordion-panel"
+          aria-label={expanded ? "Collapse conditions list" : "Expand conditions list"}
+          onClick={() => setExpanded((v) => !v)}
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-paper/25 text-paper transition-colors hover:bg-paper/10"
+        >
+          <ChevronDown
+            size={16}
+            aria-hidden="true"
+            className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
+          />
+        </button>
+      </div>
+
+      <AnimatePresence initial={false}>
+        {expanded && (
+          <motion.div
+            id="conditions-accordion-panel"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+          >
+            <ul className="pb-4">
+              {conditions.map((sector) => (
+                <li key={sector.slug} className="py-1">
+                  <Link
+                    href={`/conditions/${sector.slug}`}
+                    onClick={onNavigate}
+                    className="block py-1.5 font-serif text-lg text-paper/90 transition-colors hover:text-amber-b"
+                  >
+                    {sector.name}
+                  </Link>
+                  {sector.subConditions && sector.subConditions.length > 0 && (
+                    <ul>
+                      {sector.subConditions.map((sub) => (
+                        <li key={sub.slug}>
+                          <Link
+                            href={`/conditions/${sector.slug}/${sub.slug}`}
+                            onClick={onNavigate}
+                            className="block py-1.5 pl-5 text-sm text-paper/60 transition-colors hover:text-amber-b"
+                          >
+                            {sub.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.li>
   );
 }

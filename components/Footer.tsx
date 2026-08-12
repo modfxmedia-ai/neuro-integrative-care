@@ -36,7 +36,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-24">
         <div className="grid gap-14 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber-b">
+            <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
               Visit
             </p>
             <h2 className="mt-4 font-serif text-3xl leading-tight text-paper">
@@ -73,7 +73,7 @@ export default function Footer() {
           </Reveal>
 
           <Reveal delay={120} className="lg:col-span-4">
-            <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber-b">
+            <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
               Explore
             </p>
             <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3">
@@ -90,7 +90,7 @@ export default function Footer() {
             </ul>
 
             <div className="mt-10">
-              <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber-b">
+              <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
                 Follow
               </p>
               <ul className="mt-4 flex items-center gap-3">
@@ -111,7 +111,7 @@ export default function Footer() {
           </Reveal>
 
           <Reveal delay={240} className="lg:col-span-3">
-            <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber-b">
+            <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
               Find Us
             </p>
             <div className="mt-6 overflow-hidden rounded-lg border border-rule-d">

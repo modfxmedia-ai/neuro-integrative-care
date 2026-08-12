@@ -23,7 +23,7 @@ const virtualProgram = programs.entryPrograms.find(
 );
 
 export const metadata: Metadata = {
-  title: `The Virtual Program — ${PROGRAM_NAME_PUBLIC}`,
+  title: `The Virtual Program: ${PROGRAM_NAME_PUBLIC}`,
   description:
     "A 30-year neurometabolic method delivered to your home. Remote QEEG, neurotransmitter testing, biweekly clinician review with Dr. Santucci. From $2,395. National.",
   alternates: { canonical: "/programs/virtual" },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
-  name: `The Virtual Program — ${PROGRAM_NAME_PUBLIC} | NeuroIntegrative Care of Los Gatos`,
+  name: `The Virtual Program: ${PROGRAM_NAME_PUBLIC} | NeuroIntegrative Care of Los Gatos`,
   description:
     "A 30-year neurometabolic method delivered to your home. Remote QEEG unit, neurotransmitter testing, guided video series, and biweekly clinician review calls with Dr. Santucci.",
   url: PAGE_URL,
@@ -178,7 +178,7 @@ export default function VirtualProgramPage() {
             as="p"
             delay={20}
             offset={8}
-            className="mb-8 font-mono text-[10px] uppercase tracking-[0.32em] text-paper/55"
+            className="mb-8 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-paper/70"
           >
             <Link
               href="/programs"
@@ -195,7 +195,7 @@ export default function VirtualProgramPage() {
             as="p"
             delay={50}
             offset={12}
-            className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b"
+            className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b"
           >
             The Virtual Program
           </Reveal>
@@ -210,7 +210,7 @@ export default function VirtualProgramPage() {
             offset={16}
             className="mt-8 max-w-3xl font-serif text-[1.35rem] leading-[1.4] text-paper/80 sm:text-[1.55rem] lg:text-[1.75rem]"
           >
-            A 30-year neurometabolic method — delivered to your home. From
+            A 30-year neurometabolic method, delivered to your home. From
             $2,395. National.
           </Reveal>
           <Reveal delay={550} className="mt-10 flex flex-wrap gap-3">
@@ -236,7 +236,7 @@ export default function VirtualProgramPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-3">
               <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-amber">
+                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                   The Method, Remote
                 </h2>
                 <span
@@ -255,7 +255,7 @@ export default function VirtualProgramPage() {
               <p className="relative font-serif text-[1.45rem] leading-[1.4] text-ink sm:text-[1.7rem] lg:text-[2rem]">
                 A 30-year neurometabolic method, delivered to your home. You
                 start with a remote QEEG brain-training unit, neurotransmitter
-                testing, and a guided video series — with Dr. Santucci
+                testing, and a guided video series, with Dr. Santucci
                 reviewing your data and adjusting your protocol on a call
                 every two weeks. After the first phase, a repeat brain scan
                 shows what&apos;s changed and sets your next step. From
@@ -271,14 +271,14 @@ export default function VirtualProgramPage() {
       <section id="tiers" className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               Program Tiers
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
               Choose your entry point.
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Three ways to engage the neurometabolic method remotely — from a
+              Three ways to engage the neurometabolic method remotely, from a
               lightweight, app-guided entry through the full biweekly-clinician
               program.
             </p>
@@ -293,7 +293,7 @@ export default function VirtualProgramPage() {
                 aria-hidden="true"
                 className="inline-block h-2 w-2 rounded-full bg-amber"
               />
-              <span className="font-mono uppercase tracking-[0.24em]">
+              <span className="font-mono uppercase tracking-[0.14em]">
                 Draft
               </span>
               <span className="text-muted">
@@ -320,7 +320,7 @@ export default function VirtualProgramPage() {
                 >
                   <div>
                     <p
-                      className={`font-mono text-[10px] uppercase tracking-[0.32em] ${
+                      className={`font-mono font-medium text-[12px] uppercase tracking-[0.18em] ${
                         tier.featured ? "text-amber" : "text-muted"
                       }`}
                     >
@@ -330,7 +330,7 @@ export default function VirtualProgramPage() {
                       {tier.name}
                     </h3>
                     <p
-                      className={`mt-4 font-mono text-[11px] uppercase tracking-[0.32em] ${
+                      className={`mt-4 font-mono font-medium text-[13px] uppercase tracking-[0.18em] ${
                         tier.placeholder ? "text-muted-l" : "text-ink"
                       }`}
                     >
@@ -343,7 +343,7 @@ export default function VirtualProgramPage() {
                     <dl className="mt-8 divide-y divide-rule/70">
                       {FEATURE_ROWS.map((row) => (
                         <div key={row.label} className="py-3">
-                          <dt className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted">
+                          <dt className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-muted">
                             {row.label}
                           </dt>
                           <dd
@@ -363,7 +363,7 @@ export default function VirtualProgramPage() {
                   <div className="mt-10">
                     {tier.placeholder ? (
                       <span className="inline-flex items-center rounded-full border border-rule/70 bg-paper-2 px-5 py-2.5 text-xs italic text-muted-l">
-                        {tier.cta.label} — pending confirmation
+                        {tier.cta.label} (pending confirmation)
                       </span>
                     ) : (
                       <Link
@@ -408,7 +408,7 @@ export default function VirtualProgramPage() {
               href="/start-here"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book a New-Patient Investigation — $300
+              Book a New-Patient Investigation ($300)
             </Link>
           </Reveal>
         </div>

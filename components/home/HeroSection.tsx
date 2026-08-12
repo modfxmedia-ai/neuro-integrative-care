@@ -54,7 +54,7 @@ export default function HeroSection() {
             as="p"
             delay={50}
             offset={12}
-            className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b"
+            className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b"
           >
             NeuroIntegrative Care · Los Gatos
           </Reveal>
@@ -77,7 +77,7 @@ export default function HeroSection() {
           >
             For people who&apos;ve seen specialist after specialist, whose labs
             keep coming back &ldquo;normal,&rdquo; and who still don&apos;t feel
-            right — a 30-year, root-cause investigation into the brain,
+            right, a 30-year, root-cause investigation into the brain,
             metabolism, and nervous system. Drug-free. Backed by objective
             testing, not guesswork.
           </Reveal>
@@ -97,7 +97,7 @@ export default function HeroSection() {
                 href="/start-here"
                 className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.6)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
               >
-                Book a New-Patient Investigation — $300
+                Book a New-Patient Investigation ($300)
               </Link>
             </motion.div>
             <Link
@@ -118,7 +118,7 @@ export default function HeroSection() {
             as="ul"
             delay={1300}
             offset={12}
-            className="mt-14 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] uppercase tracking-[0.22em] text-paper/55"
+            className="mt-14 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono font-medium text-[13px] uppercase tracking-[0.14em] text-paper/70"
           >
             {TRUST_ITEMS.map((item, i) => (
               <li key={item} className="flex items-center gap-3">
@@ -163,7 +163,7 @@ export default function HeroSection() {
                 className="absolute inset-0 bg-[linear-gradient(0deg,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px]"
               />
               <div className="absolute inset-x-6 bottom-6">
-                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-paper/45">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-paper/70">
                   Portrait Pending
                 </p>
               </div>

@@ -43,7 +43,7 @@ export const programs: Programs = {
       description:
         "Consultation, history, and clinical impression. The starting point for everyone.",
       fullCopy:
-        "Everything starts with a $300 investigation — a full consultation where Dr. Santucci reviews your complex history, isolates likely causes, and gives you a clinical impression that finally makes sense. Not a sales call. The beginning of an actual answer.",
+        "Everything starts with a $300 investigation, a full consultation where Dr. Santucci reviews your complex history, isolates likely causes, and gives you a clinical impression that finally makes sense. Not a sales call. The beginning of an actual answer.",
     },
     {
       slug: "virtual-program",
@@ -83,12 +83,12 @@ export const programs: Programs = {
       {
         name: "Remote Laboratory Testing",
         description:
-          "Advanced functional panels — metabolic, autoimmune, toxin/mold, hormone, micronutrient — via national labs and mobile phlebotomy near you.",
+          "Advanced functional panels (metabolic, autoimmune, toxin/mold, hormone, micronutrient) via national labs and mobile phlebotomy near you.",
       },
       {
         name: "Myndlift Virtual Neurofeedback",
         description:
-          "A take-home EEG system, remotely programmed and reviewed by the clinical team — the same individualized progression as in-office patients.",
+          "A take-home EEG system, remotely programmed and reviewed by the clinical team, the same individualized progression as in-office patients.",
       },
     ],
   },

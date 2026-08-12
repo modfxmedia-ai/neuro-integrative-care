@@ -41,12 +41,12 @@ const INCOMPLETE_SLUGS = new Set(["richard", "beakram"]);
 export const metadata: Metadata = {
   title: "Patient Stories",
   description:
-    "Eight patient case journeys from NeuroIntegrative Care of Los Gatos — real investigations, individual outcomes across autoimmune, brain, concussion, and toxin work.",
+    "Eight patient case journeys from NeuroIntegrative Care of Los Gatos: real investigations, individual outcomes across autoimmune, brain, concussion, and toxin work.",
   alternates: { canonical: "/patient-stories" },
   openGraph: {
     title: "Patient Stories | NeuroIntegrative Care of Los Gatos",
     description:
-      "Eight patient case journeys — real investigations, individual outcomes.",
+      "Eight patient case journeys: real investigations, individual outcomes.",
     url: "/patient-stories",
     type: "article",
   },
@@ -179,7 +179,7 @@ export default function PatientStoriesPage() {
             as="p"
             delay={50}
             offset={12}
-            className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b"
+            className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b"
           >
             Patient Stories
           </Reveal>
@@ -194,7 +194,7 @@ export default function PatientStoriesPage() {
             offset={16}
             className="mt-8 max-w-3xl font-serif text-[1.35rem] leading-[1.4] text-paper/80 sm:text-[1.55rem] lg:text-[1.75rem]"
           >
-            The workup that finally named the driver — and what changed after
+            The workup that finally named the driver, and what changed after
             it did.
           </Reveal>
           {/*
@@ -208,7 +208,7 @@ export default function PatientStoriesPage() {
       <section id="cases" className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               The Cases
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
@@ -241,7 +241,7 @@ export default function PatientStoriesPage() {
                       >
                         {String(i + 1).padStart(2, "0")}
                       </p>
-                      <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.32em] text-ink">
+                      <p className="mt-6 font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-ink">
                         {story.patientName}
                       </p>
                       {sector ? (
@@ -263,7 +263,7 @@ export default function PatientStoriesPage() {
                         </p>
                       )}
                       {isIncomplete && (
-                        <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-amber/40 bg-amber-soft/60 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.24em] text-ink">
+                        <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-amber/40 bg-amber-soft/60 px-3 py-1 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-ink">
                           <span
                             aria-hidden="true"
                             className="inline-block h-1.5 w-1.5 rounded-full bg-amber"
@@ -297,7 +297,7 @@ export default function PatientStoriesPage() {
                                 key={`${story.slug}-${callout.label}`}
                                 className="rounded-xl border border-amber/30 bg-amber-soft/30 p-5"
                               >
-                                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                                   {callout.label}
                                 </p>
                                 <p className="mt-2 font-serif text-[1.1rem] leading-tight text-ink">
@@ -326,7 +326,7 @@ export default function PatientStoriesPage() {
       <section id="measured-outcomes" className="bg-ink py-24 text-paper lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
               Measured Outcomes
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-paper sm:text-5xl">
@@ -334,7 +334,7 @@ export default function PatientStoriesPage() {
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/75">
               Strength, range-of-motion, and brain-mapping measurements from
-              individual patients — stated with attribution and timeframe where
+              individual patients, stated with attribution and timeframe where
               known. Every entry represents one patient&apos;s workup, not a
               typical or guaranteed outcome.
             </p>
@@ -349,7 +349,7 @@ export default function PatientStoriesPage() {
                 aria-hidden="true"
                 className="inline-block h-2 w-2 rounded-full bg-amber-b"
               />
-              <span className="font-mono uppercase tracking-[0.24em] text-amber-b">
+              <span className="font-mono uppercase tracking-[0.14em] text-amber-b">
                 Draft
               </span>
               <span>
@@ -370,7 +370,7 @@ export default function PatientStoriesPage() {
               >
                 <article className="flex h-full flex-col justify-between rounded-2xl border border-rule-d bg-ink-2 p-6 lg:p-7">
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber-b">
+                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
                       {m.metric}
                     </p>
                     <p className="mt-5 font-serif text-[1.3rem] leading-tight text-paper">
@@ -382,7 +382,7 @@ export default function PatientStoriesPage() {
                       </p>
                     )}
                   </div>
-                  <p className="mt-6 border-t border-rule-d pt-4 font-mono text-[10px] uppercase tracking-[0.24em] text-paper/70">
+                  <p className="mt-6 border-t border-rule-d pt-4 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-paper/85">
                     {m.patientName}
                   </p>
                 </article>
@@ -396,7 +396,7 @@ export default function PatientStoriesPage() {
       <section className="bg-paper-2 py-16 lg:py-20">
         <div className="mx-auto max-w-5xl px-6 text-center lg:px-10">
           <Reveal>
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               Disclosure
             </p>
             <p className="mt-4 font-serif text-[1.25rem] leading-relaxed text-ink lg:text-[1.4rem]">
@@ -427,7 +427,7 @@ export default function PatientStoriesPage() {
               href="/start-here"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book a New-Patient Investigation — $300
+              Book a New-Patient Investigation ($300)
             </Link>
           </Reveal>
         </div>

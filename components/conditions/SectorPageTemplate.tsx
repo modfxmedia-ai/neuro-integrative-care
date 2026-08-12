@@ -64,7 +64,7 @@ export default function SectorPageTemplate({
               as="p"
               delay={20}
               offset={8}
-              className="mb-8 font-mono text-[10px] uppercase tracking-[0.32em] text-paper/55"
+              className="mb-8 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-paper/70"
             >
               {breadcrumb.map((crumb, i) => (
                 <span key={`${crumb.label}-${i}`}>
@@ -87,7 +87,7 @@ export default function SectorPageTemplate({
               ))}
             </Reveal>
           )}
-          <Reveal as="p" delay={50} offset={12} className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b">
+          <Reveal as="p" delay={50} offset={12} className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
             Sector · {condition.name}
           </Reveal>
           <Reveal as="span" delay={180} offset={28} className="mt-6 block">
@@ -112,7 +112,7 @@ export default function SectorPageTemplate({
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-3">
               <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-amber">
+                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                   What You&apos;ve Heard
                 </h2>
                 <span aria-hidden="true" className="hidden h-px flex-1 bg-rule lg:block" />
@@ -138,7 +138,7 @@ export default function SectorPageTemplate({
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-4">
-              <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
                 What We Investigate
               </p>
               <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
@@ -158,7 +158,7 @@ export default function SectorPageTemplate({
       <section className="bg-ink py-24 text-paper lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
               How The Workup Works
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-paper sm:text-5xl">
@@ -181,7 +181,7 @@ export default function SectorPageTemplate({
                   </div>
                 </div>
                 <div className="pt-2 lg:pt-3">
-                  <h3 className="font-mono text-xs font-medium uppercase tracking-[0.32em] text-amber-b">
+                  <h3 className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-amber-b">
                     {step.title}
                   </h3>
                   <p className="mt-5 max-w-2xl text-lg leading-relaxed text-paper/80">
@@ -195,7 +195,7 @@ export default function SectorPageTemplate({
           {toolsUsed && toolsUsed.length > 0 && (
             <Reveal delay={200} offset={20} className="mt-20 lg:mt-24">
               <div className="border-t border-rule-d pt-10 lg:pt-12">
-                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber-b">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
                   Tools We Use
                 </p>
                 <ul className="mt-6 flex flex-wrap gap-2">
@@ -227,7 +227,7 @@ export default function SectorPageTemplate({
         <section className="bg-paper-2 py-24 lg:py-32">
           <div className="mx-auto max-w-6xl px-6 lg:px-10">
             <Reveal className="max-w-3xl">
-              <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
                 Patient Story
               </p>
               <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
@@ -237,7 +237,7 @@ export default function SectorPageTemplate({
 
             <Reveal delay={140} offset={24} className="mt-14">
               <article className="rounded-lg border border-rule bg-paper p-8 shadow-[0_2px_18px_-14px_rgba(11,18,32,0.25)] lg:p-12">
-                <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-amber">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber">
                   {condition.name}
                 </p>
                 <h3 className="mt-5 font-serif text-[1.75rem] leading-tight text-ink lg:text-[2.1rem]">
@@ -252,7 +252,7 @@ export default function SectorPageTemplate({
                   </p>
                 )}
                 <div className="mt-10 border-t border-rule pt-6">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink">
+                  <p className="font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-ink">
                     {patientStory.patientName}
                   </p>
                   <p className="mt-2 text-[11px] italic leading-snug text-muted-l">
@@ -270,7 +270,7 @@ export default function SectorPageTemplate({
         <section className="bg-paper py-24 lg:py-32">
           <div className="mx-auto max-w-6xl px-6 lg:px-10">
             <Reveal className="max-w-3xl">
-              <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
                 Objective Measures
               </p>
               <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
@@ -297,7 +297,7 @@ export default function SectorPageTemplate({
                 >
                   <article className="flex h-full flex-col justify-between rounded-lg border border-rule bg-paper-2 p-8 shadow-[0_2px_18px_-14px_rgba(11,18,32,0.25)] lg:p-10">
                     <div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                      <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                         {measure.label}
                       </p>
                       <p className="mt-6 font-serif text-[1.65rem] leading-tight text-ink lg:text-[2rem]">
@@ -312,7 +312,7 @@ export default function SectorPageTemplate({
                       )}
                     </div>
                     <div className="mt-10 border-t border-rule pt-5">
-                      <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink">
+                      <p className="font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-ink">
                         {measure.patientName}
                       </p>
                       <p className="mt-2 text-[11px] italic leading-snug text-muted-l">
@@ -331,7 +331,7 @@ export default function SectorPageTemplate({
       <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               Related Sectors
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
@@ -353,7 +353,7 @@ export default function SectorPageTemplate({
                   className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-rule/60 bg-paper p-6 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-ink/20 hover:bg-white hover:shadow-[0_30px_60px_-40px_rgba(11,18,32,0.4)]"
                 >
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                       {String(allConditions.findIndex((c) => c.slug === rel.slug) + 1).padStart(2, "0")}
                     </p>
                     <h3 className="mt-4 font-serif text-xl leading-tight text-ink">
@@ -363,7 +363,7 @@ export default function SectorPageTemplate({
                       {rel.heroLine}
                     </p>
                   </div>
-                  <span className="mt-8 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.32em] text-muted transition-colors group-hover:text-ink">
+                  <span className="mt-8 inline-flex items-center gap-2 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted transition-colors group-hover:text-ink">
                     Explore
                     <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
                       →
@@ -397,7 +397,7 @@ export default function SectorPageTemplate({
               href="/start-here"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book a New-Patient Investigation — $300
+              Book a New-Patient Investigation ($300)
             </Link>
           </Reveal>
         </div>

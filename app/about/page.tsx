@@ -109,7 +109,7 @@ const PERSON_SCHEMA = {
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "Carrick Institute for Graduate Studies — Functional Neurology",
+      name: "Carrick Institute for Graduate Studies, Functional Neurology",
       credentialCategory: "training",
     },
     {
@@ -130,8 +130,8 @@ const PERSON_SCHEMA = {
     "Longevity Science",
   ],
   award: [
-    "Author, Engineering Medical Miracles — Return to Health (2017)",
-    "Presenter, Academy of Comprehensive Integrated Medicine (ACIM) — Alzheimer's Clinical Intervention (500-doctor audience)",
+    "Author, Engineering Medical Miracles: Return to Health (2017)",
+    "Presenter, Academy of Comprehensive Integrated Medicine (ACIM): Alzheimer's Clinical Intervention (500-doctor audience)",
   ],
 };
 
@@ -167,19 +167,19 @@ const STAT_RIBBON = [
 ] as const;
 
 const CREDENTIALS = [
-  "Doctor of Chiropractic (DC) — Licensed in California, Life Chiropractic College West, Hayward, CA",
+  "Doctor of Chiropractic (DC), Licensed in California, Life Chiropractic College West, Hayward, CA",
   "American Functional Neurology Institute (AFNI) Certified",
   "Alzheimer's Recode II Certified Provider",
-  "Certified Nutrition Specialist (CNS) — American Nutrition Association",
+  "Certified Nutrition Specialist (CNS), American Nutrition Association",
   "Board Certified in Neurofeedback (BCN)",
-  "Carrick Institute for Graduate Studies — Functional Neurology (extensive postgraduate training)",
-  "Developmental Delays training — Robert Melillo",
-  "Functional Medicine Institute — Applying Clinical Excellence Series",
+  "Carrick Institute for Graduate Studies, Functional Neurology (extensive postgraduate training)",
+  "Developmental Delays training, Robert Melillo",
+  "Functional Medicine Institute, Applying Clinical Excellence Series",
   "The Listening Program Certified Provider",
 ] as const;
 
 const SPEAKING = [
-  "Academy of Comprehensive Integrated Medicine (ACIM) — Alzheimer's clinical intervention presentation to a 500-doctor audience",
+  "Academy of Comprehensive Integrated Medicine (ACIM), Alzheimer's clinical intervention presentation to a 500-doctor audience",
   "Aging Summit Silicon Valley",
   "NeuroMetabolic Group",
   "Pulse PEMF Medical Training",
@@ -219,7 +219,7 @@ export default function AboutPage() {
             as="p"
             delay={50}
             offset={12}
-            className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b"
+            className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b"
           >
             About Dr. Thomas Santucci
           </Reveal>
@@ -235,7 +235,7 @@ export default function AboutPage() {
             offset={16}
             className="mt-8 max-w-3xl font-serif text-[1.35rem] leading-[1.4] text-paper/80 sm:text-[1.55rem] lg:text-[1.75rem]"
           >
-            The doctor who refuses to be one narrow thing — because complex
+            The doctor who refuses to be one narrow thing, because complex
             cases don&apos;t reduce to one lane.
           </Reveal>
         </div>
@@ -255,7 +255,7 @@ export default function AboutPage() {
                   <span className="font-serif text-[1.65rem] leading-none text-ink lg:text-[2rem]">
                     {stat.value}
                   </span>
-                  <span className="mt-3 font-mono text-[10px] uppercase tracking-[0.32em] text-muted">
+                  <span className="mt-3 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted">
                     {stat.label}
                   </span>
                 </li>
@@ -271,7 +271,7 @@ export default function AboutPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-3">
               <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-amber">
+                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                   The Approach
                 </h2>
                 <span
@@ -303,7 +303,7 @@ export default function AboutPage() {
       <section className="bg-paper-2 py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               The Origin
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
@@ -314,7 +314,7 @@ export default function AboutPage() {
           <div className="mt-14 grid gap-8 lg:grid-cols-12 lg:gap-12">
             <Reveal delay={100} offset={20} className="lg:col-span-4">
               <div className="rounded-2xl border border-rule bg-paper p-6 lg:p-7">
-                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                   Georgetown University · 1978
                 </p>
                 <p className="mt-4 font-serif text-[1.15rem] leading-tight text-ink">
@@ -332,14 +332,14 @@ export default function AboutPage() {
                 <span className="font-medium">IBM</span>,{" "}
                 <span className="font-medium">Telenet</span>,{" "}
                 <span className="font-medium">British Telecom</span>, and{" "}
-                <span className="font-medium">MCI</span> — overseeing data
-                communications services across a 20-city network — strategic
+                <span className="font-medium">MCI</span>, overseeing data
+                communications services across a 20-city network, strategic
                 business planning experience he later applied to building his
                 practice.
               </p>
               <p className="mt-6 text-lg leading-relaxed text-muted">
                 He became a doctor after a car accident and traumatic brain
-                injury that took a decade to fully resolve — a recovery he
+                injury that took a decade to fully resolve, a recovery he
                 personally designed and executed through functional neurology
                 and regenerative protocols. His own trauma also activated his
                 celiac genes.{" "}
@@ -356,7 +356,7 @@ export default function AboutPage() {
       <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               The Philosophy
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
@@ -364,7 +364,7 @@ export default function AboutPage() {
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
               Consider the whole universe of causes, then narrow to the three
-              that matter. Brain first. Functional ranges — not textbook ones.
+              that matter. Brain first. Functional ranges, not textbook ones.
             </p>
           </Reveal>
 
@@ -373,12 +373,12 @@ export default function AboutPage() {
               {
                 num: "01",
                 title: "Whole Universe First",
-                body: "Every plausible cause on the table before narrowing — because complex cases don't yield to one modality's default list.",
+                body: "Every plausible cause on the table before narrowing, because complex cases don't yield to one modality's default list.",
               },
               {
                 num: "02",
                 title: "Brain First",
-                body: "Neurons are the most energy-hungry cells in the body. Systemic breakdowns show up neurologically first — which is where the investigation begins.",
+                body: "Neurons are the most energy-hungry cells in the body. Systemic breakdowns show up neurologically first, which is where the investigation begins.",
               },
               {
                 num: "03",
@@ -394,7 +394,7 @@ export default function AboutPage() {
                 className="h-full"
               >
                 <article className="flex h-full flex-col rounded-2xl border border-rule/60 bg-paper-2 p-8 lg:p-9">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                  <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                     {principle.num}
                   </p>
                   <h3 className="mt-5 font-serif text-[1.5rem] leading-tight text-ink">
@@ -422,7 +422,7 @@ export default function AboutPage() {
         />
         <div className="relative mx-auto max-w-5xl px-6 lg:px-10">
           <Reveal>
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
               The Plant
             </p>
           </Reveal>
@@ -434,7 +434,7 @@ export default function AboutPage() {
               &ldquo;
             </span>
             <p className="relative font-serif text-[1.65rem] leading-[1.35] text-paper sm:text-[2rem] lg:text-[2.35rem]">
-              Water, food, and sun each tested alone kill the plant —{" "}
+              Water, food, and sun each tested alone kill the plant,{" "}
               <span className="italic text-amber-b">
                 &lsquo;proving&rsquo; none work.
               </span>{" "}
@@ -449,7 +449,7 @@ export default function AboutPage() {
       <section id="credentials" className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               Credentials & Licenses
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
@@ -466,7 +466,7 @@ export default function AboutPage() {
                 offset={12}
                 className="border-l border-amber/50 pl-5"
               >
-                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <p className="mt-2 text-[15px] leading-relaxed text-ink">
@@ -484,7 +484,7 @@ export default function AboutPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-3">
               <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-amber">
+                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                   Publications
                 </h2>
                 <span
@@ -495,19 +495,19 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={120} className="lg:col-span-9">
               <article>
-                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                   Book · 2017
                 </p>
                 <h3 className="mt-4 font-serif text-[2rem] leading-tight text-ink lg:text-[2.5rem]">
-                  Engineering Medical Miracles —{" "}
+                  Engineering Medical Miracles:{" "}
                   <span className="italic">Return to Health</span>
                 </h3>
-                <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
+                <p className="mt-4 font-mono font-medium text-[13px] uppercase tracking-[0.16em] text-muted">
                   ISBN 1544232829
                 </p>
               </article>
               <article className="mt-12 border-t border-rule pt-10">
-                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                   In Progress
                 </p>
                 <h3 className="mt-4 font-serif text-[1.5rem] leading-tight text-ink lg:text-[1.85rem]">
@@ -527,7 +527,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal offset={20}>
-              <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
                 Speaking Engagements
               </p>
               <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
@@ -545,7 +545,7 @@ export default function AboutPage() {
               </ul>
             </Reveal>
             <Reveal offset={20} delay={140}>
-              <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
                 Media
               </p>
               <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
@@ -570,7 +570,7 @@ export default function AboutPage() {
       <section className="bg-ink py-24 text-paper lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
               The Alzheimer&apos;s Work
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-paper sm:text-5xl">
@@ -580,7 +580,7 @@ export default function AboutPage() {
 
           <div className="mt-14 grid gap-8 lg:grid-cols-12 lg:gap-12">
             <Reveal delay={100} offset={20} className="lg:col-span-4">
-              <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber-b">
+              <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
                 The Model
               </p>
               <ul className="mt-6 space-y-4">
@@ -605,15 +605,15 @@ export default function AboutPage() {
             <Reveal delay={220} offset={20} className="lg:col-span-8">
               <p className="text-lg leading-relaxed text-paper/80">
                 Dr. Santucci&apos;s Alzheimer&apos;s model rests on three
-                intersecting drivers — neural inflammation, mitochondrial
-                dysfunction, and decreased autophagy — and{" "}
+                intersecting drivers (neural inflammation, mitochondrial
+                dysfunction, and decreased autophagy) and{" "}
                 <span className="italic text-amber-b">
                   the Alzheimer&apos;s Project
                 </span>{" "}
                 exists to validate the intervention framework built on top of
                 that model. It&apos;s the work that took him from the ACIM stage
-                — Alzheimer&apos;s clinical intervention presented to a
-                500-doctor audience — to the second book now underway.
+                (Alzheimer&apos;s clinical intervention presented to a
+                500-doctor audience) to the second book now underway.
               </p>
             </Reveal>
           </div>
@@ -633,7 +633,7 @@ export default function AboutPage() {
               href="/start-here"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book a New-Patient Investigation — $300
+              Book a New-Patient Investigation ($300)
             </Link>
           </Reveal>
         </div>

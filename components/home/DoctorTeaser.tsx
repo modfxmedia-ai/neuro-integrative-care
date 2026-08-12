@@ -1,14 +1,21 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
+const CREDENTIALS = [
+  { value: "30", label: "Years in Practice" },
+  { value: "11", label: "Colleges Attended" },
+  { value: "10,000+", label: "Hours Advanced Training" },
+  { value: "500", label: "Doctors per Lecture" },
+] as const;
+
 export default function DoctorTeaser() {
   return (
     <section className="bg-paper-2 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-          <Reveal className="lg:col-span-3">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <Reveal className="lg:col-span-4">
             <div className="flex items-center gap-4">
-              <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-amber">
+              <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                 The Doctor
               </h2>
               <span
@@ -16,9 +23,22 @@ export default function DoctorTeaser() {
                 className="hidden h-px flex-1 bg-rule lg:block"
               />
             </div>
+
+            <dl className="mt-10 hidden grid-cols-2 gap-x-8 gap-y-10 lg:grid">
+              {CREDENTIALS.map((item) => (
+                <div key={item.label}>
+                  <dt className="font-mono text-2xl font-semibold text-ink lg:text-[1.75rem]">
+                    {item.value}
+                  </dt>
+                  <dd className="mt-1 text-[11px] uppercase tracking-[0.18em] text-muted">
+                    {item.label}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </Reveal>
 
-          <Reveal delay={120} offset={24} className="relative lg:col-span-9">
+          <Reveal delay={120} offset={24} className="relative lg:col-span-8">
             <span
               aria-hidden="true"
               className="pointer-events-none absolute -left-3 -top-10 select-none font-serif text-[7rem] italic leading-none text-ink/[0.06] lg:-left-6 lg:-top-14 lg:text-[10rem]"
@@ -36,9 +56,23 @@ export default function DoctorTeaser() {
                 he doesn&apos;t diagnose anything he can&apos;t help.
               </span>
             </p>
+
+            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-rule pt-8 sm:grid-cols-4 lg:hidden">
+              {CREDENTIALS.map((item) => (
+                <div key={item.label}>
+                  <dt className="font-mono text-xl font-semibold text-ink">
+                    {item.value}
+                  </dt>
+                  <dd className="mt-1 text-[10px] uppercase tracking-[0.18em] text-muted">
+                    {item.label}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
             <Link
               href="/about"
-              className="group mt-10 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.32em] text-ink transition-colors hover:text-amber"
+              className="group mt-10 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-ink transition-colors hover:text-amber"
             >
               Meet the doctor
               <span

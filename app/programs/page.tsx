@@ -14,12 +14,12 @@ const PAGE_URL = `${SITE_URL}/programs`;
 export const metadata: Metadata = {
   title: "Programs",
   description:
-    "Three ways in — start with the $300 New-Patient Investigation. Virtual Program from $2,395, In-Clinic Care & Regenerative from $3,500. Out-of-town services.",
+    "Three ways in: start with the $300 New-Patient Investigation. Virtual Program from $2,395, In-Clinic Care & Regenerative from $3,500. Out-of-town services.",
   alternates: { canonical: "/programs" },
   openGraph: {
     title: "Programs | NeuroIntegrative Care of Los Gatos",
     description:
-      "Three ways in — starting with a $300 New-Patient Investigation. Virtual Program (national) and In-Clinic Care & Regenerative options.",
+      "Three ways in: starting with a $300 New-Patient Investigation. Virtual Program (national) and In-Clinic Care & Regenerative options.",
     url: "/programs",
     type: "article",
   },
@@ -32,7 +32,7 @@ const schema = {
   "@type": "MedicalWebPage",
   name: "Programs | NeuroIntegrative Care of Los Gatos",
   description:
-    "Three ways in — the $300 New-Patient Investigation, the Virtual Program (national), and In-Clinic Care & Regenerative — plus a dedicated set of remotely-delivered services for out-of-town patients.",
+    "Three ways in: the $300 New-Patient Investigation, the Virtual Program (national), and In-Clinic Care & Regenerative, plus a dedicated set of remotely-delivered services for out-of-town patients.",
   url: PAGE_URL,
   inLanguage: "en-US",
   isPartOf: {
@@ -93,7 +93,7 @@ export default function ProgramsPage() {
             as="p"
             delay={50}
             offset={12}
-            className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b"
+            className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b"
           >
             Programs
           </Reveal>
@@ -120,7 +120,7 @@ export default function ProgramsPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-3">
               <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.32em] text-amber">
+                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                   The Front Door
                 </h2>
                 <span
@@ -128,7 +128,7 @@ export default function ProgramsPage() {
                   className="hidden h-px flex-1 bg-rule lg:block"
                 />
               </div>
-              <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.32em] text-ink">
+              <p className="mt-8 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
                 {frontDoor.price}
               </p>
               <p className="mt-2 font-serif text-2xl leading-tight text-ink lg:text-3xl">
@@ -151,7 +151,7 @@ export default function ProgramsPage() {
                   href="/start-here"
                   className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
                 >
-                  Book the Investigation — $300
+                  Book the Investigation ($300)
                 </Link>
               </div>
             </Reveal>
@@ -163,7 +163,7 @@ export default function ProgramsPage() {
       <section id="pricing" className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               The Three Ways In
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
@@ -185,20 +185,20 @@ export default function ProgramsPage() {
                   className="flex h-full flex-col justify-between rounded-2xl border border-rule/60 bg-paper p-8 shadow-[0_2px_18px_-14px_rgba(11,18,32,0.25)] lg:p-9"
                 >
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                       {String(i + 1).padStart(2, "0")}
                     </p>
                     <h3 className="mt-5 font-serif text-[1.5rem] leading-tight text-ink lg:text-[1.65rem]">
                       {program.name}
                     </h3>
-                    <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.32em] text-ink">
+                    <p className="mt-4 font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-ink">
                       {program.price}
                     </p>
                     <p className="mt-5 text-[15px] leading-relaxed text-muted">
                       {program.description}
                     </p>
                     {program.duration && (
-                      <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.28em] text-muted">
+                      <p className="mt-4 font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-muted">
                         Duration · {program.duration}
                       </p>
                     )}
@@ -210,7 +210,7 @@ export default function ProgramsPage() {
                           ? "/programs/virtual"
                           : "/start-here"
                       }
-                      className="group inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.32em] text-ink transition-colors hover:text-amber"
+                      className="group inline-flex items-center gap-2 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink transition-colors hover:text-amber"
                     >
                       {program.slug === "virtual-program"
                         ? "Explore the Virtual Program"
@@ -243,11 +243,11 @@ export default function ProgramsPage() {
         <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14 lg:items-center">
             <Reveal className="lg:col-span-7">
-              <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
                 The Virtual Program
               </p>
               <h2 className="mt-4 font-serif text-4xl leading-[1.1] tracking-tight text-paper sm:text-5xl">
-                The same investigation — delivered anywhere in the country.
+                The same investigation, delivered anywhere in the country.
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/80">
                 {virtual.description}
@@ -268,7 +268,7 @@ export default function ProgramsPage() {
               className="lg:col-span-5"
             >
               <div className="rounded-2xl border border-rule-d bg-ink p-8 lg:p-10">
-                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber-b">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
                   What&apos;s Included
                 </p>
                 <ul className="mt-6 space-y-4">
@@ -289,7 +289,7 @@ export default function ProgramsPage() {
       <section id="out-of-town" className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               Out-of-Town Services
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
@@ -303,7 +303,7 @@ export default function ProgramsPage() {
               {FRAMING_LABELS.map((label) => (
                 <li
                   key={label}
-                  className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.32em] text-ink"
+                  className="flex items-center gap-3 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink"
                 >
                   <span aria-hidden="true" className="inline-block h-px w-6 bg-amber" />
                   {label}
@@ -322,7 +322,7 @@ export default function ProgramsPage() {
                 className="h-full"
               >
                 <article className="flex h-full flex-col rounded-2xl border border-rule/60 bg-paper-2 p-8 lg:p-9">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-amber">
+                  <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                     {String(i + 1).padStart(2, "0")}
                   </p>
                   <h3 className="mt-5 font-serif text-[1.4rem] leading-tight text-ink">
@@ -359,7 +359,7 @@ export default function ProgramsPage() {
               href="/start-here"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book a New-Patient Investigation — $300
+              Book a New-Patient Investigation ($300)
             </Link>
           </Reveal>
         </div>

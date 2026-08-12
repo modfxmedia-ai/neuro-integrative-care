@@ -17,7 +17,7 @@ export default function ProofCards() {
     <section className="bg-ink py-24 text-paper lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal className="max-w-3xl">
-          <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-amber-b">
+          <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
             Proof
           </p>
           <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-paper sm:text-5xl">
@@ -45,7 +45,7 @@ export default function ProofCards() {
               >
                 <article className="flex h-full flex-col justify-between rounded-lg border border-rule-d bg-ink-2 p-8 shadow-[0_2px_30px_-18px_rgba(0,0,0,0.7)]">
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-amber-b">
+                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber-b">
                       {sectorName ?? "Patient Story"}
                     </p>
                     <h3 className="mt-5 font-serif text-2xl leading-tight text-amber">
@@ -56,7 +56,7 @@ export default function ProofCards() {
                     </p>
                   </div>
                   <div className="mt-8 border-t border-rule-d pt-5">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-paper">
+                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-paper">
                       {story.patientName}
                     </p>
                     <p className="mt-2 text-[11px] italic leading-snug text-paper/50">
