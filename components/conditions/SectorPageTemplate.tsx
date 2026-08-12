@@ -99,7 +99,7 @@ export default function SectorPageTemplate({
             as="p"
             delay={380}
             offset={16}
-            className="mt-8 max-w-3xl font-serif text-[1.5rem] leading-[1.35] text-paper/85 sm:text-[1.75rem] lg:text-[1.95rem]"
+            className="mt-8 max-w-3xl break-words font-serif text-[1.5rem] leading-[1.35] text-paper/85 sm:text-[1.75rem] lg:text-[1.95rem]"
           >
             {condition.heroLine}
           </Reveal>

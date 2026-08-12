@@ -14,7 +14,11 @@ const QUICK_LINKS = [
   { label: "Out-of-Town Services", href: "/programs#out-of-town" },
 ] as const;
 
-// Social hrefs pending — see TODO comments below.
+// TODO(pre-launch): PLACEHOLDER SOCIAL LINKS — DO NOT SHIP AS-IS.
+// All four hrefs below are intentionally "#" until the client provides real
+// social URLs. Do NOT invent, guess, or scrape URLs from other sources.
+// Ask before adding. If a page launches with "#" links, remove the icons
+// entirely rather than shipping broken navigation.
 const SOCIAL_LINKS = [
   { label: "Facebook", href: "#", Icon: FaFacebookF },
   { label: "Instagram", href: "#", Icon: FaInstagram },
