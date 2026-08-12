@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #0b1220;
+  --ink2: #111c2e;
+  --paper: #f7f4ec;
+  --paper2: #efeadd;
+  --amber: #e8a020;
+  --amberB: #f8b42b;
+  --amber-soft: #f6e7c7;
+  --rule: #d9d2c2;
+  --ruleD: #243247;
+  --text: #1c2635;
+  --muted: #5a6675;
+  --mutedL: #9aa6b6;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink2);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper2);
+  --color-amber: var(--amber);
+  --color-amber-b: var(--amberB);
+  --color-amber-soft: var(--amber-soft);
+  --color-rule: var(--rule);
+  --color-rule-d: var(--ruleD);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-muted-l: var(--mutedL);
+
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-paper text-text font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--reveal-offset, 20px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
