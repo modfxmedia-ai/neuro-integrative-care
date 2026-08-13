@@ -1,7 +1,38 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import {
+  ArrowUpRight,
+  ShieldAlert,
+  Brain,
+  Activity,
+  Leaf,
+  Hourglass,
+  HelpCircle,
+  type LucideIcon,
+} from "lucide-react";
 import { conditions } from "@/content/conditions";
 import Reveal from "@/components/Reveal";
+
+// Stand-in icon per condition until real clinic/patient photography replaces
+// the placeholder tiles below.
+const CONDITION_ICONS: Record<string, LucideIcon> = {
+  "autoimmune-investigation": ShieldAlert,
+  "brain-brightening": Brain,
+  "concussion-post-trauma": Activity,
+  "environmental-toxins": Leaf,
+  "longevity-science": Hourglass,
+  "idiopathic-unexplained": HelpCircle,
+};
+
+// Real photography, provided per-condition.
+const CONDITION_IMAGES: Record<string, string> = {
+  "autoimmune-investigation": "/images/conditions/autoimmune-investigation.webp",
+  "brain-brightening": "/images/conditions/brain-brightening.webp",
+  "concussion-post-trauma": "/images/conditions/concussion-post-trauma.webp",
+  "environmental-toxins": "/images/conditions/environmental-toxins.png",
+  "longevity-science": "/images/conditions/longevity-science.webp",
+  "idiopathic-unexplained": "/images/conditions/idiopathic-unexplained.png",
+};
 
 interface SixDoorsGridProps {
   /** Heading level for the section title. Use "h1" when this is the primary heading of the page. */
@@ -30,7 +61,9 @@ export default function SixDoorsGrid({
         </Reveal>
 
         <ul className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {conditions.map((condition, i) => (
+          {conditions.map((condition, i) => {
+            const ConditionIcon = CONDITION_ICONS[condition.slug] ?? HelpCircle;
+            return (
             <Reveal
               key={condition.slug}
               as="li"
@@ -42,6 +75,35 @@ export default function SixDoorsGrid({
                 href={`/conditions/${condition.slug}`}
                 className="group relative isolate flex h-full flex-col overflow-hidden rounded-3xl border border-rule/60 bg-white/70 p-8 shadow-[0_1px_2px_rgba(11,18,32,0.04)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-transparent hover:bg-white hover:shadow-[0_40px_80px_-40px_rgba(11,18,32,0.35)] lg:p-9"
               >
+                <div
+                  aria-hidden="true"
+                  className="relative -mx-8 -mt-8 mb-7 aspect-[16/10] overflow-hidden lg:-mx-9 lg:-mt-9"
+                >
+                  {CONDITION_IMAGES[condition.slug] ? (
+                    <>
+                      <Image
+                        src={CONDITION_IMAGES[condition.slug]}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                    </>
+                  ) : (
+                    // PLACEHOLDER STOCK IMAGE — replace with real clinic/patient photography before launch.
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-soft via-paper-2 to-white transition-transform duration-700 ease-out group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_25%_20%,rgba(232,160,32,0.28),transparent_70%)]" />
+                    </>
+                  )}
+                  <ConditionIcon
+                    aria-hidden="true"
+                    strokeWidth={1.25}
+                    className="absolute bottom-4 right-4 h-11 w-11 text-amber/50"
+                  />
+                </div>
+
                 <span
                   aria-hidden="true"
                   className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-amber to-amber-b transition-transform duration-500 ease-out group-hover:scale-x-100"
@@ -77,7 +139,8 @@ export default function SixDoorsGrid({
                 </div>
               </Link>
             </Reveal>
-          ))}
+            );
+          })}
         </ul>
       </div>
     </section>

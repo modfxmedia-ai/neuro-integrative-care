@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+import { motion, type Variants } from "framer-motion";
 import Reveal from "@/components/Reveal";
 
 const CREDENTIALS = [
@@ -7,6 +11,16 @@ const CREDENTIALS = [
   { value: "10,000+", label: "Hours Advanced Training" },
   { value: "500", label: "Doctors per Lecture" },
 ] as const;
+
+const pillContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.3 } },
+};
+
+const pillItem: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
 
 export default function DoctorTeaser() {
   return (
@@ -24,18 +38,15 @@ export default function DoctorTeaser() {
               />
             </div>
 
-            <dl className="mt-10 hidden grid-cols-2 gap-x-8 gap-y-10 lg:grid">
-              {CREDENTIALS.map((item) => (
-                <div key={item.label}>
-                  <dt className="font-mono text-2xl font-semibold text-ink lg:text-[1.75rem]">
-                    {item.value}
-                  </dt>
-                  <dd className="mt-1 text-[11px] uppercase tracking-[0.18em] text-muted">
-                    {item.label}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <div className="relative mt-6 aspect-[4/5] overflow-hidden rounded-2xl border border-rule">
+              <Image
+                src="/images/dr-santucci.png"
+                alt="Dr. Thomas Santucci"
+                fill
+                sizes="(min-width: 1024px) 33vw, 100vw"
+                className="object-cover"
+              />
+            </div>
           </Reveal>
 
           <Reveal delay={120} offset={24} className="relative lg:col-span-8">
@@ -45,7 +56,7 @@ export default function DoctorTeaser() {
             >
               &ldquo;
             </span>
-            <p className="relative font-serif text-[1.55rem] leading-[1.4] text-ink sm:text-[1.8rem] lg:text-[2.05rem]">
+            <p className="relative mt-[3.25rem] font-serif text-[1.55rem] leading-[1.4] text-ink sm:text-[1.8rem] lg:mt-[2.75rem] lg:text-[2.05rem]">
               30 years. 11 colleges. 10,000+ hours of advanced training in
               functional medicine, functional neurology, and regenerative
               medicine. A published book, a second on the way, and a standing
@@ -57,18 +68,27 @@ export default function DoctorTeaser() {
               </span>
             </p>
 
-            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-rule pt-8 sm:grid-cols-4 lg:hidden">
+            <motion.dl
+              className="mt-10 flex flex-wrap gap-3 border-t border-rule pt-8"
+              variants={pillContainer}
+              initial="hidden"
+              animate="visible"
+            >
               {CREDENTIALS.map((item) => (
-                <div key={item.label}>
-                  <dt className="font-mono text-xl font-semibold text-ink">
+                <motion.div
+                  key={item.label}
+                  variants={pillItem}
+                  className="flex items-baseline gap-2 rounded-full border border-rule bg-white px-5 py-2.5"
+                >
+                  <dt className="font-mono text-lg font-semibold text-ink">
                     {item.value}
                   </dt>
-                  <dd className="mt-1 text-[10px] uppercase tracking-[0.18em] text-muted">
+                  <dd className="text-[11px] uppercase tracking-[0.14em] text-muted">
                     {item.label}
                   </dd>
-                </div>
+                </motion.div>
               ))}
-            </dl>
+            </motion.dl>
 
             <Link
               href="/about"

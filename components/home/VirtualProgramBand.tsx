@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { MapPin } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 export default function VirtualProgramBand() {
@@ -64,29 +64,14 @@ export default function VirtualProgramBand() {
           delay={200}
           offset={30}
         >
-          <div className="relative flex h-80 w-80 items-center justify-center">
-            {[0, 1, 2].map((i) => (
-              <motion.span
-                key={i}
-                aria-hidden="true"
-                className="absolute rounded-full border border-amber-b/40"
-                initial={{ width: 56, height: 56, opacity: 0.55 }}
-                animate={{
-                  width: [56, 300],
-                  height: [56, 300],
-                  opacity: [0.55, 0],
-                }}
-                transition={{
-                  duration: 3.6,
-                  delay: i * 1.2,
-                  repeat: Infinity,
-                  ease: "easeOut",
-                }}
-              />
-            ))}
-            <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-amber text-ink shadow-[0_10px_30px_-10px_rgba(248,180,43,0.65)]">
-              <MapPin size={22} aria-hidden="true" />
-            </div>
+          <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl border border-paper/10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)]">
+            <Image
+              src="/images/virtual-program.png"
+              alt="A patient using a remote QEEG headset during a virtual visit with Dr. Santucci"
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </Reveal>
       </div>

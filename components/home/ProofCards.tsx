@@ -2,6 +2,7 @@
 // stat anywhere on this site. Client-approved hold per CO-01 — legal/liability risk.
 // Only individual, measured, method-attributed results are approved for public pages.
 
+import Image from "next/image";
 import { patientStories } from "@/content/patientStories";
 import { conditions } from "@/content/conditions";
 import Reveal from "@/components/Reveal";
@@ -14,16 +15,32 @@ export default function ProofCards() {
   ).filter((s): s is NonNullable<typeof s> => Boolean(s));
 
   return (
-    <section className="bg-ink py-24 text-paper lg:py-32">
+    <section className="bg-paper-2 py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <Reveal className="max-w-3xl">
-          <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
-            Proof
-          </p>
-          <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-paper sm:text-5xl">
-            When the workup is right, the results are measurable.
-          </h2>
-        </Reveal>
+        <div className="grid items-center gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+          <Reveal className="max-w-3xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              Proof
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              When the workup is right, the results are measurable.
+            </h2>
+          </Reveal>
+
+          <Reveal delay={100} offset={24}>
+            <div
+              className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-rule/60"
+            >
+              <Image
+                src="/images/proof-patients.png"
+                alt="Patients whose symptoms were investigated and resolved through the program"
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+        </div>
 
         {/*
          * Layout reserves space for future video testimonials and before/after
@@ -43,23 +60,23 @@ export default function ProofCards() {
                 offset={24}
                 className="h-full"
               >
-                <article className="flex h-full flex-col justify-between rounded-lg border border-rule-d bg-ink-2 p-8 shadow-[0_2px_30px_-18px_rgba(0,0,0,0.7)]">
+                <article className="flex h-full flex-col justify-between rounded-lg border border-rule bg-white p-8 shadow-[0_1px_2px_rgba(11,18,32,0.04)] transition-shadow duration-300 hover:shadow-[0_30px_60px_-30px_rgba(11,18,32,0.2)]">
                   <div>
-                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber-b">
+                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber">
                       {sectorName ?? "Patient Story"}
                     </p>
-                    <h3 className="mt-5 font-serif text-2xl leading-tight text-amber">
+                    <h3 className="mt-5 font-serif text-2xl leading-tight text-ink">
                       {story.headline}
                     </h3>
-                    <p className="mt-5 text-[15px] leading-relaxed text-paper/75">
+                    <p className="mt-5 text-[15px] leading-relaxed text-muted">
                       {story.body}
                     </p>
                   </div>
-                  <div className="mt-8 border-t border-rule-d pt-5">
-                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-paper">
+                  <div className="mt-8 border-t border-rule pt-5">
+                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-ink">
                       {story.patientName}
                     </p>
-                    <p className="mt-2 text-[11px] italic leading-snug text-paper/50">
+                    <p className="mt-2 text-[11px] italic leading-snug text-muted-l">
                       {story.disclaimer}
                     </p>
                   </div>

@@ -1,17 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #0b1220;
-  --ink2: #111c2e;
-  --paper: #f7f4ec;
-  --paper2: #efeadd;
+  /* Light, warm, photo-driven palette (replaces the old dark-first editorial system). */
+  --ink: #12181f;
+  --ink2: #1b232c;
+  --paper: #ffffff;
+  --paper2: #f7f6f3;
   --amber: #e8a020;
   --amberB: #f8b42b;
-  --amber-soft: #f6e7c7;
-  --rule: #d9d2c2;
+  --amber-soft: #fdf3e2;
+  /* Semantic aliases for the new design system naming; same values as amber/amber-soft above. */
+  --accent: var(--amber);
+  --accent-soft: var(--amber-soft);
+  --rule: #e5e2dc;
   --ruleD: #243247;
-  --text: #1c2635;
-  --muted: #5a6675;
+  --text: #12181f;
+  --muted: #6b7280;
   --mutedL: #9aa6b6;
 }
 
@@ -23,6 +27,8 @@
   --color-amber: var(--amber);
   --color-amber-b: var(--amberB);
   --color-amber-soft: var(--amber-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-rule: var(--rule);
   --color-rule-d: var(--ruleD);
   --color-text: var(--text);

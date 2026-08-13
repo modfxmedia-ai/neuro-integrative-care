@@ -1,11 +1,13 @@
 import HeroSection from "@/components/home/HeroSection";
 import SixDoorsGrid from "@/components/home/SixDoorsGrid";
 import ProofCards from "@/components/home/ProofCards";
+import WhyChooseUs from "@/components/home/WhyChooseUs";
 import HowItWorks from "@/components/home/HowItWorks";
 import VirtualProgramBand from "@/components/home/VirtualProgramBand";
 import WhoThisIsFor from "@/components/home/WhoThisIsFor";
 import DoctorTeaser from "@/components/home/DoctorTeaser";
 import FinalCTA from "@/components/home/FinalCTA";
+import VisitUsSection from "@/components/home/VisitUsSection";
 
 export default function Home() {
   return (
@@ -13,11 +15,13 @@ export default function Home() {
       <HeroSection />
       <SixDoorsGrid />
       <ProofCards />
+      <WhyChooseUs />
       <HowItWorks />
       <VirtualProgramBand />
       <WhoThisIsFor />
       <DoctorTeaser />
       <FinalCTA />
+      <VisitUsSection />
     </>
   );
 }
