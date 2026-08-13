@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MapPin, Phone, Clock } from "lucide-react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaYoutube, FaSpotify } from "react-icons/fa6";
 import Reveal from "./Reveal";
 
 const QUICK_LINKS = [
@@ -14,16 +14,27 @@ const QUICK_LINKS = [
   { label: "Out-of-Town Services", href: "/programs#out-of-town" },
 ] as const;
 
-// TODO(pre-launch): PLACEHOLDER SOCIAL LINKS — DO NOT SHIP AS-IS.
-// All four hrefs below are intentionally "#" until the client provides real
-// social URLs. Do NOT invent, guess, or scrape URLs from other sources.
-// Ask before adding. If a page launches with "#" links, remove the icons
-// entirely rather than shipping broken navigation.
 const SOCIAL_LINKS = [
-  { label: "Facebook", href: "#", Icon: FaFacebookF },
-  { label: "Instagram", href: "#", Icon: FaInstagram },
-  { label: "LinkedIn", href: "#", Icon: FaLinkedinIn },
-  { label: "YouTube", href: "#", Icon: FaYoutube },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/advancedregenmedical/",
+    Icon: FaFacebookF,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/advancedregenmedical/?hl=en",
+    Icon: FaInstagram,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@advancedregenmedical9879",
+    Icon: FaYoutube,
+  },
+  {
+    label: "Spotify",
+    href: "https://open.spotify.com/show/3f2IDQIl4ndagua4b8vzXw",
+    Icon: FaSpotify,
+  },
 ] as const;
 
 const PHONE_DISPLAY = "(408) 871-8222";
@@ -96,9 +107,10 @@ export default function Footer() {
               <ul className="mt-4 flex items-center gap-3">
                 {SOCIAL_LINKS.map(({ label, href, Icon }) => (
                   <li key={label}>
-                    {/* TODO: replace href="#" once client provides social URLs */}
                     <a
                       href={href}
+                      target="_blank"
+                      rel="noreferrer"
                       aria-label={label}
                       className="flex h-10 w-10 items-center justify-center rounded-full border border-rule-d text-paper/85 transition-all hover:border-amber-b hover:text-amber-b"
                     >

@@ -1,4 +1,4 @@
-import { Scale } from "lucide-react";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
 export default function WhoThisIsFor() {
@@ -6,18 +6,14 @@ export default function WhoThisIsFor() {
     <section className="relative overflow-hidden bg-amber-soft py-24 lg:py-32">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
-          {/* PLACEHOLDER STOCK IMAGE — replace with real patient/lifestyle photography before launch. */}
           <Reveal className="order-2 lg:order-1">
-            <div
-              aria-hidden="true"
-              className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-ink/10"
-            >
-              <div className="absolute inset-0 bg-[linear-gradient(155deg,#f8b42b_0%,#e8a020_55%,#c97f10_100%)]" />
-              <div className="absolute inset-0 opacity-[0.12] bg-[radial-gradient(60%_60%_at_75%_25%,rgba(255,255,255,0.6),transparent_70%)]" />
-              <Scale
-                aria-hidden="true"
-                strokeWidth={1}
-                className="absolute bottom-6 right-6 h-16 w-16 text-white/70"
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-ink/10">
+              <Image
+                src="/images/who-this-is-for.png"
+                alt="A woman thoughtfully reflecting at her desk, balancing family, work, and self-care"
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
               />
             </div>
           </Reveal>

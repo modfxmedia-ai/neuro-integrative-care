@@ -44,23 +44,23 @@ export default function SixDoorsGrid({
 }: SixDoorsGridProps = {}) {
   const Heading = headingLevel;
   return (
-    <section id="six-doors" className="bg-paper py-24 lg:py-32">
+    <section id="six-doors" className="bg-paper py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal className="max-w-3xl">
           <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
             Six Doors In
           </p>
-          <Heading className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+          <Heading className="mt-3 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
             Where does your story start?
           </Heading>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
             Most of our patients arrive with a physical problem, and discover
             the real driver was somewhere no one had looked. Start where your
             symptoms point. The investigation goes deeper from there.
           </p>
         </Reveal>
 
-        <ul className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {conditions.map((condition, i) => {
             const ConditionIcon = CONDITION_ICONS[condition.slug] ?? HelpCircle;
             return (
@@ -73,11 +73,11 @@ export default function SixDoorsGrid({
             >
               <Link
                 href={`/conditions/${condition.slug}`}
-                className="group relative isolate flex h-full flex-col overflow-hidden rounded-3xl border border-rule/60 bg-white/70 p-8 shadow-[0_1px_2px_rgba(11,18,32,0.04)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-transparent hover:bg-white hover:shadow-[0_40px_80px_-40px_rgba(11,18,32,0.35)] lg:p-9"
+                className="group relative isolate flex h-full flex-col overflow-hidden rounded-3xl border border-amber/20 bg-white p-6 shadow-[0_20px_45px_-30px_rgba(232,160,32,0.45)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-amber/50 hover:shadow-[0_40px_80px_-32px_rgba(232,160,32,0.55)] lg:p-7"
               >
                 <div
                   aria-hidden="true"
-                  className="relative -mx-8 -mt-8 mb-7 aspect-[16/10] overflow-hidden lg:-mx-9 lg:-mt-9"
+                  className="relative -mx-6 -mt-6 mb-5 aspect-[16/9] overflow-hidden lg:-mx-7 lg:-mt-7"
                 >
                   {CONDITION_IMAGES[condition.slug] ? (
                     <>
@@ -106,31 +106,31 @@ export default function SixDoorsGrid({
 
                 <span
                   aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-amber to-amber-b transition-transform duration-500 ease-out group-hover:scale-x-100"
+                  className="absolute inset-x-0 top-0 h-1.5 origin-left scale-x-100 bg-gradient-to-r from-amber-b via-amber to-amber-b opacity-70 transition-opacity duration-500 ease-out group-hover:opacity-100"
                 />
 
                 <div className="relative flex items-center justify-between">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-amber/30 bg-amber-soft font-mono text-[13px] tracking-[0.1em] text-amber transition-colors duration-500 group-hover:border-amber group-hover:bg-amber group-hover:text-ink">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-amber/50 bg-amber-soft font-mono text-[13px] font-semibold tracking-[0.1em] text-amber-b transition-colors duration-500 group-hover:border-amber group-hover:bg-amber group-hover:text-ink">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span
                     aria-hidden="true"
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-rule text-muted transition-all duration-500 group-hover:-rotate-45 group-hover:border-amber group-hover:bg-amber group-hover:text-ink"
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-amber/40 bg-amber-soft text-amber-b transition-all duration-500 group-hover:-rotate-45 group-hover:border-amber group-hover:bg-amber group-hover:text-ink"
                   >
                     <ArrowUpRight size={16} />
                   </span>
                 </div>
 
-                <div className="relative mt-9 flex-1">
-                  <h3 className="font-serif text-[1.6rem] leading-[1.15] text-ink lg:text-[1.85rem]">
+                <div className="relative mt-6 flex-1">
+                  <h3 className="font-serif text-[1.4rem] leading-[1.15] text-ink lg:text-[1.6rem]">
                     {condition.name}
                   </h3>
-                  <p className="mt-4 text-[15px] leading-relaxed text-muted">
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted">
                     {condition.heroLine}
                   </p>
                 </div>
 
-                <div className="relative mt-8 flex items-center gap-2 border-t border-rule/60 pt-6 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted transition-colors group-hover:text-amber">
+                <div className="relative mt-6 flex items-center gap-2 border-t border-amber/25 pt-5 font-mono font-semibold text-[12px] uppercase tracking-[0.18em] text-amber-b transition-colors group-hover:text-amber">
                   Explore
                   <span
                     aria-hidden="true"

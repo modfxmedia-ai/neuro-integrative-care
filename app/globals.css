@@ -71,10 +71,57 @@
   animation-delay: var(--reveal-delay, 0ms);
 }
 
+@keyframes timeline-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.timeline-line {
+  transform-origin: top;
+  animation: timeline-grow 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 200ms;
+}
+
+@keyframes timeline-beam {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.timeline-beam {
+  animation: timeline-beam 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-delay: 1.4s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .timeline-line {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .timeline-beam {
+    animation: none !important;
+    opacity: 0 !important;
   }
 }

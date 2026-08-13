@@ -6,8 +6,6 @@
 // footer.
 //
 // TODO (future phase — pending signed patient releases):
-//   • 6–9 video testimonials — reserve prominent slots above the fold once
-//     releases are signed. Do NOT scaffold empty UI yet.
 //   • Before/after QEEG brain-map images per patient — reserve inline slots
 //     within each case journey once releases + de-identification are signed.
 //     Do NOT ship placeholder image boxes.
@@ -26,9 +24,12 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { conditions } from "@/content/conditions";
 import { patientStories } from "@/content/patientStories";
+import { shortTestimonials, googleReviews } from "@/content/testimonials";
 import Reveal from "@/components/Reveal";
+import VideoTestimonials from "@/components/patient-stories/VideoTestimonials";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/patient-stories`;
@@ -197,10 +198,28 @@ export default function PatientStoriesPage() {
             The workup that finally named the driver, and what changed after
             it did.
           </Reveal>
-          {/*
-           * TODO: video testimonials go here (6–9 target) once patient
-           * releases are signed. Do NOT scaffold empty players until then.
-           */}
+        </div>
+      </section>
+
+      {/* Video testimonials — patient releases signed; 6 videos (5 self-hosted + 1 YouTube). */}
+      <section id="video-stories" className="bg-paper-2 py-24 lg:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <Reveal className="max-w-3xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              In Their Own Words
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              Watch patients describe what changed.
+            </h2>
+          </Reveal>
+
+          <div className="mt-14">
+            <VideoTestimonials />
+          </div>
+
+          <p className="mt-10 text-center text-[12px] italic text-muted-l">
+            {STANDARD_DISCLAIMER}
+          </p>
         </div>
       </section>
 
@@ -389,6 +408,70 @@ export default function PatientStoriesPage() {
               </Reveal>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Testimonials — short pull-quotes + public Google Reviews from the
+          client's existing testimonials page (neurocarelg.com/testimonials). */}
+      <section id="testimonials" className="bg-paper py-24 lg:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <Reveal className="max-w-3xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              In Their Words
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              What patients are saying.
+            </h2>
+          </Reveal>
+
+          <ul className="mt-14 grid gap-6 md:grid-cols-3">
+            {shortTestimonials.map((t, i) => (
+              <Reveal
+                key={t.quote}
+                as="li"
+                delay={100 + i * 100}
+                offset={20}
+                className="h-full"
+              >
+                <blockquote className="flex h-full flex-col rounded-2xl border border-rule/70 bg-white p-8 shadow-[0_1px_2px_rgba(11,18,32,0.04)]">
+                  <p className="font-serif text-[1.15rem] leading-[1.4] text-ink">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                </blockquote>
+              </Reveal>
+            ))}
+          </ul>
+
+          <ul className="mt-6 grid gap-6 md:grid-cols-2">
+            {googleReviews.map((r, i) => (
+              <Reveal
+                key={r.reviewerName}
+                as="li"
+                delay={140 + i * 100}
+                offset={20}
+                className="h-full"
+              >
+                <a
+                  href={r.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex h-full flex-col justify-between rounded-2xl border border-amber/30 bg-amber-soft/40 p-8 transition-colors duration-300 hover:border-amber/60"
+                >
+                  <p className="text-[15px] leading-relaxed text-ink">
+                    &ldquo;{r.quote}&rdquo;
+                  </p>
+                  <p className="mt-6 flex items-center gap-2 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-muted transition-colors group-hover:text-amber">
+                    {r.reviewerName}, via {r.source}
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </p>
+                </a>
+              </Reveal>
+            ))}
+          </ul>
+
+          <p className="mt-10 text-center text-[12px] italic text-muted-l">
+            {STANDARD_DISCLAIMER}
+          </p>
         </div>
       </section>
 

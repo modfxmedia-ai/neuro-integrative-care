@@ -44,7 +44,7 @@ export default function DoctorTeaser() {
                 alt="Dr. Thomas Santucci"
                 fill
                 sizes="(min-width: 1024px) 33vw, 100vw"
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
           </Reveal>
