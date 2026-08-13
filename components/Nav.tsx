@@ -14,6 +14,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { conditions } from "@/content/conditions";
 
 const NAV_ITEMS = [
+  { label: "Home", href: "/" },
   { label: "Conditions", href: "/conditions" },
   { label: "How We Work", href: "/approach" },
   { label: "Programs", href: "/programs" },
@@ -31,24 +32,38 @@ export default function Nav() {
   const hamburgerRef = useRef<HTMLButtonElement | null>(null);
   const drawerRef = useRef<HTMLElement | null>(null);
 
+  // Home 2's hero is light, not the dark video used elsewhere — the header
+  // can't fade in from transparent there (white nav text disappears against
+  // a white background), so it stays permanently in its "scrolled" solid state.
+  const isLightHero = pathname === "/home2";
+
   const { scrollY } = useScroll();
   const backgroundColor = useTransform(
     scrollY,
     [0, 80],
-    ["rgba(11, 18, 32, 0)", "rgba(11, 18, 32, 0.96)"],
+    isLightHero
+      ? ["rgba(11, 18, 32, 0.96)", "rgba(11, 18, 32, 0.96)"]
+      : ["rgba(11, 18, 32, 0)", "rgba(11, 18, 32, 0.96)"],
   );
   const boxShadow = useTransform(
     scrollY,
     [0, 80],
-    [
-      "0 0 0 0 rgba(11, 18, 32, 0)",
-      "0 10px 30px -18px rgba(11, 18, 32, 0.55)",
-    ],
+    isLightHero
+      ? [
+          "0 10px 30px -18px rgba(11, 18, 32, 0.55)",
+          "0 10px 30px -18px rgba(11, 18, 32, 0.55)",
+        ]
+      : [
+          "0 0 0 0 rgba(11, 18, 32, 0)",
+          "0 10px 30px -18px rgba(11, 18, 32, 0.55)",
+        ],
   );
   const borderColor = useTransform(
     scrollY,
     [0, 80],
-    ["rgba(217, 210, 194, 0)", "rgba(36, 50, 71, 0.6)"],
+    isLightHero
+      ? ["rgba(36, 50, 71, 0.6)", "rgba(36, 50, 71, 0.6)"]
+      : ["rgba(217, 210, 194, 0)", "rgba(36, 50, 71, 0.6)"],
   );
 
   useEffect(() => {
@@ -147,6 +162,14 @@ export default function Nav() {
           <ul className="hidden lg:flex items-center gap-0 xl:gap-1">
             {NAV_ITEMS.map((item) => {
               const active = isActive(item.href);
+              if (item.label === "Home") {
+                return (
+                  <HomeNavItem
+                    key={item.href}
+                    active={pathname === "/" || pathname === "/home2"}
+                  />
+                );
+              }
               if (item.label === "Conditions") {
                 return (
                   <ConditionsNavItem
@@ -232,6 +255,16 @@ export default function Nav() {
               <ul className="flex flex-col">
                 {NAV_ITEMS.map((item, i) => {
                   const active = isActive(item.href);
+                  if (item.label === "Home") {
+                    return (
+                      <HomeAccordionItem
+                        key={item.href}
+                        active={pathname === "/" || pathname === "/home2"}
+                        index={i}
+                        onNavigate={() => setMobileOpen(false)}
+                      />
+                    );
+                  }
                   if (item.label === "Conditions") {
                     return (
                       <ConditionsAccordionItem
@@ -530,6 +563,219 @@ function ConditionsAccordionItem({
                       ))}
                     </ul>
                   )}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.li>
+  );
+}
+
+const HOME_VARIANTS = [
+  { label: "Home 1", href: "/", description: "The live homepage" },
+  { label: "Home 2", href: "/home2", description: "Clean design variant" },
+] as const;
+
+interface HomeNavItemProps {
+  active: boolean;
+}
+
+// Desktop dropdown listing both homepage variants, mirrors ConditionsNavItem.
+function HomeNavItem({ active }: HomeNavItemProps) {
+  const [hoverOpen, setHoverOpen] = useState(false);
+  const [clickOpen, setClickOpen] = useState(false);
+  const open = hoverOpen || clickOpen;
+  const itemRef = useRef<HTMLLIElement | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => {
+      setHoverOpen(false);
+      setClickOpen(false);
+    }, 120);
+  };
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setHoverOpen(false);
+        setClickOpen(false);
+      }
+    };
+    const onClickAway = (e: MouseEvent) => {
+      if (itemRef.current && !itemRef.current.contains(e.target as Node)) {
+        setHoverOpen(false);
+        setClickOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", onClickAway);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("mousedown", onClickAway);
+    };
+  }, [open]);
+
+  useEffect(() => () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  }, []);
+
+  return (
+    <li
+      ref={itemRef}
+      className="relative"
+      onMouseEnter={() => {
+        cancelClose();
+        setHoverOpen(true);
+      }}
+      onMouseLeave={scheduleClose}
+    >
+      <span className="relative inline-flex items-center">
+        <Link
+          href="/"
+          aria-current={active ? "page" : undefined}
+          className={`relative inline-block whitespace-nowrap py-2 pl-2 pr-1 text-[13px] transition-colors xl:pl-3 xl:text-sm ${
+            active ? "text-paper" : "text-paper/75 hover:text-paper"
+          }`}
+        >
+          Home
+          {active && (
+            <motion.span
+              layoutId="nav-active-underline"
+              className="absolute inset-x-2 -bottom-0.5 h-[2px] rounded-full bg-amber-b xl:inset-x-3"
+              transition={{ type: "spring", stiffness: 380, damping: 32 }}
+            />
+          )}
+        </Link>
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls="home-nav-panel"
+          aria-label="Toggle homepage variants menu"
+          onClick={() => setClickOpen((v) => !v)}
+          className={`flex items-center px-1 py-2 pr-2 transition-colors xl:pr-3 ${
+            active ? "text-paper" : "text-paper/75 hover:text-paper"
+          }`}
+        >
+          <ChevronDown
+            size={14}
+            aria-hidden="true"
+            className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          />
+        </button>
+      </span>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="home-nav-panel"
+            role="menu"
+            initial={{ opacity: 0, y: -6, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.98 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute left-0 top-full z-10 mt-2 w-[14rem] rounded-2xl border border-rule bg-paper p-3 shadow-[0_24px_60px_-24px_rgba(11,18,32,0.35)]"
+          >
+            <ul>
+              {HOME_VARIANTS.map((variant) => (
+                <li key={variant.href}>
+                  <Link
+                    href={variant.href}
+                    role="menuitem"
+                    className="block rounded-lg px-3 py-2 transition-colors hover:bg-amber-soft/50"
+                  >
+                    <span className="block font-serif text-[15px] text-ink">
+                      {variant.label}
+                    </span>
+                    <span className="block text-[12px] text-muted">
+                      {variant.description}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </li>
+  );
+}
+
+interface HomeAccordionItemProps {
+  active: boolean;
+  index: number;
+  onNavigate: () => void;
+}
+
+// Mobile drawer accordion counterpart to HomeNavItem.
+function HomeAccordionItem({ active, index, onNavigate }: HomeAccordionItemProps) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <motion.li
+      initial={{ opacity: 0, x: 18 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{
+        delay: 0.08 + index * 0.035,
+        duration: 0.35,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="border-b border-rule-d"
+    >
+      <div className="flex items-center justify-between py-4">
+        <Link
+          href="/"
+          aria-current={active ? "page" : undefined}
+          onClick={onNavigate}
+          className={`font-serif text-2xl transition-colors ${
+            active ? "text-amber-b" : "text-paper hover:text-amber-b"
+          }`}
+        >
+          Home
+        </Link>
+        <button
+          type="button"
+          aria-expanded={expanded}
+          aria-controls="home-accordion-panel"
+          aria-label={expanded ? "Collapse homepage variants" : "Expand homepage variants"}
+          onClick={() => setExpanded((v) => !v)}
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-paper/25 text-paper transition-colors hover:bg-paper/10"
+        >
+          <ChevronDown
+            size={16}
+            aria-hidden="true"
+            className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
+          />
+        </button>
+      </div>
+
+      <AnimatePresence initial={false}>
+        {expanded && (
+          <motion.div
+            id="home-accordion-panel"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+          >
+            <ul className="pb-4">
+              {HOME_VARIANTS.map((variant) => (
+                <li key={variant.href} className="py-1">
+                  <Link
+                    href={variant.href}
+                    onClick={onNavigate}
+                    className="block py-1.5 font-serif text-lg text-paper/90 transition-colors hover:text-amber-b"
+                  >
+                    {variant.label}
+                  </Link>
                 </li>
               ))}
             </ul>
