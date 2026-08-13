@@ -320,7 +320,7 @@ export default function StartPage() {
                   {PHONE_DISPLAY}
                 </p>
                 <p className="mt-3 font-mono font-medium text-[13px] uppercase tracking-[0.16em] text-muted">
-                  Tue &amp; Thu · 9:30–3:00
+                  Tue &amp; Thu, 9:30–3:00
                 </p>
                 <span
                   aria-hidden="true"

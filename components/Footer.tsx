@@ -13,6 +13,7 @@ const QUICK_LINKS = [
   { label: "About", href: "/about" },
   { label: "Start Here", href: "/start" },
   { label: "Out-of-Town Services", href: "/out-of-town" },
+  { label: "Sitemap", href: "/sitemap" },
 ] as const;
 
 const SOCIAL_LINKS = [
