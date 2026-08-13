@@ -1,6 +1,12 @@
-import { MapPin, Phone, Clock, ArrowUpRight } from "lucide-react";
+import { MapPin, Phone, Clock, ArrowUpRight, type LucideIcon } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import MagneticDirectionsButton from "@/components/home/MagneticDirectionsButton";
+
+interface DetailItem {
+  icon: LucideIcon;
+  lines: string[];
+  href?: string;
+}
 
 const PHONE_DISPLAY = "(408) 871-8222";
 const PHONE_HREF = "tel:+14088718222";
@@ -8,14 +14,14 @@ const MAP_QUERY = "20+S+Santa+Cruz+Ave,+Suite+101,+Los+Gatos,+CA+95030";
 const DIRECTIONS_HREF = `https://www.google.com/maps/dir/?api=1&destination=${MAP_QUERY}`;
 const MAPS_HREF = `https://www.google.com/maps?q=${MAP_QUERY}`;
 
-const DETAILS = [
+const DETAILS: DetailItem[] = [
   {
     icon: MapPin,
     lines: ["20 S Santa Cruz Ave, Suite 101", "Los Gatos, CA 95030"],
   },
   { icon: Phone, lines: [PHONE_DISPLAY], href: PHONE_HREF },
   { icon: Clock, lines: ["Tue & Thu", "9:30 – 3:00"] },
-] as const;
+];
 
 const HIGHLIGHTS = ["In-Person Visits", "Downtown Los Gatos", "By Appointment"] as const;
 
