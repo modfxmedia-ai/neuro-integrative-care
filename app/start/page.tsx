@@ -18,7 +18,7 @@ import { Phone } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
-const PAGE_URL = `${SITE_URL}/start-here`;
+const PAGE_URL = `${SITE_URL}/start`;
 
 const PHONE_DISPLAY = "(408) 871-8222";
 const PHONE_HREF = "tel:+14088718222";
@@ -31,12 +31,12 @@ export const metadata: Metadata = {
   title: "Start Here",
   description:
     "Book your $300 New-Patient Investigation with Dr. Santucci. Full consultation, complete history review, and a clinical impression that finally fits.",
-  alternates: { canonical: "/start-here" },
+  alternates: { canonical: "/start" },
   openGraph: {
     title: "Start Here | NeuroIntegrative Care of Los Gatos",
     description:
       "Book the $300 New-Patient Investigation with Dr. Santucci. The beginning of an actual answer.",
-    url: "/start-here",
+    url: "/start",
     type: "article",
   },
 };
@@ -94,7 +94,7 @@ const schema = {
   },
 };
 
-export default function StartHerePage() {
+export default function StartPage() {
   return (
     <>
       <script

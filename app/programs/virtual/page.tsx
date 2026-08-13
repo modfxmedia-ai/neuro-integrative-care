@@ -1,9 +1,7 @@
 // COMPLIANCE + NAMING:
-// • Program name is "Mind Transformation Blueprint" per the client-approved
-//   blueprint and CO-01. Dr. Santucci's CV spells it "Mynd Transformation
-//   Blueprint." Flag for Justin to confirm with the client which spelling is
-//   canonical. Until confirmed, use "Mind" everywhere published — DO NOT edit
-//   the spelling here without written confirmation.
+// SPELLING: "Mynd" per Master Build Brief v1.0 (Aug 12), supersedes earlier "Mind" spelling from CO-01.
+// Still flagged as needing final client confirmation per brief's pre-launch checklist item 5 —
+// do not treat as 100% final until confirmed by Justin.
 // • Tier structure below is DRAFT. Blueprint hints at a near-free Myndlift-app
 //   basic tier as lead magnet, up through full neurometabolic profiling — exact
 //   tiers and pricing are not finalized. Placeholder tiers are labeled clearly
@@ -17,7 +15,10 @@ import Reveal from "@/components/Reveal";
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/programs/virtual`;
 
-const PROGRAM_NAME_PUBLIC = "Mind Transformation Blueprint";
+// SPELLING: "Mynd" per Master Build Brief v1.0 (Aug 12), supersedes earlier "Mind" spelling from CO-01.
+// Still flagged as needing final client confirmation per brief's pre-launch checklist item 5 —
+// do not treat as 100% final until confirmed by Justin.
+const PROGRAM_NAME_PUBLIC = "Mynd Transformation Blueprint";
 const virtualProgram = programs.entryPrograms.find(
   (p) => p.slug === "virtual-program",
 );
@@ -115,7 +116,7 @@ const TIERS: Array<{
       "Program duration": "Ongoing (TBD)",
       "Repeat brain scan": "TBD",
     },
-    cta: { label: "TBD", href: "/start-here" },
+    cta: { label: "TBD", href: "/start" },
     placeholder: true,
   },
   {
@@ -132,7 +133,7 @@ const TIERS: Array<{
       "Program duration": "TBD",
       "Repeat brain scan": "TBD",
     },
-    cta: { label: "TBD", href: "/start-here" },
+    cta: { label: "TBD", href: "/start" },
     placeholder: true,
   },
   {
@@ -149,7 +150,7 @@ const TIERS: Array<{
       "Program duration": virtualProgram?.duration ?? "6–12 weeks",
       "Repeat brain scan": "End of first phase",
     },
-    cta: { label: "Start Here", href: "/start-here" },
+    cta: { label: "Start Here", href: "/start" },
     featured: true,
     placeholder: false,
   },
@@ -215,7 +216,7 @@ export default function VirtualProgramPage() {
           </Reveal>
           <Reveal delay={550} className="mt-10 flex flex-wrap gap-3">
             <Link
-              href="/start-here"
+              href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
               Start with the $300 Investigation
@@ -264,6 +265,34 @@ export default function VirtualProgramPage() {
               </p>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* Watch — Remote Neurofeedback (Myndlift) */}
+      <section className="bg-ink py-24 text-paper lg:py-32">
+        <div className="mx-auto max-w-5xl px-6 lg:px-10">
+          <Reveal>
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
+              See It In Action
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-paper sm:text-5xl">
+              Remote neurofeedback, explained.
+            </h2>
+          </Reveal>
+          <Reveal delay={120} offset={24} className="mt-10">
+            {/* THIRD-PARTY MEDIA — embedded via YouTube, not re-hosted. */}
+            {/* Confirm Myndlift has given written permission to use on this site before launch. */}
+            <div className="aspect-video w-full overflow-hidden rounded-2xl border border-paper/10">
+              <iframe
+                src="https://www.youtube.com/embed/0hhbZHg0an0"
+                title="Remote Neurofeedback — Myndlift"
+                className="h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -405,7 +434,7 @@ export default function VirtualProgramPage() {
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
             <Link
-              href="/start-here"
+              href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
               Book a New-Patient Investigation ($300)

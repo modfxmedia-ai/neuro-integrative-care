@@ -6,12 +6,19 @@ import {
   DEFAULT_PATIENT_STORY_DISCLAIMER,
 } from "@/content/patientStories";
 import { sectorPageContent } from "@/content/sectorPageContent";
-import { toolsForSector } from "@/content/tools";
+import { toolsForSector, tools } from "@/content/tools";
+import {
+  conditionArticles,
+  findConditionArticle,
+  findSupersedingArticle,
+} from "@/content/conditionArticles";
 import SectorPageTemplate, {
   type BreadcrumbCrumb,
   type ObjectiveMeasure,
 } from "@/components/conditions/SectorPageTemplate";
 import SectorJsonLd from "@/components/conditions/SectorJsonLd";
+import ConditionArticleTemplate from "@/components/conditions/ConditionArticleTemplate";
+import ConditionArticleJsonLd from "@/components/conditions/ConditionArticleJsonLd";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 
@@ -21,12 +28,17 @@ interface SubParams {
 }
 
 export function generateStaticParams(): SubParams[] {
-  return conditions.flatMap((parent) =>
+  const subConditionParams = conditions.flatMap((parent) =>
     (parent.subConditions ?? []).map((sub) => ({
       parentSlug: parent.slug,
       subSlug: sub.slug,
     })),
   );
+  const articleParams = conditionArticles.map((article) => ({
+    parentSlug: article.parentSlug,
+    subSlug: article.slug,
+  }));
+  return [...subConditionParams, ...articleParams];
 }
 
 interface PageProps {
@@ -44,14 +56,39 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { parentSlug, subSlug } = await params;
+
+  const article = findConditionArticle(parentSlug, subSlug);
+  if (article) {
+    const url = `/conditions/${article.parentSlug}/${article.slug}`;
+    return {
+      title: article.metaTitle,
+      description: article.metaDescription,
+      alternates: { canonical: url },
+      openGraph: {
+        title: `${article.metaTitle} | NeuroIntegrative Care of Los Gatos`,
+        description: article.metaDescription,
+        url,
+        type: "article",
+      },
+    };
+  }
+
   const found = findSub(parentSlug, subSlug);
   if (!found) return {};
   const { parent, sub } = found;
+
+  // Canonicalize the shorter legacy sub-condition page to its fuller
+  // replacement article where one exists, instead of ranking both.
+  const superseding = findSupersedingArticle(parentSlug, subSlug);
+  const canonicalUrl = superseding
+    ? `/conditions/${superseding.parentSlug}/${superseding.slug}`
+    : `/conditions/${parent.slug}/${sub.slug}`;
+
   return {
     title: `${sub.name} · ${parent.name}`,
     description: sub.heroLine,
     alternates: {
-      canonical: `/conditions/${parent.slug}/${sub.slug}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: `${sub.name} | NeuroIntegrative Care of Los Gatos`,
@@ -111,6 +148,35 @@ function objectiveMeasuresFor(subSlug: string): ObjectiveMeasure[] | undefined {
 
 export default async function SubConditionPage({ params }: PageProps) {
   const { parentSlug, subSlug } = await params;
+
+  const article = findConditionArticle(parentSlug, subSlug);
+  if (article) {
+    const parentCondition = conditions.find((c) => c.slug === article.parentSlug);
+    const tool = tools.find((t) => t.slug === article.toolSlug);
+    if (!parentCondition || !tool) notFound();
+
+    const breadcrumb: BreadcrumbCrumb[] = [
+      { label: "Conditions", href: "/conditions" },
+      { label: parentCondition.name, href: `/conditions/${parentCondition.slug}` },
+      { label: article.name },
+    ];
+
+    return (
+      <>
+        <ConditionArticleJsonLd
+          article={article}
+          url={`${SITE_URL}/conditions/${article.parentSlug}/${article.slug}`}
+        />
+        <ConditionArticleTemplate
+          article={article}
+          parentName={parentCondition.name}
+          tool={tool}
+          breadcrumb={breadcrumb}
+        />
+      </>
+    );
+  }
+
   const found = findSub(parentSlug, subSlug);
   const content = sectorPageContent[subSlug];
   if (!found || !content) notFound();

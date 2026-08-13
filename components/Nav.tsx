@@ -15,15 +15,15 @@ import { conditions } from "@/content/conditions";
 
 const NAV_ITEMS = [
   { label: "Conditions", href: "/conditions" },
-  { label: "How We Work", href: "/how-we-work" },
+  { label: "How We Work", href: "/approach" },
   { label: "Programs", href: "/programs" },
   { label: "Virtual Program", href: "/programs/virtual" },
-  { label: "Patient Stories", href: "/patient-stories" },
+  { label: "Patient Stories", href: "/results" },
   { label: "About", href: "/about" },
-  { label: "Start Here", href: "/start-here" },
+  { label: "Start Here", href: "/start" },
 ] as const;
 
-const BOOK_HREF = "/start-here";
+const BOOK_HREF = "/start";
 
 export default function Nav() {
   const pathname = usePathname() ?? "/";

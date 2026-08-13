@@ -4,7 +4,7 @@ import ProofCards from "@/components/home/ProofCards";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import HowItWorks from "@/components/home/HowItWorks";
 import VirtualProgramBand from "@/components/home/VirtualProgramBand";
-import WhoThisIsFor from "@/components/home/WhoThisIsFor";
+import RecognitionSection from "@/components/home/RecognitionSection";
 import DoctorTeaser from "@/components/home/DoctorTeaser";
 import FinalCTA from "@/components/home/FinalCTA";
 import VisitUsSection from "@/components/home/VisitUsSection";
@@ -18,7 +18,7 @@ export default function Home() {
       <WhyChooseUs />
       <HowItWorks />
       <VirtualProgramBand />
-      <WhoThisIsFor />
+      <RecognitionSection />
       <DoctorTeaser />
       <FinalCTA />
       <VisitUsSection />

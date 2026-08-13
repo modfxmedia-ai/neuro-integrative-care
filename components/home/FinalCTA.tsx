@@ -44,7 +44,7 @@ export default function FinalCTA() {
             className="rounded-full"
           >
             <Link
-              href="/start-here"
+              href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-8 py-4 text-base font-medium tracking-tight text-ink"
             >
               Book your New-Patient Investigation ($300)

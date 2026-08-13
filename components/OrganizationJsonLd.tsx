@@ -68,7 +68,7 @@ const localBusinessSchema = {
     sameAs: "https://en.wikipedia.org/wiki/Los_Gatos,_California",
   },
   hasMap:
-    "https://www.google.com/maps/search/?api=1&query=20+S+Santa+Cruz+Ave+Suite+101+Los+Gatos+CA+95030",
+    "https://www.google.com/maps/search/?api=1&query=20+S+Santa+Cruz+Ave,+Suite+101,+Los+Gatos,+CA+95030",
 };
 
 // MedicalClinic schema — the specific medical-business type. Kept because it
@@ -98,7 +98,7 @@ const medicalClinicSchema = {
   address: ADDRESS,
   openingHoursSpecification: OPENING_HOURS,
   hasMap:
-    "https://www.google.com/maps/search/?api=1&query=20+S+Santa+Cruz+Ave+Suite+101+Los+Gatos+CA+95030",
+    "https://www.google.com/maps/search/?api=1&query=20+S+Santa+Cruz+Ave,+Suite+101,+Los+Gatos,+CA+95030",
   areaServed: {
     "@type": "City",
     name: "Los Gatos",

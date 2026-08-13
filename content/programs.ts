@@ -47,7 +47,10 @@ export const programs: Programs = {
     },
     {
       slug: "virtual-program",
-      name: "The Virtual Program (Mind Transformation Blueprint)",
+      // SPELLING: "Mynd" per Master Build Brief v1.0 (Aug 12), supersedes earlier "Mind" spelling from CO-01.
+      // Still flagged as needing final client confirmation per brief's pre-launch checklist item 5 —
+      // do not treat as 100% final until confirmed by Justin.
+      name: "The Virtual Program (Mynd Transformation Blueprint)",
       price: "From $2,395",
       description:
         "A 6–12 week at-home neurometabolic program: remote QEEG unit, neurotransmitter testing, guided video series, and neurofeedback calls every two weeks. National.",
@@ -73,22 +76,22 @@ export const programs: Programs = {
   ],
   outOfTownServices: {
     description:
-      "A dedicated set of remotely-delivered services for patients who travel in, framed around Continuity, Access, and Oversight.",
+      "A dedicated tab for patients who travel in — many do, including a referral network flying down from Washington. Three remotely-delivered services, framed around Continuity, Access, and Oversight.",
     items: [
       {
         name: "The Listening Program (TLP)",
         description:
-          "Research-backed, music-based auditory training done at home on a listening schedule, supervised remotely.",
+          "Research-backed, music-based auditory training done at home, supervised remotely.",
       },
       {
         name: "Remote Laboratory Testing",
         description:
-          "Advanced functional panels (metabolic, autoimmune, toxin/mold, hormone, micronutrient) via national labs and mobile phlebotomy near you.",
+          "Advanced functional panels via national labs and mobile phlebotomy near the patient.",
       },
       {
         name: "Myndlift Virtual Neurofeedback",
         description:
-          "A take-home EEG system, remotely programmed and reviewed by the clinical team, the same individualized progression as in-office patients.",
+          "A take-home EEG system, remotely programmed and reviewed — same individualized progression as in-office.",
       },
     ],
   },

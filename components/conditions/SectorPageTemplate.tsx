@@ -202,7 +202,7 @@ export default function SectorPageTemplate({
                   {toolsUsed.map((tool) => (
                     <li key={tool.slug}>
                       <Link
-                        href={`/how-we-work#${tool.slug}`}
+                        href={`/tools/${tool.slug}`}
                         className="group inline-flex items-center gap-2 rounded-full border border-rule-d bg-ink-2 px-4 py-2 text-[13px] text-paper transition-all hover:border-amber-b/70 hover:bg-ink-2 hover:text-amber-b"
                       >
                         <span>{tool.name}</span>
@@ -394,7 +394,7 @@ export default function SectorPageTemplate({
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
             <Link
-              href="/start-here"
+              href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
               Book a New-Patient Investigation ($300)

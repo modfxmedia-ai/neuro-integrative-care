@@ -1,17 +1,18 @@
 import Link from "next/link";
 import { MapPin, Phone, Clock } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaYoutube, FaSpotify } from "react-icons/fa6";
+import { cityLocations } from "@/content/locations";
 import Reveal from "./Reveal";
 
 const QUICK_LINKS = [
   { label: "Conditions", href: "/conditions" },
-  { label: "How We Work", href: "/how-we-work" },
+  { label: "How We Work", href: "/approach" },
   { label: "Programs", href: "/programs" },
   { label: "Virtual Program", href: "/programs/virtual" },
-  { label: "Patient Stories", href: "/patient-stories" },
+  { label: "Patient Stories", href: "/results" },
   { label: "About", href: "/about" },
-  { label: "Start Here", href: "/start-here" },
-  { label: "Out-of-Town Services", href: "/programs#out-of-town" },
+  { label: "Start Here", href: "/start" },
+  { label: "Out-of-Town Services", href: "/out-of-town" },
 ] as const;
 
 const SOCIAL_LINKS = [
@@ -77,7 +78,7 @@ export default function Footer() {
                 <Clock size={18} className="mt-1 shrink-0 text-amber-b" aria-hidden="true" />
                 <div>
                   <p>Tue &amp; Thu</p>
-                  <p className="text-paper/70">9:30 – 3:00</p>
+                  <p className="text-paper/70">9:30–3:00</p>
                 </div>
               </div>
             </address>
@@ -140,8 +141,31 @@ export default function Footer() {
         </div>
 
         <Reveal
+          delay={300}
+          className="mt-14 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-rule-d pt-8"
+        >
+          <Link
+            href="/locations"
+            className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b transition-colors hover:text-paper"
+          >
+            Areas We Serve
+          </Link>
+          {cityLocations.map((city) => (
+            <span key={city.slug} className="flex items-center gap-3">
+              <span aria-hidden="true" className="text-paper/30">·</span>
+              <Link
+                href={`/locations/${city.slug}`}
+                className="text-sm text-paper/70 transition-colors hover:text-amber-b"
+              >
+                {city.name}
+              </Link>
+            </span>
+          ))}
+        </Reveal>
+
+        <Reveal
           delay={360}
-          className="mt-16 flex flex-col gap-4 border-t border-rule-d pt-8 text-xs text-paper/60 sm:flex-row sm:items-center sm:justify-between"
+          className="mt-8 flex flex-col gap-4 border-t border-rule-d pt-8 text-xs text-paper/60 sm:flex-row sm:items-center sm:justify-between"
         >
           <p>
             &copy; {new Date().getFullYear()} NeuroIntegrative Care of Los Gatos. All rights reserved.

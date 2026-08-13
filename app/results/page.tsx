@@ -29,10 +29,10 @@ import { conditions } from "@/content/conditions";
 import { patientStories } from "@/content/patientStories";
 import { shortTestimonials, googleReviews } from "@/content/testimonials";
 import Reveal from "@/components/Reveal";
-import VideoTestimonials from "@/components/patient-stories/VideoTestimonials";
+import VideoTestimonials from "@/components/results/VideoTestimonials";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
-const PAGE_URL = `${SITE_URL}/patient-stories`;
+const PAGE_URL = `${SITE_URL}/results`;
 
 const STANDARD_DISCLAIMER =
   "Individual patient experiences. Results vary and are not guaranteed.";
@@ -43,12 +43,12 @@ export const metadata: Metadata = {
   title: "Patient Stories",
   description:
     "Eight patient case journeys from NeuroIntegrative Care of Los Gatos: real investigations, individual outcomes across autoimmune, brain, concussion, and toxin work.",
-  alternates: { canonical: "/patient-stories" },
+  alternates: { canonical: "/results" },
   openGraph: {
     title: "Patient Stories | NeuroIntegrative Care of Los Gatos",
     description:
       "Eight patient case journeys: real investigations, individual outcomes.",
-    url: "/patient-stories",
+    url: "/results",
     type: "article",
   },
 };
@@ -157,7 +157,7 @@ const AGGREGATE_MEASURES: AggregateMeasure[] = [
   },
 ];
 
-export default function PatientStoriesPage() {
+export default function ResultsPage() {
   return (
     <>
       <script
@@ -507,7 +507,7 @@ export default function PatientStoriesPage() {
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
             <Link
-              href="/start-here"
+              href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
               Book a New-Patient Investigation ($300)

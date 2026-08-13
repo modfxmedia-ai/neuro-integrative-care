@@ -1,13 +1,8 @@
 // COMPLIANCE + FACT-CHECK NOTES:
 //
-// (1) YEARS-IN-PRACTICE DISCREPANCY:
-//     Blueprint says "27 years."
-//     CV states practice founded 1996 → 30 years by 2026.
-//     Homepage trust strip already publishes "30 years in Silicon Valley."
-//     ↳ Publishing "30+ years" here to stay consistent with the CV founding
-//       date AND the rest of the site. Flag for Justin to confirm before ship
-//       — if the 27-year figure is intentional, revert this constant.
-//     ↳ Do NOT change the constant below without documented client sign-off.
+// (1) YEARS-IN-PRACTICE: master brief confirms "30+ years," superseding the
+//     earlier "27 years" blueprint figure. Consistent with the CV founding
+//     date (1996) and the homepage trust strip.
 //
 // (2) All copy is derived from the client-supplied blueprint + CV excerpt in
 //     the request. Every credential, publication, engagement, and media
@@ -23,7 +18,7 @@ import Reveal from "@/components/Reveal";
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/about`;
 
-const YEARS_IN_PRACTICE = "30+"; // See COMPLIANCE note (1) above.
+const YEARS_IN_PRACTICE = "30+";
 
 export const metadata: Metadata = {
   title: "About Dr. Thomas Santucci",
@@ -162,8 +157,7 @@ const STAT_RIBBON = [
   { label: "Years", value: `${YEARS_IN_PRACTICE} Years` },
   { label: "Disciplines", value: "5" },
   { label: "Training Hours", value: "10,000+" },
-  { label: "Colleges", value: "11" },
-  { label: "Published Book", value: "1" },
+  { label: "Published Book", value: "1", note: "a second on the way" },
 ] as const;
 
 const CREDENTIALS = [
@@ -176,6 +170,21 @@ const CREDENTIALS = [
   "Developmental Delays training, Robert Melillo",
   "Functional Medicine Institute, Applying Clinical Excellence Series",
   "The Listening Program Certified Provider",
+] as const;
+
+// PLACEHOLDER — replace with real institution logo files once supplied (About-Dr-Santucci-STANDALONE.html may already have these embedded as base64 — check with Nargis/Justin before rebuilding from scratch).
+const INSTITUTION_BADGES = [
+  "Carrick",
+  "IFM",
+  "Erchonia",
+  "NewMind",
+  "ReCODE",
+  "Advanced Brain Technologies",
+  "AAIM",
+  "Melillo",
+  "Board-Cert Nutrition",
+  "Apex",
+  "CNCB",
 ] as const;
 
 const SPEAKING = [
@@ -245,8 +254,7 @@ export default function AboutPage() {
       <section className="bg-paper-2 py-14 lg:py-16">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal>
-            {/* 30+ years, not 27 — see COMPLIANCE note at top. */}
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-5 lg:gap-8">
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4 lg:gap-8">
               {STAT_RIBBON.map((stat) => (
                 <li
                   key={stat.label}
@@ -258,6 +266,11 @@ export default function AboutPage() {
                   <span className="mt-3 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted">
                     {stat.label}
                   </span>
+                  {"note" in stat && (
+                    <span className="mt-1 text-[13px] italic leading-snug text-muted">
+                      ({stat.note})
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
@@ -457,7 +470,25 @@ export default function AboutPage() {
             </h2>
           </Reveal>
 
-          <ul className="mt-14 grid gap-4 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-5">
+          <Reveal delay={80} offset={16} className="mt-12">
+            <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted">
+              Trained &amp; Certified By
+            </p>
+            <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              {INSTITUTION_BADGES.map((name) => (
+                <li
+                  key={name}
+                  className="flex h-20 items-center justify-center rounded-xl border border-rule/60 bg-paper-2 px-4 text-center"
+                >
+                  <span className="font-mono text-[13px] font-medium uppercase tracking-[0.08em] text-ink/80">
+                    {name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <ul className="mt-14 grid gap-4 border-t border-rule pt-14 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-5">
             {CREDENTIALS.map((cred, i) => (
               <Reveal
                 key={cred}
@@ -630,7 +661,7 @@ export default function AboutPage() {
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
             <Link
-              href="/start-here"
+              href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
               Book a New-Patient Investigation ($300)

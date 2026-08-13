@@ -20,7 +20,7 @@ const DETAILS: DetailItem[] = [
     lines: ["20 S Santa Cruz Ave, Suite 101", "Los Gatos, CA 95030"],
   },
   { icon: Phone, lines: [PHONE_DISPLAY], href: PHONE_HREF },
-  { icon: Clock, lines: ["Tue & Thu", "9:30 – 3:00"] },
+  { icon: Clock, lines: ["Tue & Thu", "9:30–3:00"] },
 ];
 
 const HIGHLIGHTS = ["In-Person Visits", "Downtown Los Gatos", "By Appointment"] as const;

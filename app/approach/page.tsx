@@ -1,32 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { conditions } from "@/content/conditions";
 import { tools } from "@/content/tools";
 import Reveal from "@/components/Reveal";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
-const PAGE_URL = `${SITE_URL}/how-we-work`;
+const PAGE_URL = `${SITE_URL}/approach`;
 
 export const metadata: Metadata = {
-  title: "How We Work",
+  title: "Our Approach",
   description:
     "Neurometabolic Rejuvenation: the brain and metabolism as one system. Five non-invasive, drug-free tools: violet laser, neurofeedback, regenerative, longevity.",
-  alternates: { canonical: "/how-we-work" },
+  alternates: { canonical: "/approach" },
   openGraph: {
-    title: "How We Work | NeuroIntegrative Care of Los Gatos",
+    title: "Our Approach | NeuroIntegrative Care of Los Gatos",
     description:
       "Neurometabolic Rejuvenation: the brain and metabolism as one system. Five non-invasive, drug-free tools.",
-    url: "/how-we-work",
+    url: "/approach",
     type: "article",
   },
 };
 
-const conditionsBySlug = new Map(conditions.map((c) => [c.slug, c]));
-
 const schema = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
-  name: "How We Work | NeuroIntegrative Care of Los Gatos",
+  name: "Our Approach | NeuroIntegrative Care of Los Gatos",
   description:
     "Neurometabolic Rejuvenation: the brain and metabolism as one system, investigated with objective testing and rebuilt with five non-invasive, drug-free tools.",
   url: PAGE_URL,
@@ -46,6 +43,7 @@ const schema = {
       item: {
         "@type": "MedicalProcedure",
         name: tool.name,
+        url: `${SITE_URL}/tools/${tool.slug}`,
         description: tool.description,
         procedureType: {
           "@type": "MedicalProcedureType",
@@ -56,7 +54,7 @@ const schema = {
   },
 };
 
-export default function HowWeWorkPage() {
+export default function ApproachPage() {
   return (
     <>
       <script
@@ -81,7 +79,7 @@ export default function HowWeWorkPage() {
             offset={12}
             className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b"
           >
-            How We Work
+            Our Approach
           </Reveal>
           <Reveal as="span" delay={180} offset={28} className="mt-6 block">
             <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-paper sm:text-5xl lg:text-6xl">
@@ -141,7 +139,7 @@ export default function HowWeWorkPage() {
         </div>
       </section>
 
-      {/* 3.2 — Five tools */}
+      {/* 3.2 — Five tools hub */}
       <section id="tools" className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
@@ -158,59 +156,43 @@ export default function HowWeWorkPage() {
             </p>
           </Reveal>
 
-          <ol className="mt-20 divide-y divide-rule/70">
+          <ul className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {tools.map((tool, i) => (
-              <li key={tool.slug} id={tool.slug} className="scroll-mt-24">
-                <Reveal
-                  delay={80}
-                  offset={20}
-                  className="grid gap-8 py-14 lg:grid-cols-12 lg:gap-14 lg:py-20"
+              <Reveal
+                key={tool.slug}
+                as="li"
+                delay={140 + i * 90}
+                offset={24}
+                className="h-full"
+              >
+                <Link
+                  href={`/tools/${tool.slug}`}
+                  className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-rule/60 bg-paper-2 p-7 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-ink/20 hover:bg-white hover:shadow-[0_30px_60px_-40px_rgba(11,18,32,0.4)]"
                 >
-                  <div className="lg:col-span-4">
+                  <div>
                     <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                       {String(i + 1).padStart(2, "0")} · {tool.kicker}
                     </p>
-                    <h3 className="mt-5 font-serif text-[1.85rem] leading-[1.1] text-ink lg:text-[2.15rem]">
+                    <h3 className="mt-4 font-serif text-xl leading-tight text-ink lg:text-[1.4rem]">
                       {tool.name}
                     </h3>
-                  </div>
-                  <div className="lg:col-span-8">
-                    <p className="text-lg leading-relaxed text-muted">
+                    <p className="mt-3 text-[14px] leading-relaxed text-muted">
                       {tool.description}
                     </p>
-
-                    <div className="mt-8">
-                      <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
-                        Applied In
-                      </p>
-                      <ul className="mt-4 flex flex-wrap gap-2">
-                        {tool.sectorSlugs.map((slug) => {
-                          const sector = conditionsBySlug.get(slug);
-                          if (!sector) return null;
-                          return (
-                            <li key={slug}>
-                              <Link
-                                href={`/conditions/${sector.slug}`}
-                                className="group inline-flex items-center gap-2 rounded-full border border-rule/70 bg-paper-2 px-4 py-2 text-[13px] text-ink transition-all hover:border-ink/30 hover:bg-white hover:shadow-[0_10px_30px_-20px_rgba(11,18,32,0.4)]"
-                              >
-                                <span>{sector.name}</span>
-                                <span
-                                  aria-hidden="true"
-                                  className="text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-amber"
-                                >
-                                  →
-                                </span>
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
                   </div>
-                </Reveal>
-              </li>
+                  <span className="mt-8 inline-flex items-center gap-2 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted transition-colors group-hover:text-ink">
+                    Explore
+                    <span
+                      aria-hidden="true"
+                      className="transition-transform group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </span>
+                </Link>
+              </Reveal>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 
@@ -232,7 +214,7 @@ export default function HowWeWorkPage() {
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
             <Link
-              href="/start-here"
+              href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
               Book a New-Patient Investigation ($300)

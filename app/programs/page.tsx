@@ -25,8 +25,6 @@ export const metadata: Metadata = {
   },
 };
 
-const FRAMING_LABELS = ["Continuity", "Access", "Oversight"] as const;
-
 const schema = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
@@ -148,7 +146,7 @@ export default function ProgramsPage() {
               </p>
               <div className="mt-10">
                 <Link
-                  href="/start-here"
+                  href="/start"
                   className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
                 >
                   Book the Investigation ($300)
@@ -208,7 +206,7 @@ export default function ProgramsPage() {
                       href={
                         program.slug === "virtual-program"
                           ? "/programs/virtual"
-                          : "/start-here"
+                          : "/start"
                       }
                       className="group inline-flex items-center gap-2 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink transition-colors hover:text-amber"
                     >
@@ -285,56 +283,34 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* 4.4 — Out-of-town services */}
-      <section id="out-of-town" className="bg-paper py-24 lg:py-32">
+      {/* 4.4 — Out-of-town services (teaser; full page at /out-of-town) */}
+      <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <Reveal className="max-w-3xl">
+          <Reveal className="max-w-2xl">
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               Out-of-Town Services
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
               Travel in. Continue the work from home.
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              {programs.outOfTownServices.description}
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+              A dedicated set of remotely-delivered services for patients who
+              travel in — The Listening Program, remote lab testing, and
+              Myndlift virtual neurofeedback.
             </p>
-
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-              {FRAMING_LABELS.map((label) => (
-                <li
-                  key={label}
-                  className="flex items-center gap-3 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink"
-                >
-                  <span aria-hidden="true" className="inline-block h-px w-6 bg-amber" />
-                  {label}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-          <ul className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {programs.outOfTownServices.items.map((item, i) => (
-              <Reveal
-                key={item.name}
-                as="li"
-                delay={140 + i * 90}
-                offset={24}
-                className="h-full"
+            <Link
+              href="/out-of-town"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full border border-rule/70 bg-white px-6 py-3 text-[14px] text-ink transition-all hover:border-ink/30 hover:shadow-[0_10px_30px_-20px_rgba(11,18,32,0.4)]"
+            >
+              <span>See out-of-town services</span>
+              <span
+                aria-hidden="true"
+                className="text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-amber"
               >
-                <article className="flex h-full flex-col rounded-2xl border border-rule/60 bg-paper-2 p-8 lg:p-9">
-                  <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="mt-5 font-serif text-[1.4rem] leading-tight text-ink">
-                    {item.name}
-                  </h3>
-                  <p className="mt-4 text-[15px] leading-relaxed text-muted">
-                    {item.description}
-                  </p>
-                </article>
-              </Reveal>
-            ))}
-          </ul>
+                →
+              </span>
+            </Link>
+          </Reveal>
         </div>
       </section>
 
@@ -356,7 +332,7 @@ export default function ProgramsPage() {
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
             <Link
-              href="/start-here"
+              href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
               Book a New-Patient Investigation ($300)

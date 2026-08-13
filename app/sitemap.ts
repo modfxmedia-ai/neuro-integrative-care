@@ -1,5 +1,8 @@
 import type { MetadataRoute } from "next";
 import { conditions } from "@/content/conditions";
+import { tools } from "@/content/tools";
+import { conditionArticles } from "@/content/conditionArticles";
+import { cityLocations } from "@/content/locations";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 
@@ -9,12 +12,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
     { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/conditions`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/how-we-work`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${SITE_URL}/approach`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${SITE_URL}/programs`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${SITE_URL}/programs/virtual`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${SITE_URL}/patient-stories`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/start-here`, lastModified: now, changeFrequency: "monthly", priority: 0.95 },
+    { url: `${SITE_URL}/out-of-town`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/locations`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${SITE_URL}/results`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/start`, lastModified: now, changeFrequency: "monthly", priority: 0.95 },
   ];
+
+  cityLocations.forEach((city) => {
+    entries.push({
+      url: `${SITE_URL}/locations/${city.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  });
+
+  tools.forEach((tool) => {
+    entries.push({
+      url: `${SITE_URL}/tools/${tool.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    });
+  });
 
   conditions.forEach((parent) => {
     entries.push({
@@ -24,12 +47,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     });
     parent.subConditions?.forEach((sub) => {
+      // Skip legacy sub-condition pages superseded by a fuller condition
+      // article — they carry a canonical tag elsewhere and shouldn't be
+      // listed as a separate indexable URL.
+      const superseded = conditionArticles.some(
+        (article) =>
+          article.supersedes?.parentSlug === parent.slug &&
+          article.supersedes?.subSlug === sub.slug,
+      );
+      if (superseded) return;
       entries.push({
         url: `${SITE_URL}/conditions/${parent.slug}/${sub.slug}`,
         lastModified: now,
         changeFrequency: "monthly",
         priority: 0.7,
       });
+    });
+  });
+
+  conditionArticles.forEach((article) => {
+    entries.push({
+      url: `${SITE_URL}/conditions/${article.parentSlug}/${article.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
     });
   });
 
