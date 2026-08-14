@@ -79,7 +79,7 @@ export default function Home2Hero() {
               fill
               priority
               sizes="(min-width: 1024px) 32rem, 24rem"
-              className="object-cover"
+              className="object-cover object-top"
             />
           </div>
           <div className="absolute -bottom-5 left-1/2 w-[calc(100%-2.5rem)] -translate-x-1/2 rounded-xl bg-paper px-5 py-3.5 text-center shadow-md">

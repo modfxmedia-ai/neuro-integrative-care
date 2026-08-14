@@ -66,16 +66,16 @@ function ServicePill({ href, name, kicker, Icon }: Service) {
   return (
     <Link
       href={href}
-      className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-3 backdrop-blur-sm transition-colors hover:border-amber-b/40 hover:bg-white/[0.08]"
+      className="group flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1.5 backdrop-blur-sm transition-colors hover:border-amber-b/40 hover:bg-white/[0.08] lg:justify-start lg:gap-3 lg:rounded-xl lg:px-3.5 lg:py-3"
     >
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-b/15 text-amber-b transition-colors group-hover:bg-amber-b/25">
-        <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-amber-b/15 text-amber-b transition-colors group-hover:bg-amber-b/25 lg:h-9 lg:w-9 lg:rounded-lg">
+        <Icon className="h-3.5 w-3.5 lg:h-[18px] lg:w-[18px]" strokeWidth={1.75} />
       </span>
-      <span className="min-w-0 flex-1">
-        <span className="block truncate font-sans text-[13px] font-semibold leading-tight text-white">
+      <span className="min-w-0 text-center lg:flex-1 lg:text-left">
+        <span className="block font-sans text-[11px] font-semibold leading-tight text-white lg:text-[13px]">
           {name}
         </span>
-        <span className="mt-0.5 block truncate font-sans text-[11px] text-white/55">
+        <span className="mt-0.5 block font-sans text-[9px] leading-tight text-white/55 lg:text-[11px]">
           {kicker}
         </span>
       </span>
@@ -84,30 +84,24 @@ function ServicePill({ href, name, kicker, Icon }: Service) {
 }
 
 // pt (not mt) clears the fixed nav so the dark bg fills to the top.
-// Video's original white background is chroma-keyed to navy (see
-// design-conventions memory), blending edge-to-edge with the section.
+// Video is encoded with a pure-black bg + rendered with `mix-blend-mode:
+// lighten` — black pixels get max-blended with the section's `#010610`,
+// making them literally identical to the section bg (both on desktop and
+// Safari mobile, where color-space drift would otherwise show a seam).
 export default function Home2VideoHero() {
   return (
     <section className="relative overflow-hidden bg-[#010610] pt-20 sm:pt-24">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-40 top-1/2 h-[32rem] w-[32rem] -translate-y-1/2 rounded-full bg-amber-b/10 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-40 top-1/3 h-[28rem] w-[28rem] rounded-full bg-blue-500/10 blur-3xl"
-      />
 
       <div className="relative mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="font-sans text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+        <div className="mx-auto text-center">
+          <h2 className="font-sans text-2xl font-semibold leading-tight tracking-tight text-white sm:text-3xl lg:whitespace-nowrap lg:text-[2.25rem]">
             Six drug-free modalities.{" "}
             <span className="text-amber-b">One integrated protocol.</span>
           </h2>
         </div>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.8fr)_minmax(0,0.75fr)] lg:items-center lg:gap-10">
-          <div className="order-2 flex flex-col gap-3 lg:order-1">
+        <div className="mt-10 grid gap-4 lg:mt-12 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.8fr)_minmax(0,0.75fr)] lg:items-center lg:gap-10">
+          <div className="order-2 mx-auto flex w-full max-w-[15rem] flex-col gap-4 sm:max-w-xs lg:order-1 lg:mx-0 lg:max-w-none lg:gap-3">
             {LEFT_SERVICES.map((s) => (
               <ServicePill key={s.href} {...s} />
             ))}
@@ -121,17 +115,17 @@ export default function Home2VideoHero() {
                 muted
                 loop
                 playsInline
-                className="h-full w-full object-contain"
+                className="h-full w-full object-contain [mix-blend-mode:lighten]"
               >
                 <source
-                  src="/videos/home2-brain-orbit-navy.mp4"
+                  src="/videos/home2-brain-orbit-black.mp4"
                   type="video/mp4"
                 />
               </video>
             </div>
           </div>
 
-          <div className="order-3 flex flex-col gap-3">
+          <div className="order-3 mx-auto flex w-full max-w-[15rem] flex-col gap-4 sm:max-w-xs lg:mx-0 lg:max-w-none lg:gap-3">
             {RIGHT_SERVICES.map((s) => (
               <ServicePill key={s.href} {...s} />
             ))}
