@@ -1,7 +1,5 @@
-import Image from "next/image";
-
 // Same three steps/copy as components/home/HowItWorks.tsx, restyled as a
-// plain numbered list (no sticky/scroll-linked motion, just a static image).
+// horizontal timeline (no image, no sticky/scroll-linked motion).
 const STEPS = [
   {
     number: "01",
@@ -34,38 +32,29 @@ export default function Home2HowItWorks() {
           </h2>
         </div>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
-          <ol className="grid gap-5">
-            {STEPS.map((step) => (
-              <li
-                key={step.number}
-                className="flex gap-6 rounded-xl bg-paper p-6 shadow-sm"
-              >
+        <ol className="mt-14 grid gap-10 sm:grid-cols-3 sm:gap-6">
+          {STEPS.map((step, index) => (
+            <li key={step.number} className="flex flex-col">
+              <div className="flex items-center">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber font-sans text-sm font-semibold text-ink">
                   {step.number}
                 </div>
-                <div>
-                  <h3 className="font-sans text-xs font-semibold uppercase tracking-wide text-amber-b">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 font-sans text-[15px] leading-relaxed text-muted">
-                    {step.body}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
-
-          <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-rule lg:aspect-auto">
-            <Image
-              src="/images/investigation-steps.png"
-              alt="A patient's investigation, rebuild, and sustain journey: QEEG brain mapping, neurofeedback and laser therapy, and a personalized lifestyle plan"
-              fill
-              sizes="(min-width: 1024px) 30vw, 90vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
+                {index < STEPS.length - 1 && (
+                  <div
+                    aria-hidden="true"
+                    className="ml-3 hidden h-px flex-1 bg-rule sm:block"
+                  />
+                )}
+              </div>
+              <h3 className="mt-5 font-sans text-xs font-semibold uppercase tracking-wide text-amber-b">
+                {step.title}
+              </h3>
+              <p className="mt-3 font-sans text-[15px] leading-relaxed text-muted">
+                {step.body}
+              </p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

@@ -14,7 +14,7 @@ export default function Home2Hero() {
     <section className="relative overflow-hidden border-b border-rule bg-paper">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-32 right-0 h-96 w-[42rem] rounded-full bg-amber-soft blur-3xl"
+        className="pointer-events-none absolute -top-10 right-0 h-96 w-[42rem] rounded-full bg-amber-soft blur-3xl"
       />
       <div className="relative mx-auto grid max-w-6xl gap-14 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-10 lg:py-28">
         <div>
@@ -59,7 +59,7 @@ export default function Home2Hero() {
                 <dt className="font-sans text-2xl font-semibold leading-none tracking-tight text-ink">
                   {stat.value}
                 </dt>
-                <dd className="mt-2 font-sans text-[11px] uppercase leading-snug tracking-wide text-amber-b">
+                <dd className="mt-2 font-sans text-[11px] uppercase leading-snug tracking-wide text-muted">
                   {stat.label}
                 </dd>
               </div>
