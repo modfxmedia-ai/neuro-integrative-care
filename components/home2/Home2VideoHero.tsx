@@ -100,7 +100,7 @@ export default function Home2VideoHero() {
           </h2>
         </div>
 
-        <div className="mt-10 grid gap-4 lg:mt-12 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.8fr)_minmax(0,0.75fr)] lg:items-center lg:gap-10">
+        <div className="mt-10 grid gap-4 lg:mt-12 lg:grid-cols-[minmax(0,0.55fr)_minmax(0,2.3fr)_minmax(0,0.55fr)] lg:items-center lg:gap-6">
           <div className="order-2 mx-auto flex w-full max-w-[15rem] flex-col gap-4 sm:max-w-xs lg:order-1 lg:mx-0 lg:max-w-none lg:gap-3">
             {LEFT_SERVICES.map((s) => (
               <ServicePill key={s.href} {...s} />
