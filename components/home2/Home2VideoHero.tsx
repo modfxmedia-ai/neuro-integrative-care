@@ -66,16 +66,16 @@ function ServicePill({ href, name, kicker, Icon }: Service) {
   return (
     <Link
       href={href}
-      className="group flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1.5 backdrop-blur-sm transition-colors hover:border-amber-b/40 hover:bg-white/[0.08] lg:justify-start lg:gap-3 lg:rounded-xl lg:px-3.5 lg:py-3"
+      className="group flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1.5 backdrop-blur-sm transition-colors hover:border-amber-b/40 hover:bg-white/[0.08] lg:justify-start lg:gap-3 lg:rounded-xl lg:px-3.5 lg:py-3 xl:gap-2 xl:px-2.5"
     >
-      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-amber-b/15 text-amber-b transition-colors group-hover:bg-amber-b/25 lg:h-9 lg:w-9 lg:rounded-lg">
-        <Icon className="h-3.5 w-3.5 lg:h-[18px] lg:w-[18px]" strokeWidth={1.75} />
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-amber-b/15 text-amber-b transition-colors group-hover:bg-amber-b/25 lg:h-9 lg:w-9 lg:rounded-lg xl:h-7 xl:w-7">
+        <Icon className="h-3.5 w-3.5 lg:h-[18px] lg:w-[18px] xl:h-[14px] xl:w-[14px]" strokeWidth={1.75} />
       </span>
       <span className="min-w-0 text-center lg:flex-1 lg:text-left">
-        <span className="block font-sans text-[11px] font-semibold leading-tight text-white lg:text-[13px]">
+        <span className="block font-sans text-sm font-semibold leading-tight text-white lg:text-[13px] xl:whitespace-nowrap">
           {name}
         </span>
-        <span className="mt-0.5 block font-sans text-[9px] leading-tight text-white/55 lg:text-[11px]">
+        <span className="mt-0.5 block font-sans text-xs leading-tight text-white/55 lg:text-[11px]">
           {kicker}
         </span>
       </span>
@@ -92,7 +92,7 @@ export default function Home2VideoHero() {
   return (
     <section className="relative overflow-hidden bg-[#010610] pt-20 sm:pt-24">
 
-      <div className="relative mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
+      <div className="relative mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20 xl:px-6">
         <div className="mx-auto text-center">
           <h2 className="font-sans text-2xl font-semibold leading-tight tracking-tight text-white sm:text-3xl lg:whitespace-nowrap lg:text-[2.25rem]">
             Six drug-free modalities.{" "}
@@ -100,7 +100,7 @@ export default function Home2VideoHero() {
           </h2>
         </div>
 
-        <div className="mt-10 grid gap-4 lg:mt-12 lg:grid-cols-[minmax(0,0.55fr)_minmax(0,2.3fr)_minmax(0,0.55fr)] lg:items-center lg:gap-6">
+        <div className="mt-10 grid gap-4 lg:mt-12 lg:grid-cols-[minmax(0,0.55fr)_minmax(0,2.3fr)_minmax(0,0.55fr)] lg:items-center lg:gap-6 xl:grid-cols-[210px_minmax(0,1fr)_210px] xl:gap-4">
           <div className="order-2 mx-auto flex w-full max-w-[15rem] flex-col gap-4 sm:max-w-xs lg:order-1 lg:mx-0 lg:max-w-none lg:gap-3">
             {LEFT_SERVICES.map((s) => (
               <ServicePill key={s.href} {...s} />
