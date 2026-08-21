@@ -31,18 +31,33 @@ type TestResult = {
   patients: Patient[];
 };
 
-export default function CreyosTestPanel() {
-  const [result, setResult] = useState<TestResult | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+const inputClass = "mt-1 w-full rounded-lg border border-rule bg-white px-3 py-2 text-sm text-ink";
+const cardClass = "rounded-xl border border-rule bg-white p-5";
+const buttonClass =
+  "w-full rounded-lg bg-amber px-4 py-3 text-sm font-semibold text-ink disabled:opacity-60";
 
-  // Form fields — pre-filled with test values so it works out of the box.
+function StepHeader({ number, title, doc }: { number: number; title: string; doc: string }) {
+  return (
+    <div className="mb-4">
+      <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-amber-b">
+        Step {number} · {doc}
+      </p>
+      <h3 className="mt-1 font-sans text-lg font-semibold text-ink">{title}</h3>
+    </div>
+  );
+}
+
+// ─── Step 1: Auto-Registration Links ────────────────────────────────────────
+function AutoRegistrationTest() {
   const [birthdate, setBirthdate] = useState("1990-01-01");
   const [gender, setGender] = useState<"" | "male" | "female">("");
   const [userCode, setUserCode] = useState("");
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [trialName, setTrialName] = useState("");
   const [salt, setSalt] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<{ url: string; userCode: string } | null>(null);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -50,7 +65,7 @@ export default function CreyosTestPanel() {
     setError(null);
     setResult(null);
     try {
-      const regRes = await fetch("/api/creyos-auto-register", {
+      const res = await fetch("/api/creyos-auto-register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -61,31 +76,10 @@ export default function CreyosTestPanel() {
           salt: salt || undefined,
         }),
       });
-      const regData = await regRes.json();
-      if (!regRes.ok) throw new Error(regData.error || "Auto-registration failed.");
-
-      // Open the Creyos assessment page in a new tab so the tester can see
-      // the actual signup/assessment flow the doc describes.
-      window.open(regData.url, "_blank", "noopener,noreferrer");
-
-      await fetch("/api/creyos-webhook/self-test", { method: "POST" });
-
-      const eventsRes = await fetch("/api/creyos-webhook");
-      const eventsData = await eventsRes.json();
-      const latestEvent: WebhookEvent | undefined = eventsData.events?.[0];
-      if (!latestEvent) throw new Error("Webhook event was not recorded.");
-
-      const patientsRes = await fetch("/api/creyos-patients");
-      const patientsData = await patientsRes.json();
-      if (!patientsRes.ok) throw new Error(patientsData.error || "Patient list fetch failed.");
-
-      setResult({
-        registrationUrl: regData.url,
-        userCode: regData.userCode,
-        webhookEvent: latestEvent,
-        patientsMode: patientsData.mode,
-        patients: patientsData.users ?? [],
-      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Auto-registration failed.");
+      setResult(data);
+      window.open(data.url, "_blank", "noopener,noreferrer");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
@@ -93,9 +87,248 @@ export default function CreyosTestPanel() {
     }
   }
 
-  const inputClass =
-    "mt-1 w-full rounded-lg border border-rule bg-white px-3 py-2 text-sm text-ink";
+  return (
+    <div className={cardClass}>
+      <StepHeader number={1} title="Auto-Registration Link" doc="Auto-Registration" />
+      <p className="mb-4 text-sm text-muted">
+        Creates a signed link and opens the Creyos assessment in a new tab.
+      </p>
 
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="birthdate" className="block text-sm font-medium text-ink">
+            Date of birth
+          </label>
+          <input
+            id="birthdate"
+            type="date"
+            required
+            value={birthdate}
+            onChange={(e) => setBirthdate(e.target.value)}
+            className={inputClass}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="gender" className="block text-sm font-medium text-ink">
+            Gender (optional)
+          </label>
+          <select
+            id="gender"
+            value={gender}
+            onChange={(e) => setGender(e.target.value as "" | "male" | "female")}
+            className={inputClass}
+          >
+            <option value="">Prefer not to say</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="userCode" className="block text-sm font-medium text-ink">
+            Patient ID (optional — auto-generated if blank)
+          </label>
+          <input
+            id="userCode"
+            type="text"
+            value={userCode}
+            onChange={(e) => setUserCode(e.target.value)}
+            placeholder="e.g. abc123"
+            className={inputClass}
+          />
+        </div>
+
+        <div className="rounded-lg border border-rule">
+          <button
+            type="button"
+            onClick={() => setShowAdvanced((v) => !v)}
+            className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-medium text-ink"
+          >
+            <span>Use my own Creyos credentials (optional)</span>
+            <span className="text-muted">{showAdvanced ? "−" : "+"}</span>
+          </button>
+          {showAdvanced && (
+            <div className="space-y-3 border-t border-rule p-3">
+              <p className="text-xs text-muted">
+                Leave blank to use the built-in demo values. Enter your real Trial Name and
+                Auto-Registration Salt from Creyos to open a working assessment.
+              </p>
+              <div>
+                <label htmlFor="trialName" className="block text-xs font-medium text-ink">
+                  Trial Name
+                </label>
+                <input
+                  id="trialName"
+                  type="text"
+                  value={trialName}
+                  onChange={(e) => setTrialName(e.target.value)}
+                  placeholder="creyos_autoregistration_demo"
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <label htmlFor="salt" className="block text-xs font-medium text-ink">
+                  Auto-Registration Salt
+                </label>
+                <input
+                  id="salt"
+                  type="text"
+                  value={salt}
+                  onChange={(e) => setSalt(e.target.value)}
+                  placeholder="5baa9fc1…"
+                  className={`${inputClass} font-mono`}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+
+        <button type="submit" disabled={loading} className={buttonClass}>
+          {loading ? "Generating…" : "Generate & Open Assessment"}
+        </button>
+
+        {error && <p className="text-sm text-red-600">{error}</p>}
+      </form>
+
+      {result && (
+        <div className="mt-4 rounded-lg border border-rule bg-paper-2 p-3 text-sm">
+          <p className="text-ink">
+            User code: <span className="font-mono">{result.userCode}</span>
+          </p>
+          <p className="mt-2 text-xs text-muted">Opened in a new tab. Direct link:</p>
+          <a
+            href={result.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 block break-all font-mono text-xs text-ink underline"
+          >
+            {result.url}
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── Step 2: REST API ───────────────────────────────────────────────────────
+function RestApiTest() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [mode, setMode] = useState<"mock" | "live" | null>(null);
+  const [patients, setPatients] = useState<Patient[]>([]);
+
+  async function fetchPatients() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/creyos-patients");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Patient list fetch failed.");
+      setMode(data.mode);
+      setPatients(data.users ?? []);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className={cardClass}>
+      <StepHeader number={2} title="Patient List" doc="REST API" />
+      <p className="mb-4 text-sm text-muted">
+        Authenticates with Creyos and fetches patients from{" "}
+        <span className="font-mono text-xs">/api/v1/user/list/all</span>.
+      </p>
+
+      <button onClick={fetchPatients} disabled={loading} className={buttonClass}>
+        {loading ? "Fetching…" : "Fetch Patients"}
+      </button>
+
+      {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+
+      {mode && (
+        <div className="mt-4">
+          <span className="rounded-full bg-amber-soft px-2 py-0.5 text-xs font-medium text-ink">
+            {mode === "mock" ? "Sample data" : "Live Creyos data"}
+          </span>
+          <p className="mt-2 text-xs text-muted">{patients.length} patients returned</p>
+          <div className="mt-2 space-y-2">
+            {patients.map((patient) => (
+              <div key={patient.id} className="rounded border border-rule p-2 text-xs">
+                <p className="text-ink">{patient.email}</p>
+                <p className="text-muted">
+                  client_id: <span className="font-mono">{patient.client_id}</span> · created{" "}
+                  {patient.created_at}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── Step 3: Webhooks ───────────────────────────────────────────────────────
+function WebhookTest() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [event, setEvent] = useState<WebhookEvent | null>(null);
+
+  async function sendTestWebhook() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/creyos-webhook/self-test", { method: "POST" });
+      if (!res.ok) throw new Error("Webhook self-test failed.");
+      const eventsRes = await fetch("/api/creyos-webhook");
+      const eventsData = await eventsRes.json();
+      const latest: WebhookEvent | undefined = eventsData.events?.[0];
+      if (!latest) throw new Error("Webhook event was not recorded.");
+      setEvent(latest);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className={cardClass}>
+      <StepHeader number={3} title="Webhook Delivery" doc="Webhooks" />
+      <p className="mb-4 text-sm text-muted">
+        Sends a signed sample payload to the webhook receiver and verifies the{" "}
+        <span className="font-mono text-xs">X-Creyos-Signature</span>.
+      </p>
+
+      <button onClick={sendTestWebhook} disabled={loading} className={buttonClass}>
+        {loading ? "Sending…" : "Send Test Webhook"}
+      </button>
+
+      {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+
+      {event && (
+        <div className="mt-4">
+          <span
+            className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+              event.verified ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+            }`}
+          >
+            {event.verified ? "Signature verified" : "Signature invalid"}
+          </span>
+          <p className="mt-2 text-xs text-muted">Received at {event.receivedAt}</p>
+          <pre className="mt-2 overflow-x-auto rounded bg-paper-2 p-3 text-xs text-ink">
+            {JSON.stringify(event.payload, null, 2)}
+          </pre>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function CreyosTestPanel() {
   return (
     <section className="border-y-4 border-dashed border-amber bg-paper-2 py-16">
       <div className="mx-auto max-w-2xl px-6">
@@ -107,185 +340,15 @@ export default function CreyosTestPanel() {
             Test Creyos Integration
           </h2>
           <p className="mx-auto mt-2 max-w-md text-sm text-muted">
-            Fill in a test patient below and click the button. It opens a Creyos assessment in a
-            new tab, then shows the webhook and patient-list results underneath.
+            Three separate tests, one per Creyos doc. Run each step and check its result below.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="mx-auto mt-6 max-w-md space-y-4 text-left">
-          <div>
-            <label htmlFor="birthdate" className="block text-sm font-medium text-ink">
-              Date of birth
-            </label>
-            <input
-              id="birthdate"
-              type="date"
-              required
-              value={birthdate}
-              onChange={(e) => setBirthdate(e.target.value)}
-              className={inputClass}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="gender" className="block text-sm font-medium text-ink">
-              Gender (optional)
-            </label>
-            <select
-              id="gender"
-              value={gender}
-              onChange={(e) => setGender(e.target.value as "" | "male" | "female")}
-              className={inputClass}
-            >
-              <option value="">Prefer not to say</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-          </div>
-
-          <div>
-            <label htmlFor="userCode" className="block text-sm font-medium text-ink">
-              Patient ID (optional — auto-generated if blank)
-            </label>
-            <input
-              id="userCode"
-              type="text"
-              value={userCode}
-              onChange={(e) => setUserCode(e.target.value)}
-              placeholder="e.g. abc123"
-              className={inputClass}
-            />
-          </div>
-
-          <div className="rounded-lg border border-rule bg-white">
-            <button
-              type="button"
-              onClick={() => setShowAdvanced((v) => !v)}
-              className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-medium text-ink"
-            >
-              <span>Use my own Creyos credentials (optional)</span>
-              <span className="text-muted">{showAdvanced ? "−" : "+"}</span>
-            </button>
-            {showAdvanced && (
-              <div className="space-y-3 border-t border-rule p-3">
-                <p className="text-xs text-muted">
-                  Leave blank to use the built-in demo values. Enter your real Trial Name and
-                  Auto-Registration Salt from Creyos to open a working assessment.
-                </p>
-                <div>
-                  <label htmlFor="trialName" className="block text-xs font-medium text-ink">
-                    Trial Name
-                  </label>
-                  <input
-                    id="trialName"
-                    type="text"
-                    value={trialName}
-                    onChange={(e) => setTrialName(e.target.value)}
-                    placeholder="creyos_autoregistration_demo"
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="salt" className="block text-xs font-medium text-ink">
-                    Auto-Registration Salt
-                  </label>
-                  <input
-                    id="salt"
-                    type="text"
-                    value={salt}
-                    onChange={(e) => setSalt(e.target.value)}
-                    placeholder="5baa9fc1…"
-                    className={`${inputClass} font-mono`}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-lg bg-amber px-4 py-4 text-base font-semibold text-ink disabled:opacity-60"
-          >
-            {loading ? "Running…" : "Run Creyos Test"}
-          </button>
-
-          {error && <p className="text-sm text-red-600">{error}</p>}
-        </form>
-
-        {result && (
-          <div className="mt-8 space-y-6">
-            <div className="rounded-lg border border-rule bg-white p-5 text-sm">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="font-semibold text-ink">1. Auto-Registration Link</p>
-                  <p className="mt-1 text-xs text-muted">
-                    User code: <span className="font-mono">{result.userCode}</span>
-                  </p>
-                  <p className="mt-1 text-xs text-muted">
-                    Opened in a new tab. If your browser blocked the popup, use this link:
-                  </p>
-                </div>
-                <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
-                  Opened
-                </span>
-              </div>
-              <a
-                href={result.registrationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 block break-all rounded bg-paper-2 p-2 font-mono text-xs text-ink underline"
-              >
-                {result.registrationUrl}
-              </a>
-            </div>
-
-            <div className="rounded-lg border border-rule bg-white p-5 text-sm">
-              <div className="flex items-start justify-between gap-4">
-                <p className="font-semibold text-ink">2. Webhook Delivery</p>
-                <span
-                  className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                    result.webhookEvent.verified
-                      ? "bg-green-100 text-green-700"
-                      : "bg-red-100 text-red-700"
-                  }`}
-                >
-                  {result.webhookEvent.verified ? "Signature verified" : "Signature invalid"}
-                </span>
-              </div>
-              <p className="mt-1 text-xs text-muted">
-                Received at {result.webhookEvent.receivedAt}
-              </p>
-              <pre className="mt-3 overflow-x-auto rounded bg-paper-2 p-3 text-xs text-ink">
-                {JSON.stringify(result.webhookEvent.payload, null, 2)}
-              </pre>
-            </div>
-
-            <div className="rounded-lg border border-rule bg-white p-5 text-sm">
-              <div className="flex items-start justify-between gap-4">
-                <p className="font-semibold text-ink">3. Patient List (REST API)</p>
-                <span className="rounded-full bg-amber-soft px-2 py-0.5 text-xs font-medium text-ink">
-                  {result.patientsMode === "mock" ? "Sample data" : "Live Creyos data"}
-                </span>
-              </div>
-              <p className="mt-1 text-xs text-muted">
-                {result.patients.length} patients returned from{" "}
-                <span className="font-mono">/api/v1/user/list/all</span>
-              </p>
-              <div className="mt-3 space-y-2">
-                {result.patients.map((patient) => (
-                  <div key={patient.id} className="rounded border border-rule p-2 text-xs">
-                    <p className="text-ink">{patient.email}</p>
-                    <p className="text-muted">
-                      client_id: <span className="font-mono">{patient.client_id}</span> · created{" "}
-                      {patient.created_at}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+        <div className="mt-8 space-y-6">
+          <AutoRegistrationTest />
+          <RestApiTest />
+          <WebhookTest />
+        </div>
       </div>
     </section>
   );

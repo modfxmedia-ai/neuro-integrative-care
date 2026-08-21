@@ -8,7 +8,6 @@ import RecognitionSection from "@/components/home/RecognitionSection";
 import DoctorTeaser from "@/components/home/DoctorTeaser";
 import FinalCTA from "@/components/home/FinalCTA";
 import VisitUsSection from "@/components/home/VisitUsSection";
-import CreyosTestPanel from "@/components/home/CreyosTestPanel";
 
 export default function Home() {
   return (
@@ -23,7 +22,6 @@ export default function Home() {
       <DoctorTeaser />
       <FinalCTA />
       <VisitUsSection />
-      <CreyosTestPanel />
     </>
   );
 }
