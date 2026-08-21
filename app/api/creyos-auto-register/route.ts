@@ -16,19 +16,25 @@ function toCreyosBirthdate(isoDate: string): string | null {
 }
 
 export async function POST(request: NextRequest) {
-  const trialName = process.env.CREYOS_TRIAL_NAME;
-  const salt = process.env.CREYOS_AUTO_REG_SALT;
-
-  if (!trialName || !salt) {
-    return NextResponse.json(
-      { error: "Creyos is not configured (missing CREYOS_TRIAL_NAME / CREYOS_AUTO_REG_SALT)." },
-      { status: 500 }
-    );
-  }
-
   const body = await request.json().catch(() => null);
   if (!body || typeof body.birthdate !== "string") {
     return NextResponse.json({ error: "birthdate is required (YYYY-MM-DD)." }, { status: 400 });
+  }
+
+  // Allow the tester to supply their own Trial Name / Salt from the form;
+  // otherwise fall back to the env values.
+  const trialName =
+    typeof body.trialName === "string" && body.trialName.trim()
+      ? body.trialName.trim()
+      : process.env.CREYOS_TRIAL_NAME;
+  const salt =
+    typeof body.salt === "string" && body.salt.trim() ? body.salt.trim() : process.env.CREYOS_AUTO_REG_SALT;
+
+  if (!trialName || !salt) {
+    return NextResponse.json(
+      { error: "Missing Trial Name / Salt. Enter them in the form or set CREYOS_TRIAL_NAME / CREYOS_AUTO_REG_SALT." },
+      { status: 400 }
+    );
   }
 
   const birthdate = toCreyosBirthdate(body.birthdate);

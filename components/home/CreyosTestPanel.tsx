@@ -36,17 +36,30 @@ export default function CreyosTestPanel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function runFullTest() {
+  // Form fields — pre-filled with test values so it works out of the box.
+  const [birthdate, setBirthdate] = useState("1990-01-01");
+  const [gender, setGender] = useState<"" | "male" | "female">("");
+  const [userCode, setUserCode] = useState("");
+  const [showAdvanced, setShowAdvanced] = useState(false);
+  const [trialName, setTrialName] = useState("");
+  const [salt, setSalt] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
     setLoading(true);
     setError(null);
     setResult(null);
     try {
-      // Test-only default DOB — a real integration pulls this from the
-      // client's own user record instead of asking the visitor for it.
       const regRes = await fetch("/api/creyos-auto-register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ birthdate: "1990-01-01" }),
+        body: JSON.stringify({
+          birthdate,
+          gender: gender || undefined,
+          userCode: userCode || undefined,
+          trialName: trialName || undefined,
+          salt: salt || undefined,
+        }),
       });
       const regData = await regRes.json();
       if (!regRes.ok) throw new Error(regData.error || "Auto-registration failed.");
@@ -55,9 +68,7 @@ export default function CreyosTestPanel() {
       // the actual signup/assessment flow the doc describes.
       window.open(regData.url, "_blank", "noopener,noreferrer");
 
-      const webhookRes = await fetch("/api/creyos-webhook/self-test", { method: "POST" });
-      const webhookData = await webhookRes.json();
-      if (!webhookRes.ok) throw new Error("Webhook self-test failed.");
+      await fetch("/api/creyos-webhook/self-test", { method: "POST" });
 
       const eventsRes = await fetch("/api/creyos-webhook");
       const eventsData = await eventsRes.json();
@@ -82,6 +93,9 @@ export default function CreyosTestPanel() {
     }
   }
 
+  const inputClass =
+    "mt-1 w-full rounded-lg border border-rule bg-white px-3 py-2 text-sm text-ink";
+
   return (
     <section className="border-y-4 border-dashed border-amber bg-paper-2 py-16">
       <div className="mx-auto max-w-2xl px-6">
@@ -93,20 +107,111 @@ export default function CreyosTestPanel() {
             Test Creyos Integration
           </h2>
           <p className="mx-auto mt-2 max-w-md text-sm text-muted">
-            One click opens a Creyos assessment in a new tab (auto-registration), then verifies
-            the webhook receiver and the patient-list REST API below.
+            Fill in a test patient below and click the button. It opens a Creyos assessment in a
+            new tab, then shows the webhook and patient-list results underneath.
           </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="mx-auto mt-6 max-w-md space-y-4 text-left">
+          <div>
+            <label htmlFor="birthdate" className="block text-sm font-medium text-ink">
+              Date of birth
+            </label>
+            <input
+              id="birthdate"
+              type="date"
+              required
+              value={birthdate}
+              onChange={(e) => setBirthdate(e.target.value)}
+              className={inputClass}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="gender" className="block text-sm font-medium text-ink">
+              Gender (optional)
+            </label>
+            <select
+              id="gender"
+              value={gender}
+              onChange={(e) => setGender(e.target.value as "" | "male" | "female")}
+              className={inputClass}
+            >
+              <option value="">Prefer not to say</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="userCode" className="block text-sm font-medium text-ink">
+              Patient ID (optional — auto-generated if blank)
+            </label>
+            <input
+              id="userCode"
+              type="text"
+              value={userCode}
+              onChange={(e) => setUserCode(e.target.value)}
+              placeholder="e.g. abc123"
+              className={inputClass}
+            />
+          </div>
+
+          <div className="rounded-lg border border-rule bg-white">
+            <button
+              type="button"
+              onClick={() => setShowAdvanced((v) => !v)}
+              className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-medium text-ink"
+            >
+              <span>Use my own Creyos credentials (optional)</span>
+              <span className="text-muted">{showAdvanced ? "−" : "+"}</span>
+            </button>
+            {showAdvanced && (
+              <div className="space-y-3 border-t border-rule p-3">
+                <p className="text-xs text-muted">
+                  Leave blank to use the built-in demo values. Enter your real Trial Name and
+                  Auto-Registration Salt from Creyos to open a working assessment.
+                </p>
+                <div>
+                  <label htmlFor="trialName" className="block text-xs font-medium text-ink">
+                    Trial Name
+                  </label>
+                  <input
+                    id="trialName"
+                    type="text"
+                    value={trialName}
+                    onChange={(e) => setTrialName(e.target.value)}
+                    placeholder="creyos_autoregistration_demo"
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="salt" className="block text-xs font-medium text-ink">
+                    Auto-Registration Salt
+                  </label>
+                  <input
+                    id="salt"
+                    type="text"
+                    value={salt}
+                    onChange={(e) => setSalt(e.target.value)}
+                    placeholder="5baa9fc1…"
+                    className={`${inputClass} font-mono`}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
 
           <button
-            onClick={runFullTest}
+            type="submit"
             disabled={loading}
-            className="mt-6 w-full rounded-lg bg-amber px-4 py-4 text-base font-semibold text-ink disabled:opacity-60"
+            className="w-full rounded-lg bg-amber px-4 py-4 text-base font-semibold text-ink disabled:opacity-60"
           >
             {loading ? "Running…" : "Run Creyos Test"}
           </button>
 
-          {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
-        </div>
+          {error && <p className="text-sm text-red-600">{error}</p>}
+        </form>
 
         {result && (
           <div className="mt-8 space-y-6">
