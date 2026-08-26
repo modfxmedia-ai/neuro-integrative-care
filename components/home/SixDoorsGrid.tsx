@@ -43,8 +43,13 @@ export default function SixDoorsGrid({
   headingLevel = "h2",
 }: SixDoorsGridProps = {}) {
   const Heading = headingLevel;
+  // h1 usage means this is the page's own first section (no hero above it),
+  // so it needs extra top padding to clear the fixed nav — h2 usage (the
+  // homepage) already sits below HeroSection and shouldn't gain extra space.
+  const topPadding =
+    headingLevel === "h1" ? "pt-28 sm:pt-32 lg:pt-32" : "pt-16 lg:pt-20";
   return (
-    <section id="six-doors" className="bg-paper py-16 lg:py-20">
+    <section id="six-doors" className={`bg-paper ${topPadding} pb-16 lg:pb-20`}>
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal className="max-w-3xl">
           <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">

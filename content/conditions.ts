@@ -59,7 +59,7 @@ export const conditions: Condition[] = [
     heroLine:
       "A hit you were told to rest off, and never fully recovered from. Recovery doesn't have to be left to time.",
     whatWeInvestigate:
-      "A concussion disrupts vestibular-ocular reflexes, autonomic regulation, and cellular energy all at once, which is why 'rest and wait' leaves so many people with lingering symptoms years later. Our functional-neurology assessment maps exactly which circuits were affected, then builds active rehab: vestibular and oculomotor retraining, autonomic regulation, and violet-laser support for mitochondrial healing. By Dr. Santucci's estimate, roughly half of men are walking around with unaddressed post-concussive syndrome.",
+      "A concussion disrupts vestibular-ocular reflexes, autonomic regulation, and cellular energy all at once, which is why 'rest and wait' leaves so many people with lingering symptoms years later. Our functional-neurology assessment maps exactly which circuits were affected, then builds active rehab: vestibular and oculomotor retraining, autonomic regulation, and violet-laser support for mitochondrial healing. By Dr. Santucci's estimate, up to half of men are walking around with unaddressed post-concussive syndrome.",
     patientStorySlug: "michael",
     subConditions: [
       {

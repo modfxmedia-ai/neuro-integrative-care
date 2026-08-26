@@ -18,7 +18,7 @@ export default function Home2FinalCTA() {
             href="/start"
             className="inline-flex items-center justify-center rounded-md bg-amber px-8 py-4 font-sans text-base font-medium text-ink transition-colors hover:bg-amber-b"
           >
-            Book your New-Patient Investigation ($300)
+            Book your New-Patient Investigation
           </Link>
         </div>
       </div>

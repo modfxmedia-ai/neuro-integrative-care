@@ -510,7 +510,7 @@ export default function ResultsPage() {
               href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book a New-Patient Investigation ($300)
+              Book a New-Patient Investigation
             </Link>
           </Reveal>
         </div>

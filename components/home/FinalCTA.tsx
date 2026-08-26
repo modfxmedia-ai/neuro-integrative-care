@@ -47,9 +47,18 @@ export default function FinalCTA() {
               href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-8 py-4 text-base font-medium tracking-tight text-ink"
             >
-              Book your New-Patient Investigation ($300)
+              Book your New-Patient Investigation
             </Link>
           </motion.div>
+        </Reveal>
+
+        <Reveal delay={320} className="mt-6">
+          <Link
+            href="/brain-assessment"
+            className="text-sm text-paper/70 underline decoration-amber-b/50 decoration-1 underline-offset-4 transition-colors hover:text-amber-b hover:decoration-amber-b"
+          >
+            Not ready yet? Take the Free Brain Assessment
+          </Link>
         </Reveal>
       </div>
     </section>

@@ -91,10 +91,10 @@ export default function HeroSection() {
             className="shrink-0"
           >
             <Link
-              href="/start"
-              className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-gradient-to-r from-amber to-amber-b px-7 text-sm font-semibold tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.6)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
+              href="/brain-assessment"
+              className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-paper px-7 text-sm font-semibold tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(255,255,255,0.45)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(255,255,255,0.7)]"
             >
-              Book a New-Patient Investigation ($300)
+              Take Your Free Brain Assessment
             </Link>
           </motion.div>
           <motion.div
@@ -104,10 +104,10 @@ export default function HeroSection() {
             className="shrink-0"
           >
             <Link
-              href="/brain-assessment"
-              className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-paper px-7 text-sm font-semibold tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(255,255,255,0.45)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(255,255,255,0.7)]"
+              href="/start"
+              className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-gradient-to-r from-amber to-amber-b px-7 text-sm font-semibold tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.6)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Take Your Free Brain Assessment
+              Book a New-Patient Investigation
             </Link>
           </motion.div>
         </Reveal>

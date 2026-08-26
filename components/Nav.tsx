@@ -17,11 +17,11 @@ const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Conditions", href: "/conditions" },
   { label: "How We Work", href: "/approach" },
+  { label: "How It Works", href: "/how-it-works" },
   { label: "Programs", href: "/programs" },
   { label: "Virtual Program", href: "/programs/virtual" },
   { label: "Patient Stories", href: "/results" },
   { label: "About", href: "/about" },
-  { label: "Start Here", href: "/start" },
 ] as const;
 
 const BOOK_HREF = "/start";
@@ -35,7 +35,9 @@ export default function Nav() {
   // Home 2's hero is light, not the dark video used elsewhere — the header
   // can't fade in from transparent there (white nav text disappears against
   // a white background), so it stays permanently in its "scrolled" solid state.
-  const isLightHero = pathname === "/home2";
+  // The Conditions hub page has the same issue: it opens directly with
+  // SixDoorsGrid's light (bg-paper) section, no dark hero above it.
+  const isLightHero = pathname === "/home2" || pathname === "/conditions";
 
   const { scrollY } = useScroll();
   const backgroundColor = useTransform(
@@ -207,7 +209,7 @@ export default function Nav() {
           </ul>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <BookButton />
+            <StartHereButton />
             <button
               ref={hamburgerRef}
               type="button"
@@ -311,7 +313,7 @@ export default function Nav() {
   );
 }
 
-function BookButton() {
+function StartHereButton() {
   return (
     <motion.div
       whileHover={{ y: -2 }}
@@ -323,7 +325,7 @@ function BookButton() {
         href={BOOK_HREF}
         className="group relative inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-3.5 py-2 text-xs font-medium tracking-tight text-ink shadow-[0_6px_18px_-10px_rgba(232,160,32,0.75)] transition-shadow duration-300 hover:shadow-[0_14px_32px_-10px_rgba(232,160,32,0.9)] sm:px-4 xl:px-5 xl:py-2.5 xl:text-sm"
       >
-        <span className="relative z-10">Book a Consult</span>
+        <span className="relative z-10">Start Here</span>
       </Link>
     </motion.div>
   );

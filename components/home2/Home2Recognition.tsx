@@ -85,7 +85,7 @@ export default function Home2Recognition() {
               href="/start"
               className="inline-flex items-center justify-center rounded-md bg-amber px-7 py-3.5 font-sans text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-paper"
             >
-              Book a $300 Investigation
+              Book an Investigation
             </Link>
           </div>
         </div>

@@ -181,7 +181,7 @@ export default async function CityLocationPage({ params }: PageProps) {
         <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-10">
           <Reveal>
             <h2 className="font-serif text-3xl leading-[1.2] tracking-tight text-paper sm:text-4xl lg:text-5xl">
-              Start with the same $300 investigation, every patient, every city.
+              Start with the same investigation, every patient, every city.
             </h2>
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
@@ -189,7 +189,7 @@ export default async function CityLocationPage({ params }: PageProps) {
               href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book a New-Patient Investigation ($300)
+              Book a New-Patient Investigation
             </Link>
           </Reveal>
         </div>

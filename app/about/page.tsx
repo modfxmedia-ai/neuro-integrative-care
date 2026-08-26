@@ -12,6 +12,7 @@
 //     signal — grounded only in the verified CV facts.
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
@@ -172,20 +173,72 @@ const CREDENTIALS = [
   "The Listening Program Certified Provider",
 ] as const;
 
-// PLACEHOLDER — replace with real institution logo files once supplied (About-Dr-Santucci-STANDALONE.html may already have these embedded as base64 — check with Nargis/Justin before rebuilding from scratch).
-const INSTITUTION_BADGES = [
-  "Carrick",
-  "IFM",
-  "Erchonia",
-  "NewMind",
-  "ReCODE",
-  "Advanced Brain Technologies",
-  "AAIM",
-  "Melillo",
-  "Board-Cert Nutrition",
-  "Apex",
-  "CNCB",
-] as const;
+// Carrick, Apex, and Melillo have no usable logo file supplied yet (Apex's
+// source file is a full marketing banner, not a standalone mark; Melillo's
+// is a generic unrelated icon) — those three stay as text badges.
+interface InstitutionBadge {
+  name: string;
+  logo?: { src: string; width: number; height: number; dark?: boolean };
+}
+
+const INSTITUTION_BADGES: InstitutionBadge[] = [
+  { name: "Carrick" },
+  {
+    name: "IFM",
+    logo: { src: "/images/institution-logos/ifm.svg", width: 268, height: 82 },
+  },
+  {
+    name: "Erchonia",
+    logo: {
+      src: "/images/institution-logos/erchonia.svg",
+      width: 282,
+      height: 69,
+    },
+  },
+  {
+    name: "NewMind",
+    logo: {
+      src: "/images/institution-logos/newmind.png",
+      width: 3001,
+      height: 900,
+    },
+  },
+  {
+    name: "ReCODE",
+    logo: {
+      src: "/images/institution-logos/recode.webp",
+      width: 839,
+      height: 207,
+      dark: true,
+    },
+  },
+  {
+    name: "Advanced Brain Technologies",
+    logo: {
+      src: "/images/institution-logos/advanced-brain-technologies.svg",
+      width: 220,
+      height: 45,
+    },
+  },
+  {
+    name: "AAIM",
+    logo: { src: "/images/institution-logos/aaim.png", width: 400, height: 400 },
+  },
+  { name: "Melillo" },
+  {
+    name: "Board-Cert Nutrition",
+    logo: {
+      src: "/images/institution-logos/board-cert-nutrition.png",
+      width: 426,
+      height: 167,
+    },
+  },
+  { name: "Apex" },
+  {
+    name: "CNCB",
+    logo: { src: "/images/institution-logos/cncb.png", width: 566, height: 125 },
+  },
+];
 
 const SPEAKING = [
   "Academy of Comprehensive Integrated Medicine (ACIM), Alzheimer's clinical intervention presentation to a 500-doctor audience",
@@ -373,11 +426,12 @@ export default function AboutPage() {
               The Philosophy
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-              Whole universe, three drivers.
+              How do we tackle your complex issues?
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Consider the whole universe of causes, then narrow to the three
-              that matter. Brain first. Functional ranges, not textbook ones.
+              Every plausible cause on the table before narrowing, because
+              complicated cases don&apos;t yield to one modality&apos;s
+              default list.
             </p>
           </Reveal>
 
@@ -385,18 +439,18 @@ export default function AboutPage() {
             {[
               {
                 num: "01",
-                title: "Whole Universe First",
-                body: "Every plausible cause on the table before narrowing, because complex cases don't yield to one modality's default list.",
-              },
-              {
-                num: "02",
-                title: "Brain First",
+                title: "Neurologic Functions",
                 body: "Neurons are the most energy-hungry cells in the body. Systemic breakdowns show up neurologically first, which is where the investigation begins.",
               },
               {
-                num: "03",
-                title: "Functional Ranges",
+                num: "02",
+                title: "Metabolic Systems",
                 body: "Optimal, not merely inside a textbook window. 'Normal' labs miss what functional ranges catch.",
+              },
+              {
+                num: "03",
+                title: "Environmental Impacts",
+                body: "Understand how changes in food, environmental toxins, and chronic stress are reshaping the clinical picture, often driving symptoms other lanes miss.",
               },
             ].map((principle, i) => (
               <Reveal
@@ -475,14 +529,26 @@ export default function AboutPage() {
               Trained &amp; Certified By
             </p>
             <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-              {INSTITUTION_BADGES.map((name) => (
+              {INSTITUTION_BADGES.map((badge) => (
                 <li
-                  key={name}
-                  className="flex h-20 items-center justify-center rounded-xl border border-rule/60 bg-paper-2 px-4 text-center"
+                  key={badge.name}
+                  className={`flex h-20 items-center justify-center rounded-xl border border-rule/60 px-4 text-center ${
+                    badge.logo?.dark ? "bg-ink" : "bg-paper-2"
+                  }`}
                 >
-                  <span className="font-mono text-[13px] font-medium uppercase tracking-[0.08em] text-ink/80">
-                    {name}
-                  </span>
+                  {badge.logo ? (
+                    <Image
+                      src={badge.logo.src}
+                      alt={badge.name}
+                      width={badge.logo.width}
+                      height={badge.logo.height}
+                      className="h-auto max-h-10 w-auto max-w-[85%] object-contain"
+                    />
+                  ) : (
+                    <span className="font-mono text-[13px] font-medium uppercase tracking-[0.08em] text-ink/80">
+                      {badge.name}
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
@@ -580,7 +646,7 @@ export default function AboutPage() {
                 Media
               </p>
               <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
-                Where he&apos;s appeared.
+                Community reach-out authored by Dr. Santucci.
               </h2>
               <ul className="mt-8 space-y-5">
                 {MEDIA.map((item) => (
@@ -664,7 +730,7 @@ export default function AboutPage() {
               href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book a New-Patient Investigation ($300)
+              Book a New-Patient Investigation
             </Link>
           </Reveal>
         </div>

@@ -1,16 +1,14 @@
 // COMPLIANCE + TODOs:
 //
 // (1) Booking system NOT yet chosen by client. The "Book my New-Patient
-//     Investigation — $300" button uses a mailto placeholder (BOOKING_PLACEHOLDER_HREF
+//     Investigation" button uses a mailto placeholder (BOOKING_PLACEHOLDER_HREF
 //     below) and the real practice phone as a fallback. Swap the placeholder
 //     for a real booking widget (Calendly, Jane, etc.) once the client picks
 //     one — the constant is the single source of truth. Do NOT hard-code a
 //     booking URL anywhere else on the page.
 //
-// (2) Pricing lines below ("typically begin at $3,500 in-clinic, or $2,395
-//     for the at-home virtual program") match the CO-safe wording already
-//     published on /programs. The $3,500–$7,200 in-clinic range must not
-//     appear here — see the comparable compliance guard in content/programs.ts.
+// (2) No dollar figures are published anywhere on the site per CO — pricing
+//     is discussed only after the investigation, directly with the patient.
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -25,17 +23,17 @@ const PHONE_HREF = "tel:+14088718222";
 
 // TODO: replace with real booking system URL once client selects one.
 const BOOKING_PLACEHOLDER_HREF =
-  "mailto:contact@neurointegrativecareoflosgatos.com?subject=New-Patient%20Investigation%20%E2%80%94%20%24300";
+  "mailto:contact@neurointegrativecareoflosgatos.com?subject=New-Patient%20Investigation";
 
 export const metadata: Metadata = {
   title: "Start Here",
   description:
-    "Book your $300 New-Patient Investigation with Dr. Santucci. Full consultation, complete history review, and a clinical impression that finally fits.",
+    "Book your New-Patient Investigation with Dr. Santucci. Full consultation, complete history review, and a clinical impression that finally fits.",
   alternates: { canonical: "/start" },
   openGraph: {
     title: "Start Here | NeuroIntegrative Care of Los Gatos",
     description:
-      "Book the $300 New-Patient Investigation with Dr. Santucci. The beginning of an actual answer.",
+      "Book the New-Patient Investigation with Dr. Santucci. The beginning of an actual answer.",
     url: "/start",
     type: "article",
   },
@@ -56,11 +54,8 @@ const schema = {
     addressCountry: "US",
   },
   medicalSpecialty: { "@type": "MedicalSpecialty", name: "Neurology" },
-  priceRange: "$$$",
   makesOffer: {
     "@type": "Offer",
-    priceCurrency: "USD",
-    price: "300",
     url: PAGE_URL,
     availability: "https://schema.org/InStock",
     itemOffered: {
@@ -134,7 +129,7 @@ export default function StartPage() {
               href={BOOKING_PLACEHOLDER_HREF}
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-8 py-4 text-base font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book my New-Patient Investigation ($300)
+              Book my New-Patient Investigation
             </Link>
             <a
               href={PHONE_HREF}
@@ -155,14 +150,14 @@ export default function StartPage() {
         </div>
       </section>
 
-      {/* What you get for $300 */}
+      {/* What you get from your investigation */}
       <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-4">
               <div className="flex items-center gap-4">
                 <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
-                  What You Get For $300
+                  What You Get From Your Investigation
                 </h2>
               </div>
               <p className="mt-8 font-serif text-[2rem] leading-tight text-ink lg:text-[2.5rem]">
@@ -206,14 +201,10 @@ export default function StartPage() {
               <p className="text-lg leading-relaxed text-ink">
                 If it&apos;s a fit, your investigation moves into testing, brain
                 mapping, lab and toxin panels, to confirm the path. Programs
-                are built around what we find, and{" "}
-                <span className="font-medium">
-                  typically begin at $3,500 in-clinic
-                </span>
-                , or{" "}
-                <span className="font-medium">
-                  $2,395 for the at-home virtual program.
-                </span>
+                are built around what we find, whether
+                <span className="font-medium"> in-clinic</span> or through
+                the{" "}
+                <span className="font-medium">at-home virtual program.</span>
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 <Link
@@ -298,9 +289,6 @@ export default function StartPage() {
                 </p>
                 <p className="mt-4 font-serif text-[1.35rem] leading-tight text-ink">
                   Book my New-Patient Investigation
-                </p>
-                <p className="mt-3 font-mono font-medium text-[13px] uppercase tracking-[0.16em] text-ink">
-                  $300
                 </p>
                 <span
                   aria-hidden="true"

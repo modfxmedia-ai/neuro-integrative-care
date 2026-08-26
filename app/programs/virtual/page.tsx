@@ -10,6 +10,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { programs } from "@/content/programs";
+import {
+  FOUNDATIONAL_CURRICULUM,
+  ADVANCED_CURRICULUM,
+  CURRICULUM_HOW_TO_USE,
+} from "@/content/neurologicalSupportProgram";
 import Reveal from "@/components/Reveal";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
@@ -26,12 +31,12 @@ const virtualProgram = programs.entryPrograms.find(
 export const metadata: Metadata = {
   title: `The Virtual Program: ${PROGRAM_NAME_PUBLIC}`,
   description:
-    "A 30-year neurometabolic method delivered to your home. Remote QEEG, neurotransmitter testing, biweekly clinician review with Dr. Santucci. From $2,395. National.",
+    "A 30-year neurometabolic method delivered to your home. Remote QEEG, neurofeedback expert review every 2 weeks, clinician review with Dr. Santucci every 4 weeks. National.",
   alternates: { canonical: "/programs/virtual" },
   openGraph: {
     title: `The Virtual Program | NeuroIntegrative Care of Los Gatos`,
     description:
-      "A 30-year neurometabolic method delivered to your home. From $2,395. National.",
+      "A 30-year neurometabolic method delivered to your home. National.",
     url: "/programs/virtual",
     type: "article",
   },
@@ -42,7 +47,7 @@ const schema = {
   "@type": "MedicalWebPage",
   name: `The Virtual Program: ${PROGRAM_NAME_PUBLIC} | NeuroIntegrative Care of Los Gatos`,
   description:
-    "A 30-year neurometabolic method delivered to your home. Remote QEEG unit, neurotransmitter testing, guided video series, and biweekly clinician review calls with Dr. Santucci.",
+    "A 30-year neurometabolic method delivered to your home. Remote QEEG unit, a neurological support program, and clinician review calls with Dr. Santucci every 4 weeks.",
   url: PAGE_URL,
   inLanguage: "en-US",
   isPartOf: {
@@ -57,7 +62,7 @@ const schema = {
     name: `The Virtual Program (${PROGRAM_NAME_PUBLIC})`,
     serviceType: "Neurometabolic Care",
     description:
-      "A 6–12 week at-home neurometabolic program: remote QEEG unit, neurotransmitter testing, guided video series, and neurofeedback calls every two weeks. National.",
+      "A 6–12 week at-home neurometabolic program: remote QEEG unit, a weekly neurological support program, and clinician review calls with Dr. Santucci every 4 weeks. National.",
     provider: {
       "@type": "MedicalClinic",
       name: "NeuroIntegrative Care of Los Gatos",
@@ -66,14 +71,6 @@ const schema = {
     areaServed: { "@type": "Country", name: "United States" },
     offers: {
       "@type": "Offer",
-      priceCurrency: "USD",
-      price: "2395",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        priceCurrency: "USD",
-        minPrice: "2395",
-        description: "From $2,395",
-      },
       availability: "https://schema.org/InStock",
       url: PAGE_URL,
     },
@@ -83,19 +80,16 @@ const schema = {
 const FEATURE_ROWS = [
   { label: "Neurofeedback training" },
   { label: "QEEG brain map" },
-  { label: "Neurotransmitter testing" },
+  { label: "Neurological support program" },
+  { label: "Optional" },
   { label: "Clinician review cadence" },
   { label: "Program duration" },
-  { label: "Repeat brain scan" },
 ] as const;
 
-type TierId = "app" | "mid" | "full";
-
 const TIERS: Array<{
-  id: TierId;
+  id: "full";
   eyebrow: string;
   name: string;
-  price: string;
   cadence: string;
   values: Record<(typeof FEATURE_ROWS)[number]["label"], string>;
   cta: { label: string; href: string };
@@ -103,52 +97,17 @@ const TIERS: Array<{
   placeholder: boolean;
 }> = [
   {
-    id: "app",
-    eyebrow: "Entry Tier · TBD",
-    name: "Myndlift App (Basic)",
-    price: "TBD",
-    cadence: "Pending client confirmation",
-    values: {
-      "Neurofeedback training": "App-based (Myndlift), self-directed",
-      "QEEG brain map": "TBD",
-      "Neurotransmitter testing": "TBD",
-      "Clinician review cadence": "TBD",
-      "Program duration": "Ongoing (TBD)",
-      "Repeat brain scan": "TBD",
-    },
-    cta: { label: "TBD", href: "/start" },
-    placeholder: true,
-  },
-  {
-    id: "mid",
-    eyebrow: "Middle Tier · TBD",
-    name: "TBD Middle Tier",
-    price: "TBD",
-    cadence: "Pending client confirmation",
-    values: {
-      "Neurofeedback training": "TBD",
-      "QEEG brain map": "TBD",
-      "Neurotransmitter testing": "TBD",
-      "Clinician review cadence": "TBD",
-      "Program duration": "TBD",
-      "Repeat brain scan": "TBD",
-    },
-    cta: { label: "TBD", href: "/start" },
-    placeholder: true,
-  },
-  {
     id: "full",
     eyebrow: "Full Program",
-    name: "The Virtual Program",
-    price: virtualProgram?.price ?? "From $2,395",
-    cadence: "Every 2 weeks with Dr. Santucci",
+    name: "Mynd Transformation Blueprint Program",
+    cadence: "Every 2 weeks with Neurofeedback Expert",
     values: {
-      "Neurofeedback training": "Remote QEEG unit, protocolized",
+      "Neurofeedback training": "Remote QEEG unit, with your healing frequencies",
       "QEEG brain map": "Included + repeat scan",
-      "Neurotransmitter testing": "Included",
-      "Clinician review cadence": "Every 2 weeks with Dr. Santucci",
+      "Neurological support program": "Weekly support to enhance neurofeedback results",
+      "Optional": "Toxicity, DNA, and functional testing as needed",
+      "Clinician review cadence": "Every 4 weeks with Dr. Santucci",
       "Program duration": virtualProgram?.duration ?? "6–12 weeks",
-      "Repeat brain scan": "End of first phase",
     },
     cta: { label: "Start Here", href: "/start" },
     featured: true,
@@ -211,15 +170,15 @@ export default function VirtualProgramPage() {
             offset={16}
             className="mt-8 max-w-3xl font-serif text-[1.35rem] leading-[1.4] text-paper/80 sm:text-[1.55rem] lg:text-[1.75rem]"
           >
-            A 30-year neurometabolic method, delivered to your home. From
-            $2,395. National.
+            A 30-year neurometabolic method, delivered to your home.
+            National.
           </Reveal>
           <Reveal delay={550} className="mt-10 flex flex-wrap gap-3">
             <Link
               href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Start with the $300 Investigation
+              Start the Investigation
             </Link>
             <Link
               href="#tiers"
@@ -255,13 +214,12 @@ export default function VirtualProgramPage() {
               </span>
               <p className="relative font-serif text-[1.45rem] leading-[1.4] text-ink sm:text-[1.7rem] lg:text-[2rem]">
                 A 30-year neurometabolic method, delivered to your home. You
-                start with a remote QEEG brain-training unit, neurotransmitter
-                testing, and a guided video series, with Dr. Santucci
-                reviewing your data and adjusting your protocol on a call
-                every two weeks. After the first phase, a repeat brain scan
-                shows what&apos;s changed and sets your next step. From
-                <span className="text-amber"> $2,395</span>. No prescriptions.
-                No travel. Available nationwide.
+                start with a remote QEEG brain-training unit tuned to your own
+                healing frequencies, plus a weekly neurological support
+                program, with Dr. Santucci reviewing your data and adjusting
+                your protocol on a call every 4 weeks. Toxicity, DNA, and
+                functional testing are available as needed. No
+                prescriptions. No travel. Available nationwide.
               </p>
             </Reveal>
           </div>
@@ -304,34 +262,15 @@ export default function VirtualProgramPage() {
               Program Tiers
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-              Choose your entry point.
+              What&apos;s included.
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Three ways to engage the neurometabolic method remotely, from a
-              lightweight, app-guided entry through the full biweekly-clinician
-              program.
+              The full neurometabolic method, delivered remotely with
+              clinician review every 4 weeks.
             </p>
           </Reveal>
 
-          <Reveal delay={80} className="mt-10">
-            <div
-              role="note"
-              className="inline-flex items-center gap-3 rounded-full border border-amber/40 bg-amber-soft/60 px-4 py-2 text-[12px] tracking-tight text-ink"
-            >
-              <span
-                aria-hidden="true"
-                className="inline-block h-2 w-2 rounded-full bg-amber"
-              />
-              <span className="font-mono uppercase tracking-[0.14em]">
-                Draft
-              </span>
-              <span className="text-muted">
-                Tier structure and pricing are pending client confirmation.
-              </span>
-            </div>
-          </Reveal>
-
-          <ul className="mt-14 grid gap-6 lg:grid-cols-3">
+          <ul className="mx-auto mt-14 grid max-w-md gap-6">
             {TIERS.map((tier, i) => (
               <Reveal
                 key={tier.id}
@@ -358,13 +297,6 @@ export default function VirtualProgramPage() {
                     <h3 className="mt-5 font-serif text-[1.5rem] leading-tight text-ink lg:text-[1.7rem]">
                       {tier.name}
                     </h3>
-                    <p
-                      className={`mt-4 font-mono font-medium text-[13px] uppercase tracking-[0.18em] ${
-                        tier.placeholder ? "text-muted-l" : "text-ink"
-                      }`}
-                    >
-                      {tier.price}
-                    </p>
                     <p className="mt-2 text-[12px] italic text-muted-l">
                       {tier.cadence}
                     </p>
@@ -416,6 +348,76 @@ export default function VirtualProgramPage() {
         </div>
       </section>
 
+      {/* Neurological Support Program curricula */}
+      <section id="support-program" className="bg-paper-2 py-24 lg:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <Reveal className="max-w-3xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              The Neurological Support Program
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              Two 12-week curricula, built to amplify neurofeedback.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+              Weekly modules covering the lifestyle and clinical drivers
+              behind your results — foundational for everyone, advanced for
+              targeted recovery and complex cases.
+            </p>
+          </Reveal>
+
+          <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-14">
+            <div>
+              <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
+                Foundational 12-Week Curriculum
+              </p>
+              <p className="mt-1 text-[13px] text-muted">
+                Lifestyle foundations for everyone
+              </p>
+              <ul className="mt-6 divide-y divide-rule/70">
+                {FOUNDATIONAL_CURRICULUM.map((mod) => (
+                  <li key={mod.num} className="py-4">
+                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber">
+                      {mod.num} · {mod.title}
+                    </p>
+                    <p className="mt-1.5 text-[14px] leading-relaxed text-ink/85">
+                      {mod.body}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
+                Advanced 12-Week Curriculum
+              </p>
+              <p className="mt-1 text-[13px] text-muted">
+                Targeted recovery, memory & complex conditions
+              </p>
+              <ul className="mt-6 divide-y divide-rule/70">
+                {ADVANCED_CURRICULUM.map((mod) => (
+                  <li key={mod.num} className="py-4">
+                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber">
+                      {mod.num} · {mod.title}
+                    </p>
+                    <p className="mt-1.5 text-[14px] leading-relaxed text-ink/85">
+                      {mod.body}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <Reveal delay={100} className="mt-14 rounded-2xl border border-rule bg-paper p-6 lg:p-8">
+            <p className="text-[13px] leading-relaxed text-muted">
+              <span className="font-medium text-ink">How to use: </span>
+              {CURRICULUM_HOW_TO_USE}
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="relative overflow-hidden bg-ink py-24 text-paper lg:py-28">
         <div
@@ -429,7 +431,8 @@ export default function VirtualProgramPage() {
         <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-10">
           <Reveal>
             <h2 className="font-serif text-3xl leading-[1.2] tracking-tight text-paper sm:text-4xl lg:text-5xl">
-              Bring the workup home. Start where everyone starts.
+              Start with your assessment and bring the therapy home. Start
+              where everyone starts.
             </h2>
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
@@ -437,7 +440,7 @@ export default function VirtualProgramPage() {
               href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book a New-Patient Investigation ($300)
+              Book a New-Patient Investigation
             </Link>
           </Reveal>
         </div>

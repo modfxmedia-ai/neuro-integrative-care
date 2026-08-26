@@ -11,6 +11,8 @@ export interface PhysicalStats {
 export interface PatientStory {
   slug: string;
   patientName: string;
+  /** Overrides patientName on condition/sector pages only (e.g. per patient's anonymity request). */
+  anonymizedName?: string;
   headline: string;
   body: string;
   sector?: string;
@@ -48,6 +50,7 @@ const patientStoryInputs: PatientStoryInput[] = [
   {
     slug: "seth",
     patientName: "Seth",
+    anonymizedName: "55-Year-Old Male",
     sector: "environmental-toxins",
     headline: "A measured 20% gain in brain function, and his family saw the difference.",
     body: "An identical twin, presented with a scattered mix of numbness, anxiety, and GI issues. A brain scan showed evenly-distributed low function, the signature that sent us to a metals panel, which found toxic arsenic nobody had tested for, plus post-concussive syndrome. Neurofeedback, violet laser, and detox produced changes his brother and the clinical staff could all see, confirmed on a follow-up QEEG.",
@@ -81,6 +84,7 @@ const patientStoryInputs: PatientStoryInput[] = [
   {
     slug: "don",
     patientName: "Don",
+    anonymizedName: "70-Year-Old Male",
     sector: "idiopathic-unexplained",
     headline: "Burning mouth syndrome, diminished, and life markedly better.",
     body: "Came in with burning mouth syndrome, a neurovascular pain few clinics can place. Cervical stem-cell work aimed at the vagus and cranial nerves, plus brain mapping, neurofeedback, laser, and Trigenics. Two years on, the symptom is diminished and his focus and ability to handle life's complexity are markedly better.",

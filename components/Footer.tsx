@@ -12,7 +12,7 @@ const QUICK_LINKS = [
   { label: "Patient Stories", href: "/results" },
   { label: "About", href: "/about" },
   { label: "Start Here", href: "/start" },
-  { label: "Out-of-Town Services", href: "/out-of-town" },
+  { label: "Regenerative Services", href: "/out-of-town" },
   { label: "Sitemap", href: "/sitemap" },
 ] as const;
 

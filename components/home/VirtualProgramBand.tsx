@@ -29,11 +29,12 @@ export default function VirtualProgramBand() {
           </h2>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-paper/75">
             Our Virtual Program brings the neurometabolic investigation home.
-            You start with a remote QEEG brain-training unit, neurotransmitter
-            testing, and a guided video series, with Dr. Santucci reviewing
-            your data and adjusting your protocol on a call every two weeks.
-            It&apos;s how we&apos;re extending this work beyond Los Gatos: the
-            same root-cause approach, delivered remotely, wherever you are.
+            You start with a remote QEEG brain-training unit tuned to your
+            own healing frequencies and a weekly neurological support
+            program, with Dr. Santucci reviewing your data and adjusting
+            your protocol on a call every 4 weeks. It&apos;s how we&apos;re
+            extending this work beyond Los Gatos: the same root-cause
+            approach, delivered remotely, wherever you are.
           </p>
 
           <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
@@ -47,7 +48,7 @@ export default function VirtualProgramBand() {
                 href="/programs/virtual"
                 className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.8)]"
               >
-                Explore the Virtual Program · From $2,395
+                Explore the Virtual Program
               </Link>
             </motion.div>
             <Link

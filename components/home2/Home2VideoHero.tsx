@@ -98,6 +98,9 @@ export default function Home2VideoHero() {
             Six drug-free modalities.{" "}
             <span className="text-amber-b">One integrated protocol.</span>
           </h2>
+          <p className="mt-3 font-sans text-base text-white/70 sm:text-lg">
+            What combination works for you?
+          </p>
         </div>
 
         <div className="mt-10 grid gap-4 lg:mt-12 lg:grid-cols-[minmax(0,0.55fr)_minmax(0,2.3fr)_minmax(0,0.55fr)] lg:items-center lg:gap-6 xl:grid-cols-[210px_minmax(0,1fr)_210px] xl:gap-4">

@@ -1,7 +1,6 @@
 // COMPLIANCE: `EntryProgram.description` is public-safe. Never render
-// `EntryProgram.internalNote` on the page — it holds the $3,500–$7,200 range
-// that must not appear as a published price per CO. All prices here render
-// through the safe `description` field.
+// `EntryProgram.internalNote` on the page — no dollar figures are published
+// on the site; pricing is only discussed after the investigation.
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -14,12 +13,12 @@ const PAGE_URL = `${SITE_URL}/programs`;
 export const metadata: Metadata = {
   title: "Programs",
   description:
-    "Three ways in: start with the $300 New-Patient Investigation. Virtual Program from $2,395, In-Clinic Care & Regenerative from $3,500. Out-of-town services.",
+    "Three ways in: start with the New-Patient Investigation, then the Virtual Program or In-Clinic Care & Regenerative. Out-of-town services available.",
   alternates: { canonical: "/programs" },
   openGraph: {
     title: "Programs | NeuroIntegrative Care of Los Gatos",
     description:
-      "Three ways in: starting with a $300 New-Patient Investigation. Virtual Program (national) and In-Clinic Care & Regenerative options.",
+      "Three ways in: starting with a New-Patient Investigation. Virtual Program (national) and In-Clinic Care & Regenerative options.",
     url: "/programs",
     type: "article",
   },
@@ -30,7 +29,7 @@ const schema = {
   "@type": "MedicalWebPage",
   name: "Programs | NeuroIntegrative Care of Los Gatos",
   description:
-    "Three ways in: the $300 New-Patient Investigation, the Virtual Program (national), and In-Clinic Care & Regenerative, plus a dedicated set of remotely-delivered services for out-of-town patients.",
+    "Three ways in: the New-Patient Investigation, the Virtual Program (national), and In-Clinic Care & Regenerative, plus a dedicated set of remotely-delivered services for out-of-town patients.",
   url: PAGE_URL,
   inLanguage: "en-US",
   isPartOf: {
@@ -56,8 +55,6 @@ const schema = {
         },
         offers: {
           "@type": "Offer",
-          priceCurrency: "USD",
-          price: program.price,
           availability: "https://schema.org/InStock",
           url: `${PAGE_URL}#${program.slug}`,
         },
@@ -126,10 +123,7 @@ export default function ProgramsPage() {
                   className="hidden h-px flex-1 bg-rule lg:block"
                 />
               </div>
-              <p className="mt-8 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
-                {frontDoor.price}
-              </p>
-              <p className="mt-2 font-serif text-2xl leading-tight text-ink lg:text-3xl">
+              <p className="mt-8 font-serif text-2xl leading-tight text-ink lg:text-3xl">
                 {frontDoor.name}
               </p>
             </Reveal>
@@ -149,7 +143,7 @@ export default function ProgramsPage() {
                   href="/start"
                   className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
                 >
-                  Book the Investigation ($300)
+                  Book the Investigation
                 </Link>
               </div>
             </Reveal>
@@ -189,9 +183,6 @@ export default function ProgramsPage() {
                     <h3 className="mt-5 font-serif text-[1.5rem] leading-tight text-ink lg:text-[1.65rem]">
                       {program.name}
                     </h3>
-                    <p className="mt-4 font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-ink">
-                      {program.price}
-                    </p>
                     <p className="mt-5 text-[15px] leading-relaxed text-muted">
                       {program.description}
                     </p>
@@ -245,7 +236,8 @@ export default function ProgramsPage() {
                 The Virtual Program
               </p>
               <h2 className="mt-4 font-serif text-4xl leading-[1.1] tracking-tight text-paper sm:text-5xl">
-                The same investigation, delivered anywhere in the country.
+                An investigation with many of the same elements as our
+                clinical consultations — anywhere in the country.
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/80">
                 {virtual.description}
@@ -255,7 +247,7 @@ export default function ProgramsPage() {
                   href="/programs/virtual"
                   className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
                 >
-                  Explore the Virtual Program · {virtual.price}
+                  Explore the Virtual Program
                 </Link>
               </div>
             </Reveal>
@@ -295,14 +287,14 @@ export default function ProgramsPage() {
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
               A dedicated set of remotely-delivered services for patients who
-              travel in — The Listening Program, remote lab testing, and
-              Myndlift virtual neurofeedback.
+              travel in — Myndlift Virtual Neurofeedback, Remote Lab Testing
+              and The Listening Program.
             </p>
             <Link
               href="/out-of-town"
               className="group mt-8 inline-flex items-center gap-2 rounded-full border border-rule/70 bg-white px-6 py-3 text-[14px] text-ink transition-all hover:border-ink/30 hover:shadow-[0_10px_30px_-20px_rgba(11,18,32,0.4)]"
             >
-              <span>See out-of-town services</span>
+              <span>See regenerative services</span>
               <span
                 aria-hidden="true"
                 className="text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-amber"
@@ -335,7 +327,7 @@ export default function ProgramsPage() {
               href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book a New-Patient Investigation ($300)
+              Book a New-Patient Investigation
             </Link>
           </Reveal>
         </div>

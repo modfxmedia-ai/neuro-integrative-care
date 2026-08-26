@@ -97,7 +97,8 @@ export default function OutOfTownPage() {
           </Reveal>
           <Reveal as="span" delay={180} offset={28} className="mt-6 block">
             <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-paper sm:text-5xl lg:text-6xl">
-              Travel in. Continue the work from home.
+              Fly in for Detailed Assessment and Regenerative Services.
+              Continue the support from home.
             </h1>
           </Reveal>
           <Reveal
@@ -167,7 +168,7 @@ export default function OutOfTownPage() {
         <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-10">
           <Reveal>
             <h2 className="font-serif text-3xl leading-[1.2] tracking-tight text-paper sm:text-4xl lg:text-5xl">
-              Every workup starts the same way, wherever you live.
+              Every workup starts with you, wherever you live.
             </h2>
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
@@ -175,7 +176,7 @@ export default function OutOfTownPage() {
               href="/start"
               className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Book a New-Patient Investigation ($300)
+              Book a New-Patient Investigation
             </Link>
           </Reveal>
         </div>

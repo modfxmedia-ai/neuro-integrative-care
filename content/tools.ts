@@ -99,6 +99,17 @@ export const tools: Tool[] = [
     // slot only. Swap for real clinic/procedure media before launch.
     media: { kind: "placeholder" },
   },
+  {
+    slug: "detoxification",
+    name: "Detoxification",
+    kicker: "Removing the Trigger",
+    description:
+      "Targeted support for the body's own detox pathways once a metals, mold, or environmental-toxin trigger is identified — clearing the load that's driving inflammation rather than only treating the downstream symptoms.",
+    sectorSlugs: ["autoimmune-investigation", "environmental-toxins"],
+    // TODO(client): no media asset supplied for this tool yet — placeholder
+    // slot only. Swap for real clinic/procedure media before launch.
+    media: { kind: "placeholder" },
+  },
 ];
 
 /** Look up the tools whose sectorSlugs include the given parent sector slug. */

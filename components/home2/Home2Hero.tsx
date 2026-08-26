@@ -40,7 +40,7 @@ export default function Home2Hero() {
               href="/start"
               className="inline-flex items-center justify-center rounded-md bg-amber px-7 py-3.5 font-sans text-sm font-medium text-ink transition-colors hover:bg-amber-b"
             >
-              Book a New-Patient Investigation ($300)
+              Book a New-Patient Investigation
             </Link>
             <Link
               href="#how-it-works"
