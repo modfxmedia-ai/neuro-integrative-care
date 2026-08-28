@@ -45,9 +45,14 @@ export async function POST(request: NextRequest) {
   const gender = body.gender === "male" || body.gender === "female" ? body.gender : undefined;
   const userCode: string =
     typeof body.userCode === "string" && body.userCode.trim() ? body.userCode.trim() : randomUserCode();
+  const protocolId =
+    typeof body.protocolId === "string" && body.protocolId.trim()
+      ? body.protocolId.trim()
+      : process.env.CREYOS_PROTOCOL_ID;
 
   const payload: Record<string, unknown> = { user_code: userCode, birthdate };
   if (gender) payload.gender = gender;
+  if (protocolId) payload.protocol_id = protocolId;
 
   const token = jwt.sign(payload, salt, { algorithm: "HS512", expiresIn: "7d" });
   const url = `${CREYOS_BASE_URL}/${trialName}?p=${token}`;
