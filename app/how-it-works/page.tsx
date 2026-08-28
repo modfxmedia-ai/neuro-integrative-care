@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { tools } from "@/content/tools";
 import Reveal from "@/components/Reveal";
 import {
   FOUNDATIONAL_INTRO,
@@ -19,12 +20,12 @@ const PAGE_URL = `${SITE_URL}/how-it-works`;
 export const metadata: Metadata = {
   title: "How It Works",
   description:
-    "Two 12-week curricula — Foundational and Advanced — that pair lifestyle and neurological-support modules with home neurofeedback like Myndlift.",
+    "Neurometabolic Rejuvenation: five non-invasive, drug-free tools, plus the Foundational and Advanced 12-week curricula that pair lifestyle modules with home neurofeedback like Myndlift.",
   alternates: { canonical: "/how-it-works" },
   openGraph: {
     title: "How It Works | NeuroIntegrative Care of Los Gatos",
     description:
-      "Two 12-week curricula — Foundational and Advanced — built to support brain health and amplify neurofeedback results.",
+      "Neurometabolic Rejuvenation: five non-invasive, drug-free tools, plus the Foundational and Advanced 12-week support curricula.",
     url: "/how-it-works",
     type: "article",
   },
@@ -35,7 +36,7 @@ const schema = {
   "@type": "MedicalWebPage",
   name: "How It Works | NeuroIntegrative Care of Los Gatos",
   description:
-    "The Foundational and Advanced Neurological Support Curricula: 24 weekly modules covering environmental, metabolic, and lifestyle drivers of brain health.",
+    "Neurometabolic Rejuvenation: the brain and metabolism as one system, investigated with objective testing and rebuilt with five non-invasive, drug-free tools, plus the Foundational and Advanced 12-week neurological support curricula.",
   url: PAGE_URL,
   inLanguage: "en-US",
   isPartOf: {
@@ -45,6 +46,23 @@ const schema = {
   },
   specialty: { "@type": "MedicalSpecialty", name: "Neurology" },
   audience: { "@type": "MedicalAudience", audienceType: "Patient" },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: tools.map((tool, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "MedicalProcedure",
+        name: tool.name,
+        url: `${SITE_URL}/tools/${tool.slug}`,
+        description: tool.description,
+        procedureType: {
+          "@type": "MedicalProcedureType",
+          name: "TherapeuticProcedure",
+        },
+      },
+    })),
+  },
 };
 
 function ModuleAccordion({
@@ -170,6 +188,140 @@ export default function HowItWorksPage() {
       <section className="relative overflow-hidden bg-ink py-28 text-paper lg:py-36">
         <div
           aria-hidden="true"
+          className="pointer-events-none absolute -right-[10%] -top-[20%] h-[70vh] w-[70vh] rounded-full opacity-40"
+          style={{
+            background:
+              "radial-gradient(closest-side, rgba(248,180,43,0.28), rgba(11,18,32,0) 70%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-5xl px-6 lg:px-10">
+          <Reveal
+            as="p"
+            delay={50}
+            offset={12}
+            className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b"
+          >
+            Our Approach
+          </Reveal>
+          <Reveal as="span" delay={180} offset={28} className="mt-6 block">
+            <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-paper sm:text-5xl lg:text-6xl">
+              Neurometabolic Rejuvenation.
+            </h1>
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={380}
+            offset={16}
+            className="mt-8 max-w-3xl font-serif text-[1.35rem] leading-[1.4] text-paper/80 sm:text-[1.55rem] lg:text-[1.75rem]"
+          >
+            The brain and metabolism as one system, investigated with
+            objective testing, rebuilt with non-invasive, drug-free technology.
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 3.1 — Philosophy */}
+      <section className="bg-paper-2 py-24 lg:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+            <Reveal className="lg:col-span-3">
+              <div className="flex items-center gap-4">
+                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
+                  Our Philosophy
+                </h2>
+                <span
+                  aria-hidden="true"
+                  className="hidden h-px flex-1 bg-rule lg:block"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={120} offset={24} className="relative lg:col-span-9">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -left-3 -top-10 select-none font-serif text-[7rem] italic leading-none text-ink/[0.06] lg:-left-6 lg:-top-16 lg:text-[12rem]"
+              >
+                &ldquo;
+              </span>
+              <p className="relative font-serif text-[1.5rem] leading-[1.4] text-ink sm:text-[1.75rem] lg:text-[2.05rem]">
+                Every neurological symptom, brain fog, imbalance, fatigue,
+                slow concussion recovery, an autoimmune flare, an
+                &ldquo;idiopathic&rdquo; diagnosis, has a{" "}
+                <span className="text-amber">metabolic engine</span> underneath
+                it. Neurons are the most energy-hungry cells in the body, so
+                when energy production, inflammation, detox, blood sugar, or
+                hormones break down, the brain and nervous system are the first
+                to show it. We treat the brain and the metabolism as{" "}
+                <span className="italic text-amber">one system</span>, and we
+                use advanced, non-invasive technology, not medication, to
+                find where that system broke down and to retrain, repair, and
+                rebuild it.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* 3.2 — Five tools hub */}
+      <section id="tools" className="bg-paper py-24 lg:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <Reveal className="max-w-3xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              The Investigation Toolkit
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              Five tools. Non-invasive. Drug-free.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+              Advanced technology used together, matched to what the workup
+              actually surfaces, so structural repair and nervous-system
+              retraining progress at the same time.
+            </p>
+          </Reveal>
+
+          <ul className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+            {tools.map((tool, i) => (
+              <Reveal
+                key={tool.slug}
+                as="li"
+                delay={140 + i * 90}
+                offset={24}
+                className="h-full"
+              >
+                <Link
+                  href={`/tools/${tool.slug}`}
+                  className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-rule/60 bg-paper-2 p-7 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-ink/20 hover:bg-white hover:shadow-[0_30px_60px_-40px_rgba(11,18,32,0.4)]"
+                >
+                  <div>
+                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
+                      {String(i + 1).padStart(2, "0")} · {tool.kicker}
+                    </p>
+                    <h3 className="mt-4 font-serif text-xl leading-tight text-ink lg:text-[1.4rem]">
+                      {tool.name}
+                    </h3>
+                    <p className="mt-3 text-[14px] leading-relaxed text-muted">
+                      {tool.description}
+                    </p>
+                  </div>
+                  <span className="mt-8 inline-flex items-center gap-2 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted transition-colors group-hover:text-ink">
+                    Explore
+                    <span
+                      aria-hidden="true"
+                      className="transition-transform group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* How It Works — section intro (formerly its own page hero) */}
+      <section id="how-it-works" className="relative overflow-hidden bg-ink py-24 text-paper lg:py-32">
+        <div
+          aria-hidden="true"
           className="pointer-events-none absolute -left-[10%] -top-[20%] h-[70vh] w-[70vh] rounded-full opacity-40"
           style={{
             background:
@@ -186,9 +338,9 @@ export default function HowItWorksPage() {
             How It Works
           </Reveal>
           <Reveal as="span" delay={180} offset={28} className="mt-6 block">
-            <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-paper sm:text-5xl lg:text-6xl">
+            <h2 className="font-serif text-4xl leading-[1.05] tracking-tight text-paper sm:text-5xl lg:text-6xl">
               Two 12-week curricula, built to change how your brain works.
-            </h1>
+            </h2>
           </Reveal>
           <Reveal
             as="p"
@@ -293,7 +445,7 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Final CTA */}
       <section className="relative overflow-hidden bg-ink py-24 text-paper lg:py-28">
         <div
           aria-hidden="true"

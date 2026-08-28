@@ -14,6 +14,7 @@ export interface EntryProgram {
   fullCopy?: string;
   duration?: string;
   whatItIncludes?: string[];
+  includedItems?: { title: string; description: string }[];
 }
 
 export interface OutOfTownServiceItem {
@@ -40,6 +41,28 @@ export const programs: Programs = {
         "Consultation, history, and clinical impression. The starting point for everyone.",
       fullCopy:
         "Everything starts with an investigation, a full consultation where Dr. Santucci reviews your complex history, isolates likely causes, and gives you a clinical impression that finally makes sense. Not a sales call. The beginning of an actual answer.",
+      includedItems: [
+        {
+          title: "Two Industry-Leading Cognitive Assessments",
+          description:
+            "Trusted by top neurology clinics and research institutions, we evaluate key aspects of your cognitive health, like memory, attention, processing speed, and executive function.",
+        },
+        {
+          title: "30-Minute 1-on-1 Phone Consultation",
+          description:
+            "You'll meet via phone with a provider who walks you through your results, what they mean, and next steps tailored to you.",
+        },
+        {
+          title: "Personalized Brain Health Insights",
+          description:
+            "Get clear answers about where your brain stands today and whether early signs of decline are present, even before they show up in everyday life.",
+        },
+        {
+          title: "Educational Handout + Brain Health EBook",
+          description:
+            "A take-home handout and eBook of evidence-based strategies to protect and improve your cognitive function, plus an email series to help put them into action and ongoing access to the MyndLift app for continued guidance.",
+        },
+      ],
     },
     {
       slug: "virtual-program",
@@ -65,7 +88,7 @@ export const programs: Programs = {
       description:
         "Programs are tailored after your investigation, based on what your workup requires.",
       internalNote:
-        "Internal only — DO NOT RENDER. Consult-based, typically $3,500–$7,200 per program (neurofeedback $3,500, stem-cell/regenerative $7,000). Priced after the investigation.",
+        "Internal only — DO NOT RENDER. Consult-based, typically $3,500–$7,200 per program (neurofeedback $3,500, regenerative $7,000). Priced after the investigation.",
     },
   ],
   outOfTownServices: {

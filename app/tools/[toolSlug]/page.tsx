@@ -115,8 +115,8 @@ export default async function ToolPage({ params }: PageProps) {
             offset={8}
             className="mb-8 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-paper/70"
           >
-            <Link href="/approach" className="transition-colors hover:text-amber-b">
-              Our Approach
+            <Link href="/how-it-works" className="transition-colors hover:text-amber-b">
+              How It Works
             </Link>
             <span aria-hidden="true" className="mx-3 text-paper/30">
               /

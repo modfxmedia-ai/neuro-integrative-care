@@ -57,7 +57,7 @@ export default function Home2DoctorTeaser() {
             </dl>
 
             <Link
-              href="/about"
+              href="/about/dr-thomas-santucci"
               className="mt-8 inline-flex items-center gap-1.5 font-sans text-xs font-semibold uppercase tracking-wide text-ink transition-colors hover:text-amber-b"
             >
               Meet the doctor

@@ -4,6 +4,7 @@ import { conditions } from "@/content/conditions";
 import { conditionArticles } from "@/content/conditionArticles";
 import { tools } from "@/content/tools";
 import { cityLocations } from "@/content/locations";
+import { blogPosts } from "@/content/blog";
 import Reveal from "@/components/Reveal";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
@@ -35,8 +36,9 @@ interface LinkGroup {
 
 const MAIN_PAGES: LinkItem[] = [
   { label: "Home", href: "/" },
-  { label: "About Dr. Santucci", href: "/about" },
-  { label: "Our Approach", href: "/approach" },
+  { label: "About", href: "/about" },
+  { label: "About Dr. Thomas Santucci", href: "/about/dr-thomas-santucci" },
+  { label: "Blog", href: "/blog" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Conditions", href: "/conditions" },
   { label: "Programs", href: "/programs" },
@@ -78,6 +80,11 @@ const LOCATION_ITEMS: LinkItem[] = cityLocations.map((city) => ({
   href: `/locations/${city.slug}`,
 }));
 
+const BLOG_ITEMS: LinkItem[] = blogPosts.map((post) => ({
+  label: post.title,
+  href: `/blog/${post.slug}`,
+}));
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -88,6 +95,7 @@ const schema = {
     ...CONDITION_GROUPS.flatMap((group) => group.items),
     ...TOOL_ITEMS,
     ...LOCATION_ITEMS,
+    ...BLOG_ITEMS,
   ].map((item, i) => ({
     "@type": "ListItem",
     position: i + 1,
@@ -242,6 +250,22 @@ export default function SitemapPage() {
                 <LinkList items={LOCATION_ITEMS} />
               </Reveal>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog posts */}
+      <section className="bg-paper-2 py-24 lg:py-28">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+            <Reveal className="lg:col-span-4">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+                Blog Posts
+              </p>
+            </Reveal>
+            <Reveal delay={100} offset={20} className="lg:col-span-8">
+              <LinkList items={BLOG_ITEMS} />
+            </Reveal>
           </div>
         </div>
       </section>

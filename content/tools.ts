@@ -71,7 +71,7 @@ export const tools: Tool[] = [
     name: "Regenerative Solutions",
     kicker: "Non-Surgical Repair",
     description:
-      "Advanced, non-surgical therapies — including umbilical-cord stem cells, PRP, and exosome-supported approaches — that stimulate the body's own repair in joints, connective tissue, and peripheral nerves. Frequently paired with neurofeedback and functional-neurology work so structural repair and nervous-system retraining progress together.",
+      "Advanced, non-surgical therapies — including PRP and exosome-supported approaches — that stimulate the body's own repair in joints, connective tissue, and peripheral nerves. Frequently paired with neurofeedback and functional-neurology work so structural repair and nervous-system retraining progress together.",
     sectorSlugs: ["concussion-post-trauma", "longevity-science"],
     // TODO(client): no media asset supplied for this tool yet — placeholder
     // slot only. Swap for real clinic/procedure media before launch.

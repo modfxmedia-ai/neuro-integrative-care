@@ -191,6 +191,31 @@ export default function ProgramsPage() {
                         Duration · {program.duration}
                       </p>
                     )}
+                    {program.includedItems && (
+                      <div className="mt-6">
+                        <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber">
+                          What&apos;s Included
+                        </p>
+                        <ul className="mt-4 space-y-4">
+                          {program.includedItems.map((item) => (
+                            <li key={item.title} className="flex gap-3">
+                              <span
+                                aria-hidden="true"
+                                className="mt-1.5 h-[3px] w-3 shrink-0 rounded-full bg-amber"
+                              />
+                              <span className="text-[14px] leading-relaxed">
+                                <span className="font-medium text-ink">
+                                  {item.title}
+                                </span>{" "}
+                                <span className="text-muted">
+                                  {item.description}
+                                </span>
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                   <div className="mt-8 border-t border-rule pt-6">
                     <Link

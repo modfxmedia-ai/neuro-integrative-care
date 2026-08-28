@@ -91,7 +91,7 @@ export default function DoctorTeaser() {
             </motion.dl>
 
             <Link
-              href="/about"
+              href="/about/dr-thomas-santucci"
               className="group mt-10 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-ink transition-colors hover:text-amber"
             >
               Meet the doctor

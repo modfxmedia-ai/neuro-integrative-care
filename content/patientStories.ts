@@ -75,8 +75,8 @@ const patientStoryInputs: PatientStoryInput[] = [
     patientName: "Janice",
     headline:
       "A reported 40% improvement, and her whole family trained alongside her.",
-    body: "A caretaker holding a family together, carrying spondylolisthesis, hormone imbalance, and years of stress. Stem-cell work, PEMF, Trigenics, and home neurofeedback produced gains she measured at roughly 40%.",
-    measuredStat: "A reported 40% improvement (neurofeedback + stem cell + Trigenics)",
+    body: "A caretaker holding a family together, carrying spondylolisthesis, hormone imbalance, and years of stress. PEMF, Trigenics, and home neurofeedback produced gains she measured at roughly 40%.",
+    measuredStat: "A reported 40% improvement (neurofeedback + Trigenics)",
     physicalStats: {
       shoulder: "30% range-of-motion restriction, improved with Trigenics",
     },
@@ -87,7 +87,7 @@ const patientStoryInputs: PatientStoryInput[] = [
     anonymizedName: "70-Year-Old Male",
     sector: "idiopathic-unexplained",
     headline: "Burning mouth syndrome, diminished, and life markedly better.",
-    body: "Came in with burning mouth syndrome, a neurovascular pain few clinics can place. Cervical stem-cell work aimed at the vagus and cranial nerves, plus brain mapping, neurofeedback, laser, and Trigenics. Two years on, the symptom is diminished and his focus and ability to handle life's complexity are markedly better.",
+    body: "Came in with burning mouth syndrome, a neurovascular pain few clinics can place. Brain mapping, neurofeedback, laser, and Trigenics targeted the vagus and cranial nerves. Two years on, the symptom is diminished and his focus and ability to handle life's complexity are markedly better.",
   },
   {
     slug: "beakram",

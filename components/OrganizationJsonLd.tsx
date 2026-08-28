@@ -37,7 +37,7 @@ const organizationSchema = {
   founder: {
     "@type": "Person",
     name: "Dr. Thomas Santucci",
-    url: `${SITE_URL}/about`,
+    url: `${SITE_URL}/about/dr-thomas-santucci`,
   },
   foundingDate: "1996",
   contactPoint: {

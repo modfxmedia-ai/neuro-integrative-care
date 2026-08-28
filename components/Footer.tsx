@@ -6,11 +6,13 @@ import Reveal from "./Reveal";
 
 const QUICK_LINKS = [
   { label: "Conditions", href: "/conditions" },
-  { label: "How We Work", href: "/approach" },
+  { label: "How It Works", href: "/how-it-works" },
   { label: "Programs", href: "/programs" },
   { label: "Virtual Program", href: "/programs/virtual" },
   { label: "Patient Stories", href: "/results" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
+  { label: "About Dr. Thomas Santucci", href: "/about/dr-thomas-santucci" },
   { label: "Start Here", href: "/start" },
   { label: "Regenerative Services", href: "/out-of-town" },
   { label: "Sitemap", href: "/sitemap" },
@@ -89,9 +91,9 @@ export default function Footer() {
             <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
               Explore
             </p>
-            <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3">
+            <ul className="mt-6 columns-2 gap-x-6">
               {QUICK_LINKS.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="mb-3 break-inside-avoid">
                   <Link
                     href={link.href}
                     className="text-sm text-paper/85 transition-colors hover:text-amber-b"

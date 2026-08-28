@@ -15,13 +15,11 @@ import { conditions } from "@/content/conditions";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   { label: "Conditions", href: "/conditions" },
-  { label: "How We Work", href: "/approach" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Programs", href: "/programs" },
   { label: "Virtual Program", href: "/programs/virtual" },
-  { label: "Patient Stories", href: "/results" },
-  { label: "About", href: "/about" },
 ] as const;
 
 const BOOK_HREF = "/start";
@@ -32,12 +30,11 @@ export default function Nav() {
   const hamburgerRef = useRef<HTMLButtonElement | null>(null);
   const drawerRef = useRef<HTMLElement | null>(null);
 
-  // Home 2's hero is light, not the dark video used elsewhere — the header
-  // can't fade in from transparent there (white nav text disappears against
-  // a white background), so it stays permanently in its "scrolled" solid state.
-  // The Conditions hub page has the same issue: it opens directly with
-  // SixDoorsGrid's light (bg-paper) section, no dark hero above it.
-  const isLightHero = pathname === "/home2" || pathname === "/conditions";
+  // The Conditions hub page's hero is light, not the dark video used
+  // elsewhere — the header can't fade in from transparent there (white nav
+  // text disappears against a white background), so it stays permanently in
+  // its "scrolled" solid state.
+  const isLightHero = pathname === "/conditions";
 
   const { scrollY } = useScroll();
   const backgroundColor = useTransform(
@@ -164,12 +161,9 @@ export default function Nav() {
           <ul className="hidden lg:flex items-center gap-0 xl:gap-1">
             {NAV_ITEMS.map((item) => {
               const active = isActive(item.href);
-              if (item.label === "Home") {
+              if (item.label === "About") {
                 return (
-                  <HomeNavItem
-                    key={item.href}
-                    active={pathname === "/" || pathname === "/home2"}
-                  />
+                  <AboutNavItem key={item.href} href={item.href} active={active} />
                 );
               }
               if (item.label === "Conditions") {
@@ -257,11 +251,12 @@ export default function Nav() {
               <ul className="flex flex-col">
                 {NAV_ITEMS.map((item, i) => {
                   const active = isActive(item.href);
-                  if (item.label === "Home") {
+                  if (item.label === "About") {
                     return (
-                      <HomeAccordionItem
+                      <AboutAccordionItem
                         key={item.href}
-                        active={pathname === "/" || pathname === "/home2"}
+                        href={item.href}
+                        active={active}
                         index={i}
                         onNavigate={() => setMobileOpen(false)}
                       />
@@ -575,17 +570,26 @@ function ConditionsAccordionItem({
   );
 }
 
-const HOME_VARIANTS = [
-  { label: "Home 1", href: "/", description: "The live homepage" },
-  { label: "Home 2", href: "/home2", description: "Clean design variant" },
+const ABOUT_LINKS = [
+  {
+    label: "About Dr. Thomas Santucci",
+    href: "/about/dr-thomas-santucci",
+    description: "Meet the doctor & credentials",
+  },
+  {
+    label: "Blog",
+    href: "/blog",
+    description: "Articles on joint pain & nerve health",
+  },
 ] as const;
 
-interface HomeNavItemProps {
+interface AboutNavItemProps {
+  href: string;
   active: boolean;
 }
 
-// Desktop dropdown listing both homepage variants, mirrors ConditionsNavItem.
-function HomeNavItem({ active }: HomeNavItemProps) {
+// Desktop dropdown listing the About sub-pages, mirrors ConditionsNavItem.
+function AboutNavItem({ href, active }: AboutNavItemProps) {
   const [hoverOpen, setHoverOpen] = useState(false);
   const [clickOpen, setClickOpen] = useState(false);
   const open = hoverOpen || clickOpen;
@@ -641,13 +645,13 @@ function HomeNavItem({ active }: HomeNavItemProps) {
     >
       <span className="relative inline-flex items-center">
         <Link
-          href="/"
+          href={href}
           aria-current={active ? "page" : undefined}
           className={`relative inline-block whitespace-nowrap py-2 pl-2 pr-1 text-[13px] transition-colors xl:pl-3 xl:text-sm ${
             active ? "text-paper" : "text-paper/75 hover:text-paper"
           }`}
         >
-          Home
+          About
           {active && (
             <motion.span
               layoutId="nav-active-underline"
@@ -659,8 +663,8 @@ function HomeNavItem({ active }: HomeNavItemProps) {
         <button
           type="button"
           aria-expanded={open}
-          aria-controls="home-nav-panel"
-          aria-label="Toggle homepage variants menu"
+          aria-controls="about-nav-panel"
+          aria-label="Toggle about menu"
           onClick={() => setClickOpen((v) => !v)}
           className={`flex items-center px-1 py-2 pr-2 transition-colors xl:pr-3 ${
             active ? "text-paper" : "text-paper/75 hover:text-paper"
@@ -677,7 +681,7 @@ function HomeNavItem({ active }: HomeNavItemProps) {
       <AnimatePresence>
         {open && (
           <motion.div
-            id="home-nav-panel"
+            id="about-nav-panel"
             role="menu"
             initial={{ opacity: 0, y: -6, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -686,18 +690,18 @@ function HomeNavItem({ active }: HomeNavItemProps) {
             className="absolute left-0 top-full z-10 mt-2 w-[14rem] rounded-2xl border border-rule bg-paper p-3 shadow-[0_24px_60px_-24px_rgba(11,18,32,0.35)]"
           >
             <ul>
-              {HOME_VARIANTS.map((variant) => (
-                <li key={variant.href}>
+              {ABOUT_LINKS.map((link) => (
+                <li key={link.href}>
                   <Link
-                    href={variant.href}
+                    href={link.href}
                     role="menuitem"
                     className="block rounded-lg px-3 py-2 transition-colors hover:bg-amber-soft/50"
                   >
                     <span className="block font-serif text-[15px] text-ink">
-                      {variant.label}
+                      {link.label}
                     </span>
                     <span className="block text-[12px] text-muted">
-                      {variant.description}
+                      {link.description}
                     </span>
                   </Link>
                 </li>
@@ -710,14 +714,15 @@ function HomeNavItem({ active }: HomeNavItemProps) {
   );
 }
 
-interface HomeAccordionItemProps {
+interface AboutAccordionItemProps {
+  href: string;
   active: boolean;
   index: number;
   onNavigate: () => void;
 }
 
-// Mobile drawer accordion counterpart to HomeNavItem.
-function HomeAccordionItem({ active, index, onNavigate }: HomeAccordionItemProps) {
+// Mobile drawer accordion counterpart to AboutNavItem.
+function AboutAccordionItem({ href, active, index, onNavigate }: AboutAccordionItemProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -733,20 +738,20 @@ function HomeAccordionItem({ active, index, onNavigate }: HomeAccordionItemProps
     >
       <div className="flex items-center justify-between py-4">
         <Link
-          href="/"
+          href={href}
           aria-current={active ? "page" : undefined}
           onClick={onNavigate}
           className={`font-serif text-2xl transition-colors ${
             active ? "text-amber-b" : "text-paper hover:text-amber-b"
           }`}
         >
-          Home
+          About
         </Link>
         <button
           type="button"
           aria-expanded={expanded}
-          aria-controls="home-accordion-panel"
-          aria-label={expanded ? "Collapse homepage variants" : "Expand homepage variants"}
+          aria-controls="about-accordion-panel"
+          aria-label={expanded ? "Collapse about menu" : "Expand about menu"}
           onClick={() => setExpanded((v) => !v)}
           className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-paper/25 text-paper transition-colors hover:bg-paper/10"
         >
@@ -761,7 +766,7 @@ function HomeAccordionItem({ active, index, onNavigate }: HomeAccordionItemProps
       <AnimatePresence initial={false}>
         {expanded && (
           <motion.div
-            id="home-accordion-panel"
+            id="about-accordion-panel"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -769,14 +774,14 @@ function HomeAccordionItem({ active, index, onNavigate }: HomeAccordionItemProps
             className="overflow-hidden"
           >
             <ul className="pb-4">
-              {HOME_VARIANTS.map((variant) => (
-                <li key={variant.href} className="py-1">
+              {ABOUT_LINKS.map((link) => (
+                <li key={link.href} className="py-1">
                   <Link
-                    href={variant.href}
+                    href={link.href}
                     onClick={onNavigate}
                     className="block py-1.5 font-serif text-lg text-paper/90 transition-colors hover:text-amber-b"
                   >
-                    {variant.label}
+                    {link.label}
                   </Link>
                 </li>
               ))}

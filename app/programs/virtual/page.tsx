@@ -238,17 +238,17 @@ export default function VirtualProgramPage() {
             </h2>
           </Reveal>
           <Reveal delay={120} offset={24} className="mt-10">
-            {/* THIRD-PARTY MEDIA — embedded via YouTube, not re-hosted. */}
-            {/* Confirm Myndlift has given written permission to use on this site before launch. */}
             <div className="aspect-video w-full overflow-hidden rounded-2xl border border-paper/10">
-              <iframe
-                src="https://www.youtube.com/embed/0hhbZHg0an0"
-                title="Remote Neurofeedback — Myndlift"
+              <video
+                src="/videos/myndlift-remote-neurofeedback.mp4"
+                poster="/images/video/myndlift-remote-neurofeedback-thumbnail.png"
+                controls
+                playsInline
+                preload="metadata"
                 className="h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-              />
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </Reveal>
         </div>

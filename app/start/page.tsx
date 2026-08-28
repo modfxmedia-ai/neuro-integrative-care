@@ -12,8 +12,12 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { Phone } from "lucide-react";
 import Reveal from "@/components/Reveal";
+
+// Live intake form (GoHighLevel/LeadConnector embed) provided by the client.
+const LEAD_FORM_ID = "USqbUJSbAufJeRRap7Z9";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/start`;
@@ -124,57 +128,53 @@ export default function StartPage() {
               </span>
             </h1>
           </Reveal>
-          <Reveal delay={480} className="mt-12 flex flex-wrap justify-center gap-3">
-            <Link
-              href={BOOKING_PLACEHOLDER_HREF}
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-8 py-4 text-base font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
-            >
-              Book my New-Patient Investigation
-            </Link>
-            <a
-              href={PHONE_HREF}
-              className="inline-flex items-center gap-2 rounded-full border border-paper/25 px-6 py-4 text-base text-paper/85 transition-colors hover:border-amber-b hover:text-amber-b"
-            >
-              <Phone size={16} aria-hidden="true" />
-              {PHONE_DISPLAY}
-            </a>
-          </Reveal>
-          <Reveal
-            as="p"
-            delay={640}
-            offset={8}
-            className="mt-6 font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-paper/70"
-          >
-            Booking system TBD · Email or call to reserve
-          </Reveal>
         </div>
       </section>
 
       {/* What you get from your investigation */}
       <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-            <Reveal className="lg:col-span-4">
-              <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
-                  What You Get From Your Investigation
-                </h2>
-              </div>
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 lg:items-start">
+            <Reveal>
+              <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
+                What You Get From Your Investigation
+              </h2>
               <p className="mt-8 font-serif text-[2rem] leading-tight text-ink lg:text-[2.5rem]">
                 A full consultation with Dr. Santucci.
               </p>
-              <p className="mt-6 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
-                Not a sales call
-              </p>
-            </Reveal>
-            <Reveal delay={120} offset={24} className="lg:col-span-8">
-              <p className="text-lg leading-relaxed text-ink">
+              <p className="mt-6 text-lg leading-relaxed text-ink">
                 A full consultation with Dr. Santucci. He reviews your complete
                 history, takes your own account seriously as real evidence,
                 isolates the likely causes, and gives you a clinical impression
                 that finally fits. You leave understanding what&apos;s actually
                 being investigated and why.
               </p>
+              <p className="mt-6 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
+                Not a sales call
+              </p>
+            </Reveal>
+            <Reveal delay={120} offset={24}>
+              <div className="rounded-2xl border border-rule/70 bg-paper-2 p-4 shadow-[0_2px_18px_-14px_rgba(11,18,32,0.25)] sm:p-6">
+                <iframe
+                  src={`https://api.leadconnectorhq.com/widget/form/${LEAD_FORM_ID}`}
+                  style={{ width: "100%", height: "839px", border: "none", borderRadius: "8px" }}
+                  id={`inline-${LEAD_FORM_ID}`}
+                  data-layout="{'id':'INLINE'}"
+                  data-trigger-type="alwaysShow"
+                  data-trigger-value=""
+                  data-activation-type="alwaysActivated"
+                  data-activation-value=""
+                  data-deactivation-type="neverDeactivate"
+                  data-deactivation-value=""
+                  data-form-name="Form 0"
+                  data-height="839"
+                  data-layout-iframe-id={`inline-${LEAD_FORM_ID}`}
+                  data-form-id={LEAD_FORM_ID}
+                  data-cookie-consent="true"
+                  data-cookie-consent-provider="auto"
+                  title="New-Patient Investigation intake form"
+                />
+              </div>
             </Reveal>
           </div>
         </div>
@@ -272,64 +272,38 @@ export default function StartPage() {
               Book your investigation.
             </h2>
             <p className="mt-6 max-w-2xl mx-auto text-lg leading-relaxed text-muted">
-              Two ways to reserve while the online booking system is being set
-              up:
+              Fill out the form above, or reach us directly.
             </p>
           </Reveal>
 
-          <Reveal delay={140} className="mt-10">
-            <div className="grid gap-4 sm:grid-cols-2">
-              {/* TODO: replace the mailto with the real booking widget once selected. */}
-              <Link
-                href={BOOKING_PLACEHOLDER_HREF}
-                className="group flex flex-col items-center justify-center rounded-2xl border border-amber/40 bg-gradient-to-br from-amber-soft/60 to-amber-soft/20 p-8 transition-all hover:border-amber/70 hover:shadow-[0_20px_60px_-30px_rgba(232,160,32,0.4)]"
+          <Reveal delay={140} className="mt-10 flex justify-center">
+            <a
+              href={PHONE_HREF}
+              className="group flex w-full max-w-sm flex-col items-center justify-center rounded-2xl border border-rule/70 bg-paper p-8 transition-all hover:border-ink/30 hover:shadow-[0_20px_60px_-30px_rgba(11,18,32,0.3)]"
+            >
+              <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
+                Or Call
+              </p>
+              <p className="mt-4 font-serif text-[1.35rem] leading-tight text-ink">
+                {PHONE_DISPLAY}
+              </p>
+              <p className="mt-3 font-mono font-medium text-[13px] uppercase tracking-[0.16em] text-muted">
+                Tue &amp; Thu, 9:30–3:00
+              </p>
+              <span
+                aria-hidden="true"
+                className="mt-6 text-muted transition-transform group-hover:translate-x-1 group-hover:text-ink"
               >
-                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
-                  Email to Reserve
-                </p>
-                <p className="mt-4 font-serif text-[1.35rem] leading-tight text-ink">
-                  Book my New-Patient Investigation
-                </p>
-                <span
-                  aria-hidden="true"
-                  className="mt-6 text-muted transition-transform group-hover:translate-x-1 group-hover:text-amber"
-                >
-                  →
-                </span>
-              </Link>
-              <a
-                href={PHONE_HREF}
-                className="group flex flex-col items-center justify-center rounded-2xl border border-rule/70 bg-paper p-8 transition-all hover:border-ink/30 hover:shadow-[0_20px_60px_-30px_rgba(11,18,32,0.3)]"
-              >
-                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
-                  Or Call
-                </p>
-                <p className="mt-4 font-serif text-[1.35rem] leading-tight text-ink">
-                  {PHONE_DISPLAY}
-                </p>
-                <p className="mt-3 font-mono font-medium text-[13px] uppercase tracking-[0.16em] text-muted">
-                  Tue &amp; Thu, 9:30–3:00
-                </p>
-                <span
-                  aria-hidden="true"
-                  className="mt-6 text-muted transition-transform group-hover:translate-x-1 group-hover:text-ink"
-                >
-                  →
-                </span>
-              </a>
-            </div>
-          </Reveal>
-
-          <Reveal
-            as="p"
-            delay={280}
-            offset={8}
-            className="mt-10 font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-muted"
-          >
-            Online booking system pending, check back soon
+                →
+              </span>
+            </a>
           </Reveal>
         </div>
       </section>
+      <Script
+        src="https://link.msgsndr.com/js/form_embed.js"
+        strategy="afterInteractive"
+      />
     </>
   );
 }

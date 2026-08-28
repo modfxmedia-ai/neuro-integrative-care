@@ -3,6 +3,7 @@ import { conditions } from "@/content/conditions";
 import { tools } from "@/content/tools";
 import { conditionArticles } from "@/content/conditionArticles";
 import { cityLocations } from "@/content/locations";
+import { blogPosts } from "@/content/blog";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 
@@ -11,15 +12,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
     { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/about/dr-thomas-santucci`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/conditions`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/approach`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${SITE_URL}/how-it-works`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/how-it-works`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${SITE_URL}/programs`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${SITE_URL}/programs/virtual`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${SITE_URL}/out-of-town`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/locations`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${SITE_URL}/results`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/start`, lastModified: now, changeFrequency: "monthly", priority: 0.95 },
+    { url: `${SITE_URL}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE_URL}/sitemap`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
   ];
 
@@ -73,6 +75,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.75,
+    });
+  });
+
+  blogPosts.forEach((post) => {
+    entries.push({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: post.date ? new Date(post.date) : now,
+      changeFrequency: "monthly",
+      priority: 0.65,
     });
   });
 
