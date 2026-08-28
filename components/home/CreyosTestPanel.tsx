@@ -127,7 +127,7 @@ function AutoRegistrationTest() {
 
         <div>
           <label htmlFor="userCode" className="block text-sm font-medium text-ink">
-            Patient ID (optional — auto-generated if blank)
+            Patient ID (optional, auto-generated if blank)
           </label>
           <input
             id="userCode"
@@ -334,7 +334,7 @@ export default function CreyosTestPanel() {
       <div className="mx-auto max-w-2xl px-6">
         <div className="text-center">
           <p className="font-mono text-xs uppercase tracking-[0.14em] text-amber-b">
-            Temporary — Creyos Integration Test
+            Temporary: Creyos Integration Test
           </p>
           <h2 className="mt-2 font-sans text-2xl font-semibold text-ink">
             Test Creyos Integration

@@ -35,7 +35,7 @@ export const tools: Tool[] = [
     name: "Violet Laser Therapy",
     kicker: "Photobiomodulation",
     description:
-      "Photobiomodulation — specific wavelengths absorbed by mitochondria to boost ATP and reduce inflammation at the source. Used to accelerate nerve and tissue repair and, applied transcranially, to support brain regions affected by injury or decline. Non-invasive, painless, drug-free.",
+      "Photobiomodulation: specific wavelengths absorbed by mitochondria to boost ATP and reduce inflammation at the source. Used to accelerate nerve and tissue repair and, applied transcranially, to support brain regions affected by injury or decline. Non-invasive, painless, drug-free.",
     sectorSlugs: [
       "concussion-post-trauma",
       "brain-brightening",
@@ -46,7 +46,7 @@ export const tools: Tool[] = [
     media: {
       kind: "vimeo",
       vimeoId: "802831140",
-      title: "Electron Transport Chain — Erchonia",
+      title: "Electron Transport Chain (Erchonia)",
     },
   },
   {
@@ -54,7 +54,7 @@ export const tools: Tool[] = [
     name: "Neurofeedback",
     kicker: "qEEG-Guided Training",
     description:
-      "Real-time, qEEG-guided EEG training that shows the brain its own activity and rewards healthier patterns. Over a course of sessions the brain learns to self-regulate — attention, sleep, emotional regulation, stress resilience — with no medication. Every protocol is individualized to the patient's brain map, then re-mapped to measure change. Home and remote options available (Myndlift).",
+      "Real-time, qEEG-guided EEG training that shows the brain its own activity and rewards healthier patterns. Over a course of sessions the brain learns to self-regulate (attention, sleep, emotional regulation, stress resilience) with no medication. Every protocol is individualized to the patient's brain map, then re-mapped to measure change. Home and remote options available (Myndlift).",
     sectorSlugs: [
       "brain-brightening",
       "concussion-post-trauma",
@@ -71,7 +71,7 @@ export const tools: Tool[] = [
     name: "Regenerative Solutions",
     kicker: "Non-Surgical Repair",
     description:
-      "Advanced, non-surgical therapies — including PRP and exosome-supported approaches — that stimulate the body's own repair in joints, connective tissue, and peripheral nerves. Frequently paired with neurofeedback and functional-neurology work so structural repair and nervous-system retraining progress together.",
+      "Advanced, non-surgical therapies (including PRP and exosome-supported approaches) that stimulate the body's own repair in joints, connective tissue, and peripheral nerves. Frequently paired with neurofeedback and functional-neurology work so structural repair and nervous-system retraining progress together.",
     sectorSlugs: ["concussion-post-trauma", "longevity-science"],
     // TODO(client): no media asset supplied for this tool yet — placeholder
     // slot only. Swap for real clinic/procedure media before launch.
@@ -82,7 +82,7 @@ export const tools: Tool[] = [
     name: "Functional Neurology",
     kicker: "Circuit-Level Rehab",
     description:
-      "Computerized assessment — eye-movement tracking, posturography and balance, reaction-time and heart-rate-variability testing — pinpoints which neural circuits underperform, followed by targeted hands-on rehab that retrains those exact pathways.",
+      "Computerized assessment (eye-movement tracking, posturography and balance, reaction-time and heart-rate-variability testing) pinpoints which neural circuits underperform, followed by targeted hands-on rehab that retrains those exact pathways.",
     sectorSlugs: ["concussion-post-trauma", "brain-brightening"],
     // TODO(client): no media asset supplied for this tool yet — placeholder
     // slot only. Swap for real clinic/procedure media before launch.
@@ -93,7 +93,7 @@ export const tools: Tool[] = [
     name: "Longevity Testing",
     kicker: "Beyond the Standard Physical",
     description:
-      "A panel far beyond a standard physical: Real Age (biological-age) testing, IntellxxDNA cognitive genomics, comprehensive DNA, neurotransmitter testing, and specialized labs — an objective, data-driven picture of how you're aging and functioning.",
+      "A panel far beyond a standard physical: Real Age (biological-age) testing, IntellxxDNA cognitive genomics, comprehensive DNA, neurotransmitter testing, and specialized labs, delivering an objective, data-driven picture of how you're aging and functioning.",
     sectorSlugs: ["longevity-science", "idiopathic-unexplained"],
     // TODO(client): no media asset supplied for this tool yet — placeholder
     // slot only. Swap for real clinic/procedure media before launch.
@@ -104,7 +104,7 @@ export const tools: Tool[] = [
     name: "Detoxification",
     kicker: "Removing the Trigger",
     description:
-      "Targeted support for the body's own detox pathways once a metals, mold, or environmental-toxin trigger is identified — clearing the load that's driving inflammation rather than only treating the downstream symptoms.",
+      "Targeted support for the body's own detox pathways once a metals, mold, or environmental-toxin trigger is identified, clearing the load that's driving inflammation rather than only treating the downstream symptoms.",
     sectorSlugs: ["autoimmune-investigation", "environmental-toxins"],
     // TODO(client): no media asset supplied for this tool yet — placeholder
     // slot only. Swap for real clinic/procedure media before launch.

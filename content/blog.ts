@@ -43,8 +43,8 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "Learn how PRP therapy in Los Gatos may support active adults seeking nonsurgical options for joint pain, mobility, function, and long-term wellness.",
     kicker: "Regenerative Medicine",
-    date: "2026-09-01",
-    displayDate: "September 1, 2026",
+    date: "2026-08-28",
+    displayDate: "August 28, 2026",
     heroImage:
       "/images/blog/how-prp-therapy-may-support-active-aching-joints.jpg",
     heroImageAlt:
@@ -179,8 +179,8 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "Discover how personalized neuropathy treatment in Los Gatos may help ease burning feet at night, improve sleep, and support daily comfort without surgery.",
     kicker: "Nerve Health",
-    date: "2026-08-25",
-    displayDate: "August 25, 2026",
+    date: "2026-08-21",
+    displayDate: "August 21, 2026",
     heroImage:
       "/images/blog/relief-options-for-burning-feet-and-nighttime-nerve-pain.webp",
     heroImageAlt: "Person resting comfortably at night after nerve pain relief",
@@ -326,8 +326,8 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "Explore how laser therapy in Los Gatos may support comfort, mobility, and active living when late-summer joint pain makes movement more difficult.",
     kicker: "Joint Health & Mobility",
-    date: "2026-08-18",
-    displayDate: "August 18, 2026",
+    date: "2026-08-14",
+    displayDate: "August 14, 2026",
     heroImage: "/images/blog/stay-active-with-laser-therapy-for-joint-pain.webp",
     heroImageAlt: "Active adult hiking outdoors despite joint discomfort",
     excerpt:

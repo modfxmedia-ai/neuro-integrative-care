@@ -29,7 +29,7 @@ export default function FinalCTA() {
           </h2>
         </Reveal>
 
-        <Reveal delay={220} className="mt-12 flex justify-center">
+        <Reveal delay={220} className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <motion.div
             animate={{
               boxShadow: [
@@ -45,17 +45,14 @@ export default function FinalCTA() {
           >
             <Link
               href="/start"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-8 py-4 text-base font-medium tracking-tight text-ink"
+              className="inline-flex w-[380px] max-w-full items-center justify-center rounded-full bg-gradient-to-r from-amber to-amber-b px-8 py-4 text-center text-base font-medium tracking-tight text-ink"
             >
               Book your New-Patient Investigation
             </Link>
           </motion.div>
-        </Reveal>
-
-        <Reveal delay={320} className="mt-6">
           <Link
             href="/brain-assessment"
-            className="text-sm text-paper/70 underline decoration-amber-b/50 decoration-1 underline-offset-4 transition-colors hover:text-amber-b hover:decoration-amber-b"
+            className="inline-flex w-[380px] max-w-full items-center justify-center rounded-full border border-paper/30 px-7 py-3.5 text-center text-sm font-medium tracking-tight text-paper transition-colors hover:border-paper/50 hover:bg-paper/10"
           >
             Not ready yet? Take the Free Brain Assessment
           </Link>

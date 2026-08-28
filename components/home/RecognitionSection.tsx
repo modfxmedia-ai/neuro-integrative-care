@@ -11,12 +11,12 @@ interface RecognitionCard {
 const CARDS: RecognitionCard[] = [
   {
     label: "The One Everyone Depends On",
-    body: "If you went down for a week, several other people's plans would fall apart — so you keep going, and your own health stays at the bottom of the list.",
+    body: "If you went down for a week, several other people's plans would fall apart, so you keep going, and your own health stays at the bottom of the list.",
     Icon: Users,
   },
   {
     label: 'Told Everything\u2019s "Normal"',
-    body: "Years of fatigue, fog, or gut trouble — and a folder of normal labs. You know something's wrong before any test confirms it.",
+    body: "Years of fatigue, fog, or gut trouble, and a folder of normal labs. You know something's wrong before any test confirms it.",
     Icon: ClipboardX,
   },
   {
@@ -45,7 +45,7 @@ export default function RecognitionSection() {
           </h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
             Most of our patients aren&apos;t looking for themselves when they
-            arrive — they&apos;re the ones everyone else depends on. See if
+            arrive; they&apos;re the ones everyone else depends on. See if
             this sounds familiar.
           </p>
         </Reveal>
@@ -92,20 +92,20 @@ export default function RecognitionSection() {
 
         <Reveal delay={560} offset={20} className="mt-16 text-center">
           <p className="mx-auto max-w-2xl font-serif text-[1.35rem] italic leading-relaxed text-ink lg:text-[1.55rem]">
-            Whichever one you are — you&apos;re not imagining it, and
+            Whichever one you are, you&apos;re not imagining it, and
             you&apos;re not the problem. You&apos;ve just never been fully
             investigated.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/start"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
+              className="inline-flex w-[300px] max-w-full items-center justify-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-center text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
               Book an Investigation
             </Link>
             <Link
               href="/brain-assessment"
-              className="text-sm font-medium text-ink underline decoration-amber/50 decoration-1 underline-offset-4 transition-colors hover:text-amber-b hover:decoration-amber-b"
+              className="inline-flex w-[300px] max-w-full items-center justify-center rounded-full border border-ink/20 px-7 py-3.5 text-center text-sm font-medium tracking-tight text-ink transition-colors hover:border-ink/40 hover:bg-ink/5"
             >
               Or take the Free Brain Assessment
             </Link>

@@ -8,12 +8,12 @@ const PAGE_URL = `${SITE_URL}/brain-assessment`;
 export const metadata: Metadata = {
   title: "Free Brain Assessment",
   description:
-    "Take a free, objective cognitive assessment powered by Creyos. See how your memory, attention, and reasoning are performing today — no prescriptions, no obligation.",
+    "Take a free, objective cognitive assessment powered by Creyos. See how your memory, attention, and reasoning are performing today, with no prescriptions and no obligation.",
   alternates: { canonical: "/brain-assessment" },
   openGraph: {
     title: "Free Brain Assessment | NeuroIntegrative Care of Los Gatos",
     description:
-      "A free, objective cognitive assessment powered by Creyos — see how your brain is performing today.",
+      "A free, objective cognitive assessment powered by Creyos. See how your brain is performing today.",
     url: "/brain-assessment",
     type: "website",
   },
@@ -24,7 +24,7 @@ const schema = {
   "@type": "MedicalWebPage",
   name: "Free Brain Assessment | NeuroIntegrative Care of Los Gatos",
   description:
-    "A free, objective cognitive assessment powered by Creyos — see how memory, attention, and reasoning are performing today.",
+    "A free, objective cognitive assessment powered by Creyos. See how memory, attention, and reasoning are performing today.",
   url: PAGE_URL,
 };
 
@@ -66,8 +66,8 @@ export default function BrainAssessmentPage() {
             offset={16}
             className="mx-auto mt-8 max-w-xl text-center text-lg leading-relaxed text-paper/80"
           >
-            A short, objective cognitive assessment — memory, attention, and
-            reasoning — scored against your age group. Enter your date of
+            A short, objective cognitive assessment (memory, attention, and
+            reasoning) scored against your age group. Enter your date of
             birth to begin.
           </Reveal>
 

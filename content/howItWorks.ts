@@ -19,7 +19,7 @@ export interface CurriculumModule {
 }
 
 export const FOUNDATIONAL_INTRO =
-  "This curriculum provides a universal, progressive lifestyle foundation designed to support brain health, neuroplasticity, and neurological rehabilitation (including home neurofeedback such as Myndlift). It applies to everyone — those recovering from injury, managing cognitive or mood challenges, optimizing performance, or building long-term resilience.";
+  "This curriculum provides a universal, progressive lifestyle foundation designed to support brain health, neuroplasticity, and neurological rehabilitation (including home neurofeedback such as Myndlift). It applies to everyone: those recovering from injury, managing cognitive or mood challenges, optimizing performance, or building long-term resilience.";
 
 export const FOUNDATIONAL_SUBNOTE =
   "Modules are designed for weekly focus (approximately 1–2 hours of learning plus daily habits). Progress sequentially where possible, but adapt based on individual needs. This is educational support, not medical treatment. Consult qualified practitioners for personalized application, especially with existing conditions, medications, or history of concussion/TBI.";
@@ -101,7 +101,7 @@ export const FOUNDATIONAL_MODULES: CurriculumModule[] = [
     num: "05",
     title: "Sleep Optimization for Neuroplasticity & Brain Detox",
     focus:
-      "Prioritize restorative sleep — the primary window for glymphatic clearance, memory consolidation, and neural repair.",
+      "Prioritize restorative sleep, the primary window for glymphatic clearance, memory consolidation, and neural repair.",
     objectives: ["Master sleep hygiene and circadian support."],
     actions: [
       "Consistent sleep/wake times.",
@@ -124,7 +124,7 @@ export const FOUNDATIONAL_MODULES: CurriculumModule[] = [
       "Progress gradually (especially post-injury).",
     ],
     tracking: "Activity log + energy/mood before and after.",
-    note: "Exercise enhances neuroplasticity and can prime the brain for more effective sessions (timing matters — avoid intense workouts immediately before focus training).",
+    note: "Exercise enhances neuroplasticity and can prime the brain for more effective sessions (timing matters, avoid intense workouts immediately before focus training).",
   },
   {
     num: "07",
@@ -205,7 +205,7 @@ export const FOUNDATIONAL_MODULES: CurriculumModule[] = [
     ],
     tracking:
       "Session adherence, subjective focus/calm scores, objective app trends.",
-    note: "This module directly reinforces the platform — lifestyle creates the conditions for stronger, faster training gains.",
+    note: "This module directly reinforces the platform; lifestyle creates the conditions for stronger, faster training gains.",
   },
   {
     num: "12",
@@ -232,7 +232,7 @@ export const FOUNDATIONAL_MODULES: CurriculumModule[] = [
 export const FOUNDATIONAL_TIPS = [
   "Start each week with a short educational overview plus 1–3 concrete actions.",
   "Use a simple journal or app to track 2–3 metrics per module.",
-  "Layer rather than overhaul — many modules build on earlier ones (e.g., diet and sleep support toxin reduction and stress resilience).",
+  "Layer rather than overhaul: many modules build on earlier ones (e.g., diet and sleep support toxin reduction and stress resilience).",
   "Pair with professional guidance (functional neurology, nutrition, coaching) and any prescribed testing (qEEG, labs, etc.).",
   "Progress is cumulative: cleaner inputs + regulated nervous system + consistent training = stronger neurological recovery potential.",
 ];
@@ -472,7 +472,7 @@ export const ADVANCED_MODULES: CurriculumModule[] = [
 export const ADVANCED_GUIDANCE = [
   "Complete foundational lifestyle work before or in parallel with advanced modules.",
   "Move at a sustainable pace; complex conditions often require slower sequencing.",
-  "Document baselines and changes carefully — self-assessment is the compass.",
+  "Document baselines and changes carefully: self-assessment is the compass.",
   "Partner with qualified clinicians for mold recovery, extended fasting, complex multi-system cases, and any regenerative therapies.",
   "Revisit Module 1 self-assessment tools periodically to quantify progress.",
 ];

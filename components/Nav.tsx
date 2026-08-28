@@ -135,7 +135,7 @@ export default function Nav() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3.5 sm:px-5 sm:py-4 lg:gap-4 lg:px-8 xl:gap-6 xl:px-10">
           <Link
             href="/"
-            aria-label="NeuroIntegrative Care of Los Gatos — Home"
+            aria-label="NeuroIntegrative Care of Los Gatos home"
             className="flex items-center gap-2.5 sm:gap-3"
           >
             <span className="relative block h-9 w-9 shrink-0 overflow-hidden rounded-full ring-1 ring-paper/25 sm:h-10 sm:w-10">

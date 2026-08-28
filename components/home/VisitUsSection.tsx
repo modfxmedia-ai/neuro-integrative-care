@@ -44,7 +44,7 @@ export default function VisitUsSection() {
                 Come see us in Los Gatos.
               </h2>
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
-                Our Los Gatos clinic is a quiet, unhurried space — no waiting
+                Our Los Gatos clinic is a quiet, unhurried space: no waiting
                 room chaos, no rushed ten-minute visits. Just focused time to
                 get to the bottom of what&apos;s going on.
               </p>

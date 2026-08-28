@@ -128,7 +128,7 @@ export const ADVANCED_CURRICULUM: CurriculumModule[] = [
   {
     num: "11",
     title: "Regenerative Overview (Educ.)",
-    body: "Literacy on peptides, targeted nutraceuticals, photobiomodulation. Discussion readiness only — medical oversight required.",
+    body: "Literacy on peptides, targeted nutraceuticals, photobiomodulation. Discussion readiness only: medical oversight required.",
   },
   {
     num: "12",
@@ -138,4 +138,4 @@ export const ADVANCED_CURRICULUM: CurriculumModule[] = [
 ];
 
 export const CURRICULUM_HOW_TO_USE =
-  "Complete foundational modules first (or in parallel). Advanced modules require stable basics and professional supervision for fasting, mold recovery, complex cases, and regenerative topics. Track metrics weekly. Consistency + clean foundations amplify neurofeedback results. Educational only — not medical advice. Consult qualified clinicians for personalized application, especially with medical conditions, concussion/TBI history, or multi-system issues.";
+  "Complete foundational modules first (or in parallel). Advanced modules require stable basics and professional supervision for fasting, mold recovery, complex cases, and regenerative topics. Track metrics weekly. Consistency + clean foundations amplify neurofeedback results. Educational only: not medical advice. Consult qualified clinicians for personalized application, especially with medical conditions, concussion/TBI history, or multi-system issues.";

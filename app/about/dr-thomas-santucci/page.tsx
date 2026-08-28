@@ -725,12 +725,18 @@ export default function AboutDrThomasSantucciPage() {
               Ready to have your case seen this way?
             </h2>
           </Reveal>
-          <Reveal delay={140} className="mt-10 flex justify-center">
+          <Reveal delay={140} className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/start"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
+              className="inline-flex w-[340px] max-w-full items-center justify-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-center text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
               Book a New-Patient Investigation
+            </Link>
+            <Link
+              href="/brain-assessment"
+              className="inline-flex w-[340px] max-w-full items-center justify-center rounded-full border border-ink/20 px-7 py-3.5 text-center text-sm font-medium tracking-tight text-ink transition-colors hover:border-ink/40 hover:bg-ink/5"
+            >
+              Or take the Free Brain Assessment
             </Link>
           </Reveal>
         </div>

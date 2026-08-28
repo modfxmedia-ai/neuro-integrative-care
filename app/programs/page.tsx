@@ -262,7 +262,7 @@ export default function ProgramsPage() {
               </p>
               <h2 className="mt-4 font-serif text-4xl leading-[1.1] tracking-tight text-paper sm:text-5xl">
                 An investigation with many of the same elements as our
-                clinical consultations — anywhere in the country.
+                clinical consultations, anywhere in the country.
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/80">
                 {virtual.description}
@@ -312,7 +312,7 @@ export default function ProgramsPage() {
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
               A dedicated set of remotely-delivered services for patients who
-              travel in — Myndlift Virtual Neurofeedback, Remote Lab Testing
+              travel in: Myndlift Virtual Neurofeedback, Remote Lab Testing
               and The Listening Program.
             </p>
             <Link
@@ -347,12 +347,18 @@ export default function ProgramsPage() {
               Every program starts with the investigation.
             </h2>
           </Reveal>
-          <Reveal delay={140} className="mt-10 flex justify-center">
+          <Reveal delay={140} className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/start"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
+              className="inline-flex w-[340px] max-w-full items-center justify-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-center text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
               Book a New-Patient Investigation
+            </Link>
+            <Link
+              href="/brain-assessment"
+              className="inline-flex w-[340px] max-w-full items-center justify-center rounded-full border border-paper/30 px-7 py-3.5 text-center text-sm font-medium tracking-tight text-paper transition-colors hover:border-paper/50 hover:bg-paper/10"
+            >
+              Not ready yet? Take the Free Brain Assessment
             </Link>
           </Reveal>
         </div>

@@ -81,7 +81,7 @@ export default function BrainAssessmentForm() {
       <p className="mt-5 text-xs leading-relaxed text-muted">
         You&apos;ll be taken to our secure assessment partner, Creyos, to
         complete a short set of cognitive tasks. No prescriptions, no
-        obligation — just objective data on how your brain is performing
+        obligation, just objective data on how your brain is performing
         today.
       </p>
     </form>

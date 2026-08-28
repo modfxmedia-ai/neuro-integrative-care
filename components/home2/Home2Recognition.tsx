@@ -11,12 +11,12 @@ interface RecognitionCard {
 const CARDS: RecognitionCard[] = [
   {
     label: "The One Everyone Depends On",
-    body: "If you went down for a week, several other people's plans would fall apart — so you keep going, and your own health stays at the bottom of the list.",
+    body: "If you went down for a week, several other people's plans would fall apart, so you keep going, and your own health stays at the bottom of the list.",
     Icon: Users,
   },
   {
     label: 'Told Everything\u2019s "Normal"',
-    body: "Years of fatigue, fog, or gut trouble — and a folder of normal labs. You know something's wrong before any test confirms it.",
+    body: "Years of fatigue, fog, or gut trouble, and a folder of normal labs. You know something's wrong before any test confirms it.",
     Icon: ClipboardX,
   },
   {
@@ -45,7 +45,7 @@ export default function Home2Recognition() {
           </h2>
           <p className="mt-4 font-sans text-lg leading-relaxed text-muted">
             Most of our patients aren&apos;t looking for themselves when they
-            arrive — they&apos;re the ones everyone else depends on. See if
+            arrive; they&apos;re the ones everyone else depends on. See if
             this sounds familiar.
           </p>
         </div>
@@ -76,7 +76,7 @@ export default function Home2Recognition() {
 
         <div className="mt-14 rounded-2xl bg-amber-soft px-6 py-12 text-center">
           <p className="mx-auto max-w-2xl font-sans text-lg italic leading-relaxed text-ink">
-            Whichever one you are — you&apos;re not imagining it, and
+            Whichever one you are, you&apos;re not imagining it, and
             you&apos;re not the problem. You&apos;ve just never been fully
             investigated.
           </p>

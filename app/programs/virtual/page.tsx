@@ -360,7 +360,7 @@ export default function VirtualProgramPage() {
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
               Weekly modules covering the lifestyle and clinical drivers
-              behind your results — foundational for everyone, advanced for
+              behind your results, foundational for everyone, advanced for
               targeted recovery and complex cases.
             </p>
           </Reveal>

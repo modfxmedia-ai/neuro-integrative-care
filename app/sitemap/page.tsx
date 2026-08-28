@@ -165,7 +165,7 @@ export default function SitemapPage() {
             offset={16}
             className="mt-8 max-w-3xl text-lg leading-relaxed text-paper/80 lg:text-xl"
           >
-            A full index of the site — conditions we investigate, the tools we
+            A full index of the site: conditions we investigate, the tools we
             use, our programs, and every location we serve.
           </Reveal>
         </div>

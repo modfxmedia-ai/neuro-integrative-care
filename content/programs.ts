@@ -93,12 +93,12 @@ export const programs: Programs = {
   ],
   outOfTownServices: {
     description:
-      "A dedicated tab for patients who travel in — many do, including a referral network flying down from Washington. Three remotely-delivered services, framed around Continuity, Access, and Oversight.",
+      "A dedicated tab for patients who travel in: many do, including a referral network flying down from Washington. Three remotely-delivered services, framed around Continuity, Access, and Oversight.",
     items: [
       {
         name: "Myndlift Virtual Neurofeedback",
         description:
-          "A take-home EEG system, remotely programmed and reviewed — same individualized progression as in-office.",
+          "A take-home EEG system, remotely programmed and reviewed, with the same individualized progression as in-office.",
       },
       {
         name: "Remote Laboratory Testing",

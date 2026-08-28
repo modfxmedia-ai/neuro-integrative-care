@@ -349,7 +349,7 @@ export default function ApproachPage() {
             className="mt-8 max-w-3xl font-serif text-[1.35rem] leading-[1.4] text-paper/80 sm:text-[1.55rem] lg:text-[1.75rem]"
           >
             A Foundational curriculum for everyone, and an Advanced curriculum
-            for targeted recovery, memory restoration, and complex cases —
+            for targeted recovery, memory restoration, and complex cases,
             each designed to run alongside home neurofeedback like Myndlift.
           </Reveal>
         </div>
