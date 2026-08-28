@@ -53,7 +53,7 @@ function AutoRegistrationTest() {
   const [gender, setGender] = useState<"" | "male" | "female">("");
   const [userCode, setUserCode] = useState("");
   const [showAdvanced, setShowAdvanced] = useState(false);
-  const [trialName, setTrialName] = useState("");
+  const [trialId, setTrialId] = useState("");
   const [salt, setSalt] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -72,7 +72,7 @@ function AutoRegistrationTest() {
           birthdate,
           gender: gender || undefined,
           userCode: userCode || undefined,
-          trialName: trialName || undefined,
+          trialId: trialId || undefined,
           salt: salt || undefined,
         }),
       });
@@ -151,19 +151,19 @@ function AutoRegistrationTest() {
           {showAdvanced && (
             <div className="space-y-3 border-t border-rule p-3">
               <p className="text-xs text-muted">
-                Leave blank to use the built-in demo values. Enter your real Trial Name and
+                Leave blank to use the built-in demo values. Enter your real Trial ID and
                 Auto-Registration Salt from Creyos to open a working assessment.
               </p>
               <div>
-                <label htmlFor="trialName" className="block text-xs font-medium text-ink">
-                  Trial Name
+                <label htmlFor="trialId" className="block text-xs font-medium text-ink">
+                  Trial ID
                 </label>
                 <input
-                  id="trialName"
+                  id="trialId"
                   type="text"
-                  value={trialName}
-                  onChange={(e) => setTrialName(e.target.value)}
-                  placeholder="creyos_autoregistration_demo"
+                  value={trialId}
+                  onChange={(e) => setTrialId(e.target.value)}
+                  placeholder="13528"
                   className={inputClass}
                 />
               </div>

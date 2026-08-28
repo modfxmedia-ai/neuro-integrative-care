@@ -21,18 +21,20 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "birthdate is required (YYYY-MM-DD)." }, { status: 400 });
   }
 
-  // Allow the tester to supply their own Trial Name / Salt from the form;
-  // otherwise fall back to the env values.
-  const trialName =
-    typeof body.trialName === "string" && body.trialName.trim()
-      ? body.trialName.trim()
-      : process.env.CREYOS_TRIAL_NAME;
+  // Allow the tester to supply their own Trial ID / Salt from the form;
+  // otherwise fall back to the env values. The signup URL's path segment is
+  // validated by Creyos as "trial_id" (per their error reference table), so
+  // it needs the numeric Trial ID, not the Trial Name UUID.
+  const trialId =
+    typeof body.trialId === "string" && body.trialId.trim()
+      ? body.trialId.trim()
+      : process.env.CREYOS_TRIAL_ID || process.env.CREYOS_TRIAL_NAME;
   const salt =
     typeof body.salt === "string" && body.salt.trim() ? body.salt.trim() : process.env.CREYOS_AUTO_REG_SALT;
 
-  if (!trialName || !salt) {
+  if (!trialId || !salt) {
     return NextResponse.json(
-      { error: "Missing Trial Name / Salt. Enter them in the form or set CREYOS_TRIAL_NAME / CREYOS_AUTO_REG_SALT." },
+      { error: "Missing Trial ID / Salt. Enter them in the form or set CREYOS_TRIAL_ID / CREYOS_AUTO_REG_SALT." },
       { status: 400 }
     );
   }
@@ -55,7 +57,7 @@ export async function POST(request: NextRequest) {
   if (protocolId) payload.protocol_id = protocolId;
 
   const token = jwt.sign(payload, salt, { algorithm: "HS512", expiresIn: "7d" });
-  const url = `${CREYOS_BASE_URL}/${trialName}?p=${token}`;
+  const url = `${CREYOS_BASE_URL}/${trialId}?p=${token}`;
 
   return NextResponse.json({ url, userCode });
 }

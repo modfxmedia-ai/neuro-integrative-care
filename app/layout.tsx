@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -71,6 +72,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main className="flex-1">{children}</main>
           <Footer />
         </MotionProvider>
+        <Script id="knock-knock-widget" strategy="afterInteractive">
+          {`
+            window.company_id = '6a9169788db2cbf50c5c2258';
+            var newScript = document.createElement('script');
+            newScript.src = 'https://api.knock-knockapp.com/widget/widget.js';
+            document.getElementsByTagName('HEAD')[0].appendChild(newScript);
+          `}
+        </Script>
       </body>
     </html>
   );
