@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { tools } from "@/content/tools";
 import Reveal from "@/components/Reveal";
+import DoctorVideos from "@/components/home/DoctorVideos";
 import {
   FOUNDATIONAL_INTRO,
   FOUNDATIONAL_SUBNOTE,
@@ -473,6 +474,8 @@ export default function HowItWorksPage() {
           </Reveal>
         </div>
       </section>
+
+      <DoctorVideos />
 
       {/* Final CTA */}
       <section className="relative overflow-hidden bg-ink py-24 text-paper lg:py-28">

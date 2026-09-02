@@ -7,6 +7,7 @@ import HowItWorks from "@/components/home/HowItWorks";
 import VirtualProgramBand from "@/components/home/VirtualProgramBand";
 import RecognitionSection from "@/components/home/RecognitionSection";
 import DoctorTeaser from "@/components/home/DoctorTeaser";
+import DoctorVideos from "@/components/home/DoctorVideos";
 import FinalCTA from "@/components/home/FinalCTA";
 import VisitUsSection from "@/components/home/VisitUsSection";
 
@@ -22,6 +23,7 @@ export default function Home() {
       <VirtualProgramBand />
       <RecognitionSection />
       <DoctorTeaser />
+      <DoctorVideos />
       <FinalCTA />
       <VisitUsSection />
     </>

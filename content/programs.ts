@@ -40,7 +40,7 @@ export const programs: Programs = {
       description:
         "Consultation, history, and clinical impression. The starting point for everyone.",
       fullCopy:
-        "Everything starts with an investigation, a full consultation where Dr. Santucci reviews your complex history, isolates likely causes, and gives you a clinical impression that finally makes sense. Not a sales call. The beginning of an actual answer.",
+        "Everything starts with an investigation, a full consultation where Dr. Santucci reviews your complex history, isolates likely causes, and gives you a clinical impression that finally makes sense. The beginning of an actual answer.",
       includedItems: [
         {
           title: "Two Industry-Leading Cognitive Assessments",

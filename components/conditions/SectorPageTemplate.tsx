@@ -4,6 +4,7 @@
 // standard "Individual result; outcomes vary." disclaimer. Never present them
 // as guaranteed or typical outcomes.
 
+import Image from "next/image";
 import Link from "next/link";
 import type { Condition } from "@/content/conditions";
 import type { PatientStory } from "@/content/patientStories";
@@ -50,6 +51,20 @@ export default function SectorPageTemplate({
     <>
       {/* 1 — Hero */}
       <section className="relative overflow-hidden bg-ink py-28 text-paper lg:py-36">
+        {condition.heroImage && (
+          <Image
+            src={condition.heroImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="pointer-events-none select-none object-cover"
+          />
+        )}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-ink/75"
+        />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -left-[10%] -top-[20%] h-[70vh] w-[70vh] rounded-full opacity-40"

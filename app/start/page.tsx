@@ -149,9 +149,6 @@ export default function StartPage() {
                 that finally fits. You leave understanding what&apos;s actually
                 being investigated and why.
               </p>
-              <p className="mt-6 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
-                Not a sales call
-              </p>
             </Reveal>
             <Reveal delay={120} offset={24}>
               <div className="rounded-2xl border border-rule/70 bg-paper-2 p-4 shadow-[0_2px_18px_-14px_rgba(11,18,32,0.25)] sm:p-6">
