@@ -16,6 +16,19 @@ export interface Tool {
   /** Slugs from conditions.ts — parent sectors this tool most directly serves. */
   sectorSlugs: string[];
   media: ToolMedia;
+  /** Optional supporting explainer graphics rendered below the lead media asset. */
+  gallery?: {
+    src: string;
+    alt: string;
+    caption: string;
+    /** Native pixel dimensions, used so the image renders uncropped. */
+    width: number;
+    height: number;
+  }[];
+  /** Optional downloadable PDF resource rendered alongside the gallery. */
+  resource?: { href: string; label: string };
+  /** Optional short factual blurbs rendered as a grid below the gallery. */
+  explainer?: { title: string; body: string }[];
 }
 
 /**
@@ -65,6 +78,66 @@ export const tools: Tool[] = [
       youtubeId: "Jr4iwULgxTs",
       title: "What is Neurofeedback?",
     },
+    gallery: [
+      {
+        src: "/images/neurofeedback/what-is-neurofeedback.jpg",
+        alt: "How neurofeedback works: sensors read brain activity, software scores it, and the patient gets real-time feedback that rewards healthier patterns",
+        caption: "How it works: sense, score, feed back, reward.",
+        width: 1740,
+        height: 1051,
+      },
+      {
+        src: "/images/neurofeedback/brainwave-chart.jpg",
+        alt: "Chart of brainwave frequency bands from Delta to Gamma and the states each is associated with",
+        caption: "The brainwave bands every protocol trains against.",
+        width: 1150,
+        height: 1074,
+      },
+      {
+        src: "/images/neurofeedback/sqeeg-brain-mapping.jpg",
+        alt: "Sample sequential qEEG brain map comparing pre- and post-training brainwave activity across frequency bands",
+        caption: "qEEG brain mapping: how change gets measured, band by band.",
+        width: 1616,
+        height: 2362,
+      },
+      {
+        src: "/images/neurofeedback/training-results.jpg",
+        alt: "Before and after brain map comparison alongside the Myndlift home training device and app",
+        caption: "A course of home training sessions, mapped and re-mapped.",
+        width: 1036,
+        height: 600,
+      },
+    ],
+    resource: {
+      href: "/downloads/what-is-neurofeedback-guide.pdf",
+      label: "Download the Full Neurofeedback Guide (PDF)",
+    },
+    explainer: [
+      {
+        title: "The feedback loop",
+        body: "Sensors read real-time brain activity, software scores it against your own brain map, and you see or hear the results as they happen. No conscious effort required — the brain learns to nudge itself toward the healthier pattern on its own.",
+      },
+      {
+        title: "EEG, in plain terms",
+        body: "An electroencephalogram (EEG) measures the brain's electrical rhythms, from slow Delta waves to fast Gamma waves. A dysregulated brain often runs too hot or too slow in specific bands; training nudges it back toward balance.",
+      },
+      {
+        title: "Built on repetition",
+        body: "Self-regulation is a skill, and skills strengthen with practice. Consistent sessions are what turn a momentary reward inside a session into a lasting new pattern outside of it.",
+      },
+      {
+        title: "What it's used for",
+        body: "Attention and focus, sleep and stress resilience, mood regulation, memory and cognitive performance, and recovery support after concussion or head injury.",
+      },
+      {
+        title: "An evidence base, not just theory",
+        body: "Neurofeedback for attention regulation has been studied in multiple randomized controlled trials, and professional bodies have rated it among the better-supported behavioral interventions available.",
+      },
+      {
+        title: "No medication required",
+        body: "Every protocol is individualized to your own qEEG brain map, then re-mapped over the course of training so progress is measured, not assumed.",
+      },
+    ],
   },
   {
     slug: "regenerative-solutions",

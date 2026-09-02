@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { conditions } from "@/content/conditions";
 import { tools } from "@/content/tools";
@@ -161,6 +162,99 @@ export default async function ToolPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* Explainer graphics */}
+      {tool.gallery && tool.gallery.length > 0 && (
+        <section className="bg-paper py-24 lg:py-32">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <Reveal className="max-w-2xl">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+                How It Works
+              </p>
+              <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+                {tool.name}, illustrated.
+              </h2>
+            </Reveal>
+            <ul className="mt-14 grid gap-8 sm:grid-cols-2">
+              {tool.gallery.map((item, i) => (
+                <Reveal key={item.src} as="li" delay={100 + i * 80} offset={20}>
+                  <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-rule/60 bg-paper-2 p-4">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      width={item.width}
+                      height={item.height}
+                      sizes="(min-width: 1024px) 45vw, 100vw"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                  <p className="mt-4 text-[15px] leading-relaxed text-muted">
+                    {item.caption}
+                  </p>
+                </Reveal>
+              ))}
+            </ul>
+
+            {tool.resource && (
+              <Reveal delay={100} offset={20} className="mt-14">
+                <a
+                  href={tool.resource.href}
+                  download
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
+                >
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4"
+                  >
+                    <path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14" />
+                  </svg>
+                  {tool.resource.label}
+                </a>
+              </Reveal>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Explainer facts, drawn from the client's "What is Neurofeedback" guide */}
+      {tool.explainer && tool.explainer.length > 0 && (
+        <section className="bg-paper-2 py-24 lg:py-32">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <Reveal className="max-w-2xl">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+                The Science, Explained
+              </p>
+              <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+                What is {tool.name.toLowerCase()}, exactly?
+              </h2>
+            </Reveal>
+            <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {tool.explainer.map((item, i) => (
+                <Reveal
+                  key={item.title}
+                  as="li"
+                  delay={100 + i * 60}
+                  offset={20}
+                  className="rounded-2xl border border-rule/60 bg-white p-6 lg:p-7"
+                >
+                  <h3 className="font-serif text-xl leading-snug text-ink">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-[14.5px] leading-relaxed text-muted">
+                    {item.body}
+                  </p>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* Conditions we treat with this tool */}
       {relatedArticles.length > 0 && (
         <section className="bg-paper py-24 lg:py-32">
@@ -173,6 +267,12 @@ export default async function ToolPage({ params }: PageProps) {
                 <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
                   Where {tool.name.toLowerCase()} makes the difference.
                 </h2>
+                <p className="mt-6 text-[15px] leading-relaxed text-muted">
+                  Every protocol starts with your qEEG brain map, so the
+                  specific conditions below are where this tool most often
+                  shows up in a patient&apos;s plan — not a one-size-fits-all
+                  prescription.
+                </p>
               </Reveal>
               <Reveal delay={120} offset={24} className="lg:col-span-8">
                 <ul className="flex flex-wrap gap-3">
@@ -211,6 +311,9 @@ export default async function ToolPage({ params }: PageProps) {
                 <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
                   Where this tool is used.
                 </h2>
+                <p className="mt-6 text-[15px] leading-relaxed text-muted">
+                  These are the broader investigation tracks {tool.name.toLowerCase()} gets folded into once a pattern shows up in your brain map.
+                </p>
               </Reveal>
               <Reveal delay={120} offset={24} className="lg:col-span-8">
                 <ul className="flex flex-wrap gap-3">

@@ -8,6 +8,7 @@
 //   so nothing ships as "confirmed" until the client signs off.
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { programs } from "@/content/programs";
 import {
@@ -114,6 +115,61 @@ const TIERS: Array<{
     placeholder: false,
   },
 ];
+
+const TOOLKIT_VIDEOS = [
+  {
+    title: "What Is Neurofeedback?",
+    src: "/videos/myndlift-what-is-neurofeedback.mp4",
+    poster: "/images/video/myndlift-what-is-neurofeedback-thumbnail.png",
+  },
+  {
+    title: "Myndlift 101: Brain Training Explained",
+    src: "/videos/myndlift-101-brain-training-explained.mp4",
+    poster: "/images/video/myndlift-101-brain-training-explained-thumbnail.png",
+  },
+  {
+    title: "How to Prepare for Training",
+    src: "/videos/myndlift-how-to-prepare-for-training.mp4",
+    poster: "/images/video/myndlift-how-to-prepare-for-training-thumbnail.png",
+  },
+  {
+    title: "How to Stay Consistent",
+    src: "/videos/myndlift-how-to-stay-consistent.mp4",
+    poster: "/images/video/myndlift-how-to-stay-consistent-thumbnail.png",
+  },
+  {
+    title: "Feeling Confused?",
+    src: "/videos/myndlift-feeling-confused.mp4",
+    poster: "/images/video/myndlift-feeling-confused-thumbnail.png",
+  },
+] as const;
+
+const PROTOCOLS = [
+  {
+    title: "Anxiety Reduction & Mood Stabilization",
+    inhibit: "Alpha & High Beta",
+    reward: "Mid Beta",
+    src: "/images/neurofeedback/protocol-anxiety-mood.jpg",
+  },
+  {
+    title: "Higher Attention & Focus",
+    inhibit: "Theta & High Beta",
+    reward: "Lo Beta (SMR)",
+    src: "/images/neurofeedback/protocol-attention-focus.jpg",
+  },
+  {
+    title: "Relaxation & Better Sleep Quality",
+    inhibit: "Theta & High Beta",
+    reward: "Alpha",
+    src: "/images/neurofeedback/protocol-relaxation-sleep.jpg",
+  },
+  {
+    title: "Relaxation & Meditation",
+    inhibit: "High Beta",
+    reward: "Theta & Alpha",
+    src: "/images/neurofeedback/protocol-relaxation-meditation.jpg",
+  },
+] as const;
 
 export default function VirtualProgramPage() {
   return (
@@ -254,17 +310,95 @@ export default function VirtualProgramPage() {
         </div>
       </section>
 
+      {/* Patient toolkit — short Myndlift onboarding clips */}
+      <section className="bg-paper-2 py-24 lg:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <Reveal className="max-w-2xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              Patient Toolkit
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              Short clips to get you started.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+              Quick answers to the questions patients ask most once their
+              remote neurofeedback kit arrives.
+            </p>
+          </Reveal>
+
+          <ul className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {TOOLKIT_VIDEOS.map((clip, i) => (
+              <Reveal key={clip.src} as="li" delay={100 + i * 80} offset={20}>
+                <div className="mx-auto aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-2xl border border-rule/60 bg-ink">
+                  <video
+                    src={clip.src}
+                    poster={clip.poster}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="h-full w-full object-cover"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <p className="mt-4 text-center text-[15px] font-medium leading-snug text-ink">
+                  {clip.title}
+                </p>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Train toward your goal — Myndlift protocol targets */}
+      <section className="bg-ink py-24 text-paper lg:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <Reveal className="max-w-2xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
+              Training Goals
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-paper sm:text-5xl">
+              Train toward your goal.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/70">
+              Each protocol inhibits the bands driving the problem and
+              rewards the bands that fix it.
+            </p>
+          </Reveal>
+          <ul className="mt-14 grid gap-6 sm:grid-cols-2">
+            {PROTOCOLS.map((protocol, i) => (
+              <Reveal
+                key={protocol.src}
+                as="li"
+                delay={100 + i * 80}
+                offset={20}
+                className="overflow-hidden rounded-2xl border border-paper/10"
+              >
+                <Image
+                  src={protocol.src}
+                  alt={`Myndlift protocol: ${protocol.title}, inhibit ${protocol.inhibit}, reward ${protocol.reward}`}
+                  width={1200}
+                  height={800}
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="h-auto w-full object-cover"
+                />
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Tier comparison */}
       <section id="tiers" className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <Reveal className="max-w-3xl">
+          <Reveal className="mx-auto max-w-3xl text-center">
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               Program Tiers
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
               What&apos;s included.
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted">
               The full neurometabolic method, delivered remotely with
               clinician review every 4 weeks.
             </p>

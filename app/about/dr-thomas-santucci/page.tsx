@@ -78,29 +78,34 @@ const PERSON_SCHEMA = {
   hasCredential: [
     {
       "@type": "EducationalOccupationalCredential",
+      name: "International Business Policy Degree",
+      credentialCategory: "degree",
+      recognizedBy: { "@type": "Organization", name: "Georgetown University" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
       name: "Doctor of Chiropractic (DC)",
       credentialCategory: "license",
       recognizedBy: { "@type": "Organization", name: "California Board of Chiropractic Examiners" },
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "American Functional Neurology Institute (AFNI) Certified",
+      name: "American Functional Neurology Institute (AFNI) Certified, 4th Level Training",
       credentialCategory: "certification",
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "Alzheimer's Recode II Certified Provider",
+      name: "Alzheimer's Recode II Certified Provider, Medical Based Interventions",
       credentialCategory: "certification",
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "Certified Nutrition Specialist (CNS)",
+      name: "The Listening Program Certified Provider, Sound Based Therapy",
       credentialCategory: "certification",
-      recognizedBy: { "@type": "Organization", name: "American Nutrition Association" },
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "Board Certified in Neurofeedback (BCN)",
+      name: "Board Certified in Neurofeedback (BCN), 19 Channel QEEG Testing & Interventions",
       credentialCategory: "certification",
     },
     {
@@ -110,8 +115,14 @@ const PERSON_SCHEMA = {
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "The Listening Program Certified Provider",
+      name: "Childhood Developmental Delays training, Robert Melillo",
+      credentialCategory: "training",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Functional Medicine Institute, Applying Clinical Excellence Series",
       credentialCategory: "certification",
+      recognizedBy: { "@type": "Organization", name: "Institute for Functional Medicine" },
     },
   ],
   knowsAbout: [
@@ -162,15 +173,15 @@ const STAT_RIBBON = [
 ] as const;
 
 const CREDENTIALS = [
+  "International Business Policy Degree, Georgetown University, Washington, DC",
   "Doctor of Chiropractic (DC), Licensed in California, Life Chiropractic College West, Hayward, CA",
-  "American Functional Neurology Institute (AFNI) Certified",
-  "Alzheimer's Recode II Certified Provider",
-  "Certified Nutrition Specialist (CNS), American Nutrition Association",
-  "Board Certified in Neurofeedback (BCN)",
+  "American Functional Neurology Institute (AFNI) Certified 4th Level Training",
+  "Alzheimer's Recode II Certified Provider \u2013 Medical based Interventions",
+  "The Listening Program Certified Provider \u2013 Sound based Therapy",
+  "Board Certified in Neurofeedback (BCN) \u2013 19 Channel QEEG Testing & Interventions",
   "Carrick Institute for Graduate Studies, Functional Neurology (extensive postgraduate training)",
-  "Developmental Delays training, Robert Melillo",
-  "Functional Medicine Institute, Applying Clinical Excellence Series",
-  "The Listening Program Certified Provider",
+  "Childhood Developmental Delays training, Robert Melillo",
+  "Functional Medicine Institute, entire Applying Clinical Excellence Series by originators of Functional Medicine",
 ] as const;
 
 // Carrick, Apex, and Melillo have no usable logo file supplied yet (Apex's
@@ -300,6 +311,57 @@ export default function AboutDrThomasSantucciPage() {
             The doctor who refuses to be one narrow thing, because complex
             cases don&apos;t reduce to one lane.
           </Reveal>
+        </div>
+      </section>
+
+      {/* Bio */}
+      <section className="bg-paper py-24 lg:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <Reveal className="lg:col-span-4">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-rule">
+                <Image
+                  src="/images/dr-santucci.png"
+                  alt="Dr. Thomas Santucci"
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
+                  className="object-cover object-top"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={120} offset={24} className="lg:col-span-8">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+                Meet Dr. Santucci
+              </p>
+              <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+                Founder, NeuroIntegrative Care of Los Gatos.
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-ink">
+                Dr. Thomas Santucci, DC, has spent {YEARS_IN_PRACTICE} years
+                investigating the complex, unresolved cases that one lane of
+                medicine alone couldn&apos;t explain. He trained across five
+                disciplines, functional medicine, functional neurology,
+                neurofeedback, regenerative medicine, and chiropractic, at 11
+                colleges and 10,000+ hours of postgraduate study, because
+                complicated presentations rarely have a single-specialty
+                answer.
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-muted">
+                Before medicine, he built a career in international business
+                (Georgetown University, then product management roles at IBM,
+                Telenet, British Telecom, and MCI). A car accident and the
+                traumatic brain injury and celiac trigger it left behind
+                changed the direction entirely, a decade-long personal
+                recovery that became the model he now applies to patients. He
+                is the author of{" "}
+                <span className="italic text-ink">
+                  Engineering Medical Miracles: Return to Health
+                </span>{" "}
+                and a presenter to a 500-doctor audience on Alzheimer&apos;s
+                clinical intervention.
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -572,6 +634,33 @@ export default function AboutDrThomasSantucciPage() {
               </Reveal>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Video: Neurofeedback explainer */}
+      <section className="bg-paper-2 py-24 lg:py-32">
+        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+          <Reveal className="max-w-2xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              Board Certified in Neurofeedback
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              What is neurofeedback?
+            </h2>
+          </Reveal>
+          <Reveal delay={120} offset={20} className="mt-10">
+            {/* THIRD-PARTY MEDIA — embedded via YouTube, not re-hosted. */}
+            <div className="aspect-video w-full overflow-hidden rounded-2xl border border-rule/60 bg-ink">
+              <iframe
+                src="https://www.youtube.com/embed/Jr4iwULgxTs"
+                title="What is Neurofeedback?"
+                className="h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
 
