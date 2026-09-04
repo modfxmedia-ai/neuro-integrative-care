@@ -71,8 +71,8 @@ export const programs: Programs = {
       // do not treat as 100% final until confirmed by Justin.
       name: "The Virtual Program (Mynd Transformation Blueprint)",
       description:
-        "A 6–12 week at-home neurometabolic program: remote QEEG unit tuned to your own healing frequencies, a weekly neurological support program, and clinician review calls with Dr. Santucci every 4 weeks. National.",
-      duration: "6–12 weeks",
+        "A 6–10 week at-home neurometabolic program: remote QEEG unit tuned to your own healing frequencies, a weekly neurological support program, and clinician review calls with Dr. Santucci every 4 weeks. National.",
+      duration: "6–10 weeks",
       whatItIncludes: [
         "Remote QEEG brain-training unit, tuned to your healing frequencies",
         "Weekly neurological support program",

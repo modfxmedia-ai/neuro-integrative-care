@@ -1,8 +1,8 @@
-// Full transcription of the client-supplied "12-Week Neurological Support
-// Curriculum" and "Advanced Neurological Support Curriculum" reference docs.
-// Educational structure only — never imply self-directed medical treatment;
-// fasting, mold recovery, complex multi-system cases, and regenerative
-// topics explicitly require professional supervision per the source docs.
+// Full transcription of the client-supplied "10-Week Neurological Support
+// Curriculum" ("Brain Brightening") reference doc. Educational structure
+// only — never imply self-directed medical treatment. This single 10-week
+// curriculum supersedes the prior two-track (Foundational + Advanced,
+// formerly 12-week each) structure per client direction.
 
 export interface CurriculumModule {
   num: string;
@@ -18,11 +18,45 @@ export interface CurriculumModule {
   note?: string;
 }
 
+export const CURRICULUM_TAGLINE =
+  "A Progressive Lifestyle Foundation Program for Brain Health and Neurological Rehabilitation";
+
 export const FOUNDATIONAL_INTRO =
   "This curriculum provides a universal, progressive lifestyle foundation designed to support brain health, neuroplasticity, and neurological rehabilitation (including home neurofeedback such as Myndlift). It applies to everyone: those recovering from injury, managing cognitive or mood challenges, optimizing performance, or building long-term resilience.";
 
 export const FOUNDATIONAL_SUBNOTE =
   "Modules are designed for weekly focus (approximately 1–2 hours of learning plus daily habits). Progress sequentially where possible, but adapt based on individual needs. This is educational support, not medical treatment. Consult qualified practitioners for personalized application, especially with existing conditions, medications, or history of concussion/TBI.";
+
+export const CURRICULUM_MODEL_NOTE =
+  "The 10-week sequence distills the highest-leverage foundations used in a 30-year neurometabolic clinic model: reducing toxic and inflammatory burden, stabilizing metabolism and sleep, regulating the nervous system, and pairing those foundations with consistent home neurofeedback and long-term habit architecture.";
+
+export interface ProgramArcPhase {
+  weeks: string;
+  description: string;
+}
+
+export const PROGRAM_ARC: ProgramArcPhase[] = [
+  {
+    weeks: "Weeks 1–3",
+    description:
+      "Reduce burden and rebuild raw materials: toxins, inflammation, brain-supportive nutrition.",
+  },
+  {
+    weeks: "Weeks 4–6",
+    description:
+      "Regulate the system: stress, sleep, and movement as platforms for neuroplasticity.",
+  },
+  {
+    weeks: "Weeks 7–8",
+    description:
+      "Protect and stabilize: concussion/TBI principles and metabolic (blood sugar) brain health.",
+  },
+  {
+    weeks: "Weeks 9–10",
+    description:
+      "Integrate and sustain: home neurofeedback habits plus a personal long-term resilience system.",
+  },
+];
 
 export const FOUNDATIONAL_MODULES: CurriculumModule[] = [
   {
@@ -148,21 +182,6 @@ export const FOUNDATIONAL_MODULES: CurriculumModule[] = [
   },
   {
     num: "08",
-    title: "Gut-Brain Axis & Microbiome Support",
-    focus:
-      "Support the bidirectional gut-brain communication pathway that influences inflammation, mood, and cognition.",
-    objectives: ["Improve digestive resilience and microbial diversity."],
-    actions: [
-      "Increase fiber-rich plants and fermented foods.",
-      "Chew thoroughly.",
-      "Address constipation or bloating basics.",
-      "Consider diversity of plant foods.",
-    ],
-    tracking: "Digestive comfort + mood/cognition correlations.",
-    note: "Reduced gut-driven inflammation supports clearer neurological regulation.",
-  },
-  {
-    num: "09",
     title: "Blood Sugar Stability & Metabolic Brain Health",
     focus:
       "Keep glucose and insulin steady to avoid energy crashes and inflammatory spikes that impair focus and mood.",
@@ -176,21 +195,7 @@ export const FOUNDATIONAL_MODULES: CurriculumModule[] = [
     note: "Stable metabolism improves mental endurance during and between training sessions.",
   },
   {
-    num: "10",
-    title: "Hydration, Electrolytes & Cellular Support",
-    focus:
-      "Maintain fluid and mineral balance essential for neuronal signaling and overall brain function.",
-    objectives: ["Optimize daily hydration and basic electrolyte awareness."],
-    actions: [
-      "Consistent water intake (adjusted for activity and climate).",
-      "Include mineral-rich foods or appropriate electrolyte support.",
-      "Limit dehydrating substances.",
-    ],
-    tracking: "Urine color, energy, and headache patterns.",
-    note: "Proper hydration supports cleaner EEG signals and cognitive clarity.",
-  },
-  {
-    num: "11",
+    num: "09",
     title: "Integrating Neurofeedback, Cognitive Habits & Daily Brain Training",
     focus:
       "Weave consistent brain training (e.g., Myndlift sessions) with supportive daily cognitive practices.",
@@ -208,7 +213,7 @@ export const FOUNDATIONAL_MODULES: CurriculumModule[] = [
     note: "This module directly reinforces the platform; lifestyle creates the conditions for stronger, faster training gains.",
   },
   {
-    num: "12",
+    num: "10",
     title: "Building Sustainable Habits, Tracking Progress & Long-Term Resilience",
     focus:
       "Consolidate gains into automatic routines and create a personal maintenance system.",
@@ -233,246 +238,9 @@ export const FOUNDATIONAL_TIPS = [
   "Start each week with a short educational overview plus 1–3 concrete actions.",
   "Use a simple journal or app to track 2–3 metrics per module.",
   "Layer rather than overhaul: many modules build on earlier ones (e.g., diet and sleep support toxin reduction and stress resilience).",
-  "Pair with professional guidance (functional neurology, nutrition, coaching) and any prescribed testing (qEEG, labs, etc.).",
+  "Pair with professional guidance (functional neurology, nutrition, coaching) and any prescribed testing (qEEG, labs, neurotransmitter panels).",
   "Progress is cumulative: cleaner inputs + regulated nervous system + consistent training = stronger neurological recovery potential.",
 ];
 
-export const ADVANCED_INTRO =
-  "This advanced curriculum builds on foundational lifestyle principles. It is designed for individuals ready to move into deeper self-assessment, targeted recovery strategies, and management of more complex neurological presentations. Suitable for those using home neurofeedback (e.g., Myndlift), functional neurology care, or independent brain optimization.";
-
-export const ADVANCED_SUBNOTE =
-  "Educational only. Not medical advice. Complex conditions, fasting, mold recovery, and advanced interventions require professional supervision. Always coordinate with qualified clinicians, especially when symptoms are significant or multiple systems are involved.";
-
-export const ADVANCED_MODULES: CurriculumModule[] = [
-  {
-    num: "01",
-    title: "Comprehensive Self-Assessment & Baseline Mapping",
-    focus:
-      "Establish a clear, multi-domain baseline so progress can be measured objectively and subjectively.",
-    objectives: [
-      "Create a personal neurological and functional baseline.",
-      "Identify priority domains (memory, attention, sleep, mood, energy, autonomic symptoms, inflammation markers).",
-    ],
-    actions: [
-      "Complete structured symptom inventories (cognitive, emotional, physical, sleep).",
-      "Log current lifestyle metrics (sleep duration/quality, exercise, diet patterns, stress load).",
-      "Note prior testing results if available (qEEG, blood chemistry, neurotransmitters, mycotoxin panels, genomics).",
-      "Establish simple weekly scoring systems for key symptoms (0–10 scales).",
-    ],
-    calloutLabel: "Self-Assessment Tools",
-    callout:
-      "Symptom severity scales, cognitive self-tests (word lists, digit span, dual-task examples), lifestyle audit checklist, trigger identification worksheet.",
-    noteLabel: "Myndlift / Neurofeedback Note",
-    note: "Baseline Brain Snapshots and full assessments provide objective neural data to track against lifestyle and protocol changes.",
-  },
-  {
-    num: "02",
-    title: "Memory Restoration Foundations",
-    focus:
-      "Understand memory systems and implement practical strategies that support encoding, consolidation, and retrieval.",
-    objectives: [
-      "Differentiate working memory, short-term, long-term, episodic, and prospective memory.",
-      "Apply evidence-informed lifestyle and cognitive techniques that support memory recovery.",
-    ],
-    actions: [
-      "Prioritize deep sleep and consistent circadian timing (critical for consolidation).",
-      "Use spaced retrieval, dual coding (visual + verbal), and context-dependent learning techniques.",
-      "Reduce interference (multitasking, late-night screens, high stress before learning).",
-      "Support cholinergic and metabolic substrates through nutrition and stable blood sugar.",
-    ],
-    tracking:
-      "Daily or weekly memory performance log (names, tasks, reading recall); note sleep and stress correlations.",
-    note: "Protocols targeting attention and calm often improve the cognitive resources required for effective memory encoding.",
-  },
-  {
-    num: "03",
-    title: "Therapeutic Fasting & Metabolic Flexibility",
-    focus:
-      "Use controlled fasting or time-restricted eating to support autophagy, metabolic switching, and brain energy resilience.",
-    objectives: [
-      "Understand physiological benefits and contraindications of fasting approaches.",
-      "Implement safe, progressive protocols appropriate for neurological recovery.",
-    ],
-    actions: [
-      "Begin with 12–14 hour overnight fasting windows if appropriate.",
-      "Progress cautiously toward longer windows or intermittent patterns only under guidance.",
-      "Monitor energy, cognition, sleep, and mood during fasting periods.",
-      "Ensure nutrient density on eating days; avoid prolonged restriction without professional oversight.",
-    ],
-    calloutLabel: "Safety Notes",
-    callout:
-      "Contraindicated or high-risk in underweight states, certain medical conditions, pregnancy, history of disordered eating, or unstable neurological status. Professional supervision required for extended fasts.",
-    note: "Some individuals notice clearer focus during metabolic flexibility phases; track Brain Snapshots relative to eating windows.",
-  },
-  {
-    num: "04",
-    title: "Mold & Mycotoxin Abatement and Recovery",
-    focus:
-      "Identify, reduce, and recover from mold and mycotoxin exposure that can drive neuroinflammation and cognitive symptoms.",
-    objectives: [
-      "Recognize common exposure sources and symptom patterns.",
-      "Implement practical environmental and personal recovery steps.",
-    ],
-    actions: [
-      "Assess living and work environments for water damage, musty odors, or visible mold.",
-      "Prioritize source control and professional remediation when indicated.",
-      "Support detoxification pathways (binders only under guidance, glutathione support, sweating, fiber).",
-      "Reduce re-exposure through air filtration, humidity control, and material choices.",
-    ],
-    tracking:
-      "Symptom correlation with environment; consider professional testing (ERMI, urine mycotoxins) when clinically indicated.",
-    note: "Reducing ongoing toxic load often improves training responsiveness and reduces residual brain fog.",
-  },
-  {
-    num: "05",
-    title: "Managing Complex & Multi-System Conditions",
-    focus:
-      "Develop frameworks for navigating overlapping neurological, immune, metabolic, and autonomic issues.",
-    objectives: [
-      "Map interactions between systems (brain–immune–gut–hormones–autonomic).",
-      "Prioritize interventions when multiple problems coexist.",
-    ],
-    actions: [
-      "Create a systems map of personal symptoms and known diagnoses.",
-      "Identify highest-leverage foundational habits that benefit multiple systems (sleep, blood sugar, stress load, toxin reduction).",
-      "Sequence interventions: stabilize basics before layering advanced therapies.",
-      "Maintain clear communication with the care team; avoid simultaneous major changes.",
-    ],
-    calloutLabel: "Key Principle",
-    callout:
-      "In complex cases, less simultaneous change often produces clearer feedback and safer progress.",
-  },
-  {
-    num: "06",
-    title: "Mitochondrial Optimization & Cellular Energy",
-    focus:
-      "Support the cellular energy systems that power neurological recovery and cognitive endurance.",
-    objectives: [
-      "Understand the role of mitochondria in brain function and post-injury recovery.",
-      "Apply lifestyle and nutritional strategies that support mitochondrial efficiency.",
-    ],
-    actions: [
-      "Prioritize consistent movement and zone 2 aerobic activity.",
-      "Support nutrient cofactors (B vitamins, magnesium, CoQ10 pathways, antioxidants) through food first.",
-      "Reduce chronic inflammation and toxin load that impair mitochondrial function.",
-      "Consider circadian alignment and recovery periods between stressors.",
-    ],
-    tracking:
-      "Energy patterns across the day, exercise recovery, mental endurance, and post-exertional symptoms.",
-  },
-  {
-    num: "07",
-    title: "Advanced Sleep Architecture & Chronobiology",
-    focus:
-      "Optimize not just sleep quantity but architecture (deep sleep, REM) and circadian alignment for neurological repair.",
-    objectives: [
-      "Understand glymphatic clearance, memory consolidation stages, and light/dark signaling.",
-      "Implement advanced sleep hygiene and circadian tools.",
-    ],
-    actions: [
-      "Morning outdoor light exposure within the first hour of waking.",
-      "Strict evening light management (blue light reduction, dim lighting).",
-      "Consistent sleep and wake times, including weekends.",
-      "Evaluate temperature, noise, and bed partner factors; consider tracking devices if useful.",
-    ],
-    note: "Sleep-focused protocols and improved architecture often enhance overall training gains and daytime regulation.",
-  },
-  {
-    num: "08",
-    title: "Autonomic Regulation & Polyvagal-Informed Strategies",
-    focus:
-      "Improve autonomic flexibility and reduce chronic threat physiology that interferes with healing and cognition.",
-    objectives: [
-      "Recognize sympathetic, parasympathetic, and mixed states.",
-      "Build a personal toolkit for state regulation.",
-    ],
-    actions: [
-      "Practice daily regulation tools (extended exhales, safe social engagement, gentle movement, grounding).",
-      "Identify personal triggers that shift state into high arousal or shutdown.",
-      "Integrate short regulation practices before neurofeedback or demanding cognitive work.",
-    ],
-    tracking:
-      "State ratings, heart-rate recovery, sense of safety or overwhelm, and ability to engage socially or cognitively.",
-  },
-  {
-    num: "09",
-    title: "Cognitive Reserve & Dual-Task Training",
-    focus: "Build cognitive resilience through progressive challenge and enrichment.",
-    objectives: [
-      "Understand cognitive reserve and its protective role.",
-      "Design progressive dual-task and enrichment activities.",
-    ],
-    actions: [
-      "Engage in novel learning (language, instrument, complex skill).",
-      "Practice dual-task activities (walking + cognitive load, balance + attention).",
-      "Increase complexity gradually while monitoring symptom provocation.",
-      "Balance challenge with recovery to avoid overload.",
-    ],
-    note: "Improved regulation from neurofeedback often increases capacity for higher cognitive load and dual-task performance.",
-  },
-  {
-    num: "10",
-    title: "Advanced Neurofeedback Optimization & Protocol Awareness",
-    focus:
-      "Deepen understanding of home neurofeedback use and how to collaborate effectively with coaches or clinicians.",
-    objectives: [
-      "Understand how different goals map to training emphases (calm, focus, sleep, regulation).",
-      "Learn to interpret personal training data and lifestyle interactions.",
-    ],
-    actions: [
-      "Maintain consistent session frequency and quality setup.",
-      "Use Brain Snapshots and tagging to correlate lifestyle factors with neural metrics.",
-      "Communicate clearly with the Neuro Coach about symptoms, sleep, and stressors.",
-      "Avoid protocol shopping or frequent self-adjustment without guidance.",
-    ],
-    calloutLabel: "Key Principle",
-    callout:
-      "Consistency and good recovery conditions usually outperform frequent protocol changes.",
-  },
-  {
-    num: "11",
-    title: "Regenerative & Supportive Interventions (Educational Overview)",
-    focus:
-      "Gain high-level literacy about emerging supportive approaches (peptides, targeted nutraceuticals, photobiomodulation, etc.) so informed discussions with clinicians are possible.",
-    objectives: [
-      "Understand categories of regenerative and supportive tools used in functional neurology and longevity contexts.",
-      "Recognize that these are adjunctive and require medical oversight.",
-    ],
-    actions: [
-      "Review evidence levels and safety considerations for common categories.",
-      "Identify personal readiness (foundational lifestyle already stable).",
-      "Prepare questions for clinical discussions rather than self-experimentation.",
-    ],
-    calloutLabel: "Important",
-    callout:
-      "This module is educational only. Prescription or administration of peptides, hormones, or advanced therapies must occur under qualified medical supervision.",
-  },
-  {
-    num: "12",
-    title: "Integration, Long-Term Monitoring & Personalized Maintenance",
-    focus:
-      "Synthesize the advanced curriculum into a sustainable personal system with clear monitoring and adjustment processes.",
-    objectives: [
-      "Create an integrated weekly and monthly review process.",
-      "Define personal non-negotiables and early warning indicators.",
-    ],
-    actions: [
-      "Build a one-page personal protocol summary (foundational + advanced priorities).",
-      "Schedule regular self-assessments and, when indicated, professional re-evaluations (qEEG, labs).",
-      "Define relapse or setback response plans.",
-      "Identify ongoing support resources (coach, clinician, community).",
-    ],
-    trackingLabel: "Final Tracking Framework",
-    tracking:
-      "Monthly scorecard covering memory/cognition, energy, sleep quality, autonomic state, training adherence, and environmental/toxin load.",
-    note: "Long-term success combines consistent training with the advanced lifestyle and recovery strategies developed across this curriculum.",
-  },
-];
-
-export const ADVANCED_GUIDANCE = [
-  "Complete foundational lifestyle work before or in parallel with advanced modules.",
-  "Move at a sustainable pace; complex conditions often require slower sequencing.",
-  "Document baselines and changes carefully: self-assessment is the compass.",
-  "Partner with qualified clinicians for mold recovery, extended fasting, complex multi-system cases, and any regenerative therapies.",
-  "Revisit Module 1 self-assessment tools periodically to quantify progress.",
-];
+export const CURRICULUM_CLOSING =
+  "This curriculum provides a complete, practical foundation that supports neurological rehabilitation for a broad audience while remaining compatible with home neurofeedback programs and the Brain Brightening virtual offering. Educational support only, not a substitute for individualized clinical care. Work with qualified practitioners when applying these principles to existing medical conditions.";

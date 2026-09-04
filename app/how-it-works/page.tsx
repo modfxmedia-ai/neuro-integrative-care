@@ -5,14 +5,14 @@ import { tools } from "@/content/tools";
 import Reveal from "@/components/Reveal";
 import DoctorVideos from "@/components/home/DoctorVideos";
 import {
+  CURRICULUM_TAGLINE,
   FOUNDATIONAL_INTRO,
+  CURRICULUM_MODEL_NOTE,
   FOUNDATIONAL_SUBNOTE,
+  PROGRAM_ARC,
   FOUNDATIONAL_MODULES,
   FOUNDATIONAL_TIPS,
-  ADVANCED_INTRO,
-  ADVANCED_SUBNOTE,
-  ADVANCED_MODULES,
-  ADVANCED_GUIDANCE,
+  CURRICULUM_CLOSING,
   type CurriculumModule,
 } from "@/content/howItWorks";
 
@@ -22,12 +22,12 @@ const PAGE_URL = `${SITE_URL}/how-it-works`;
 export const metadata: Metadata = {
   title: "How It Works",
   description:
-    "Neurometabolic Rejuvenation: five non-invasive, drug-free tools, plus the Foundational and Advanced 12-week curricula that pair lifestyle modules with home neurofeedback like Myndlift.",
+    "Neurometabolic Rejuvenation: five non-invasive, drug-free tools, plus the 10-week Brain Brightening neurological support curriculum that pairs lifestyle modules with home neurofeedback like Myndlift.",
   alternates: { canonical: "/how-it-works" },
   openGraph: {
     title: "How It Works | NeuroIntegrative Care of Los Gatos",
     description:
-      "Neurometabolic Rejuvenation: five non-invasive, drug-free tools, plus the Foundational and Advanced 12-week support curricula.",
+      "Neurometabolic Rejuvenation: five non-invasive, drug-free tools, plus the 10-week Brain Brightening support curriculum.",
     url: "/how-it-works",
     type: "article",
   },
@@ -38,7 +38,7 @@ const schema = {
   "@type": "MedicalWebPage",
   name: "How It Works | NeuroIntegrative Care of Los Gatos",
   description:
-    "Neurometabolic Rejuvenation: the brain and metabolism as one system, investigated with objective testing and rebuilt with five non-invasive, drug-free tools, plus the Foundational and Advanced 12-week neurological support curricula.",
+    "Neurometabolic Rejuvenation: the brain and metabolism as one system, investigated with objective testing and rebuilt with five non-invasive, drug-free tools, plus the 10-week Brain Brightening neurological support curriculum.",
   url: PAGE_URL,
   inLanguage: "en-US",
   isPartOf: {
@@ -166,7 +166,7 @@ function ModuleAccordion({
               )}
 
               {mod.note && (
-                <p className="text-[13px] italic leading-relaxed text-muted-l">
+                <p className="text-[13px] italic leading-relaxed text-[#E9A221]">
                   {mod.noteLabel ?? "Myndlift Note"}: {mod.note}
                 </p>
               )}
@@ -341,7 +341,7 @@ export default function HowItWorksPage() {
           </Reveal>
           <Reveal as="span" delay={180} offset={28} className="mt-6 block">
             <h2 className="font-serif text-4xl leading-[1.05] tracking-tight text-paper sm:text-5xl lg:text-6xl">
-              Two 12-week curricula, built to change how your brain works.
+              A 10-week curriculum, built to change how your brain works.
             </h2>
           </Reveal>
           <Reveal
@@ -350,9 +350,9 @@ export default function HowItWorksPage() {
             offset={16}
             className="mt-8 max-w-3xl font-serif text-[1.35rem] leading-[1.4] text-paper/80 sm:text-[1.55rem] lg:text-[1.75rem]"
           >
-            A Foundational curriculum for everyone, and an Advanced curriculum
-            for targeted recovery, memory restoration, and complex cases,
-            each designed to run alongside home neurofeedback like Myndlift.
+            The Brain Brightening curriculum, a progressive lifestyle
+            foundation for everyone, designed to run alongside home
+            neurofeedback like Myndlift.
           </Reveal>
         </div>
       </section>
@@ -385,22 +385,41 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* Foundational curriculum */}
-      <section id="foundational" className="bg-paper-2 py-24 lg:py-32">
+      {/* Neurological support curriculum */}
+      <section id="curriculum" className="bg-paper-2 py-24 lg:py-32">
         <div className="mx-auto max-w-4xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-              12-Week Neurological Support Curriculum
+              10-Week Neurological Support Curriculum
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-              The Foundational curriculum.
+              The Brain Brightening curriculum.
             </h2>
+            <p className="mt-3 font-serif text-[1.05rem] italic leading-snug text-muted">
+              {CURRICULUM_TAGLINE}
+            </p>
             <p className="mt-6 text-lg leading-relaxed text-muted">
               {FOUNDATIONAL_INTRO}
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-muted">
+              {CURRICULUM_MODEL_NOTE}
             </p>
             <p className="mt-4 text-[14px] leading-relaxed text-muted-l">
               {FOUNDATIONAL_SUBNOTE}
             </p>
+          </Reveal>
+
+          <Reveal delay={80} className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-rule/70 bg-rule/70 sm:grid-cols-2">
+            {PROGRAM_ARC.map((phase) => (
+              <div key={phase.weeks} className="bg-paper p-6">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber">
+                  {phase.weeks}
+                </p>
+                <p className="mt-2 text-[14px] leading-relaxed text-ink/85">
+                  {phase.description}
+                </p>
+              </div>
+            ))}
           </Reveal>
 
           <ModuleAccordion
@@ -427,50 +446,9 @@ export default function HowItWorksPage() {
               ))}
             </ul>
           </Reveal>
-        </div>
-      </section>
 
-      {/* Advanced curriculum */}
-      <section id="advanced" className="bg-paper py-24 lg:py-32">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
-          <Reveal className="max-w-3xl">
-            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-              Advanced Neurological Support Curriculum
-            </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-              The Advanced curriculum.
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted">
-              {ADVANCED_INTRO}
-            </p>
-            <p className="mt-4 text-[14px] leading-relaxed text-muted-l">
-              {ADVANCED_SUBNOTE}
-            </p>
-          </Reveal>
-
-          <ModuleAccordion
-            modules={ADVANCED_MODULES}
-            actionsLabel="Core Content & Actions"
-          />
-
-          <Reveal delay={100} className="mt-14 rounded-2xl border border-rule bg-paper-2 p-6 lg:p-8">
-            <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
-              Implementation Guidance
-            </p>
-            <ul className="mt-4 space-y-2">
-              {ADVANCED_GUIDANCE.map((tip) => (
-                <li
-                  key={tip}
-                  className="flex gap-3 text-[14px] leading-relaxed text-ink/85"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="mt-2 h-[3px] w-3 shrink-0 rounded-full bg-amber"
-                  />
-                  <span>{tip}</span>
-                </li>
-              ))}
-            </ul>
+          <Reveal delay={140} className="mt-8 max-w-3xl text-[13px] italic leading-relaxed text-muted-l">
+            {CURRICULUM_CLOSING}
           </Reveal>
         </div>
       </section>
@@ -490,7 +468,7 @@ export default function HowItWorksPage() {
         <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-10">
           <Reveal>
             <h2 className="font-serif text-3xl leading-[1.2] tracking-tight text-paper sm:text-4xl lg:text-5xl">
-              These curricula run alongside the Virtual Program.
+              This curriculum runs alongside the Virtual Program.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-paper/80">
               Start with the investigation, then layer in the modules that

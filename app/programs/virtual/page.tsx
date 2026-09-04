@@ -13,7 +13,6 @@ import Link from "next/link";
 import { programs } from "@/content/programs";
 import {
   FOUNDATIONAL_CURRICULUM,
-  ADVANCED_CURRICULUM,
   CURRICULUM_HOW_TO_USE,
 } from "@/content/neurologicalSupportProgram";
 import Reveal from "@/components/Reveal";
@@ -63,7 +62,7 @@ const schema = {
     name: `The Virtual Program (${PROGRAM_NAME_PUBLIC})`,
     serviceType: "Neurometabolic Care",
     description:
-      "A 6–12 week at-home neurometabolic program: remote QEEG unit, a weekly neurological support program, and clinician review calls with Dr. Santucci every 4 weeks. National.",
+      "A 6–10 week at-home neurometabolic program: remote QEEG unit, a weekly neurological support program, and clinician review calls with Dr. Santucci every 4 weeks. National.",
     provider: {
       "@type": "MedicalClinic",
       name: "NeuroIntegrative Care of Los Gatos",
@@ -108,7 +107,7 @@ const TIERS: Array<{
       "Neurological support program": "Weekly support to enhance neurofeedback results",
       "Optional": "Toxicity, DNA, and functional testing as needed",
       "Clinician review cadence": "Every 4 weeks with Dr. Santucci",
-      "Program duration": virtualProgram?.duration ?? "6–12 weeks",
+      "Program duration": virtualProgram?.duration ?? "6–10 weeks",
     },
     cta: { label: "Start Here", href: "/start" },
     featured: true,
@@ -490,57 +489,34 @@ export default function VirtualProgramPage() {
               The Neurological Support Program
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-              Two 12-week curricula, built to amplify neurofeedback.
+              A 10-week curriculum, built to amplify neurofeedback.
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
               Weekly modules covering the lifestyle and clinical drivers
-              behind your results, foundational for everyone, advanced for
-              targeted recovery and complex cases.
+              behind your results, the Brain Brightening curriculum, for
+              everyone.
             </p>
           </Reveal>
 
-          <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-14">
-            <div>
-              <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
-                Foundational 12-Week Curriculum
-              </p>
-              <p className="mt-1 text-[13px] text-muted">
-                Lifestyle foundations for everyone
-              </p>
-              <ul className="mt-6 divide-y divide-rule/70">
-                {FOUNDATIONAL_CURRICULUM.map((mod) => (
-                  <li key={mod.num} className="py-4">
-                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber">
-                      {mod.num} · {mod.title}
-                    </p>
-                    <p className="mt-1.5 text-[14px] leading-relaxed text-ink/85">
-                      {mod.body}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
-                Advanced 12-Week Curriculum
-              </p>
-              <p className="mt-1 text-[13px] text-muted">
-                Targeted recovery, memory & complex conditions
-              </p>
-              <ul className="mt-6 divide-y divide-rule/70">
-                {ADVANCED_CURRICULUM.map((mod) => (
-                  <li key={mod.num} className="py-4">
-                    <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber">
-                      {mod.num} · {mod.title}
-                    </p>
-                    <p className="mt-1.5 text-[14px] leading-relaxed text-ink/85">
-                      {mod.body}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="mt-14 max-w-2xl">
+            <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink">
+              10-Week Brain Brightening Curriculum
+            </p>
+            <p className="mt-1 text-[13px] text-muted">
+              Lifestyle foundations for everyone
+            </p>
+            <ul className="mt-6 divide-y divide-rule/70">
+              {FOUNDATIONAL_CURRICULUM.map((mod) => (
+                <li key={mod.num} className="py-4">
+                  <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber">
+                    {mod.num} · {mod.title}
+                  </p>
+                  <p className="mt-1.5 text-[14px] leading-relaxed text-ink/85">
+                    {mod.body}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <Reveal delay={100} className="mt-14 rounded-2xl border border-rule bg-paper p-6 lg:p-8">
